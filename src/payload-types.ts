@@ -946,6 +946,10 @@ export interface RetailerShowcaseBlock {
    */
   description?: string | null;
   /**
+   * Background image for the section (optional)
+   */
+  backgroundImage?: (number | null) | Media;
+  /**
    * Add retailer cards to showcase
    */
   retailers: {
@@ -958,11 +962,11 @@ export interface RetailerShowcaseBlock {
      */
     coverImage: number | Media;
     /**
-     * Retailer name/title
+     * Retailer name/title (optional)
      */
-    title: string;
+    title?: string | null;
     /**
-     * Optional subtitle or tagline
+     * Subtitle or tagline (optional)
      */
     subtitle?: string | null;
     /**
@@ -1784,6 +1788,7 @@ export interface HorizontalScrollCardsBlockSelect<T extends boolean = true> {
 export interface RetailerShowcaseBlockSelect<T extends boolean = true> {
   title?: T;
   description?: T;
+  backgroundImage?: T;
   retailers?:
     | T
     | {
@@ -2491,26 +2496,6 @@ export interface Footer {
    * Copyright text
    */
   copyright?: string | null;
-  navItems?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
-        id?: string | null;
-      }[]
-    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2602,20 +2587,6 @@ export interface FooterSelect<T extends boolean = true> {
         id?: T;
       };
   copyright?: T;
-  navItems?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -81,16 +81,16 @@ const retailerCardFields: Field[] = [
   {
     name: 'title',
     type: 'text',
-    required: true,
+    required: false,
     admin: {
-      description: 'Retailer name/title',
+      description: 'Retailer name/title (optional)',
     },
   },
   {
     name: 'subtitle',
     type: 'text',
     admin: {
-      description: 'Optional subtitle or tagline',
+      description: 'Subtitle or tagline (optional)',
     },
   },
   {
@@ -131,6 +131,14 @@ export const RetailerShowcase: Block = {
       type: 'textarea',
       admin: {
         description: 'Optional description text',
+      },
+    },
+    {
+      name: 'backgroundImage',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Background image for the section (optional)',
       },
     },
     {

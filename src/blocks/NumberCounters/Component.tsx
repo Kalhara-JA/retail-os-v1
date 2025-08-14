@@ -104,7 +104,7 @@ const Counter: React.FC<{
   return (
     <div className="flex flex-col items-center text-center">
       {/* Number Display */}
-      <div className="mb-3 flex items-center justify-center">
+      <div className="mb-2 sm:mb-3 flex items-center justify-center">
         {isAnimated && numericValue !== null ? (
           // For single numbers, use the NumberTicker animation
           <div className="flex items-center">
@@ -114,27 +114,33 @@ const Counter: React.FC<{
               direction={direction}
               delay={delay}
               decimalPlaces={decimalPlaces}
-              className="text-4xl font-bold text-white md:text-5xl lg:text-6xl"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
             />
             {isPercentage && (
-              <span className="text-4xl font-bold text-white md:text-5xl lg:text-6xl ml-1">%</span>
+              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+                %
+              </span>
             )}
           </div>
         ) : (
           // For ranges and percentages, show the full text without animation
           <div className="flex items-center">
-            <span className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
               {displayValue}
             </span>
             {isPercentage && (
-              <span className="text-4xl font-bold text-white md:text-5xl lg:text-6xl ml-1">%</span>
+              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+                %
+              </span>
             )}
           </div>
         )}
       </div>
 
       {/* Label */}
-      <p className="text-sm text-white/80 md:text-base max-w-[200px]">{label}</p>
+      <p className="text-xs sm:text-sm md:text-base text-white/80 max-w-[150px] sm:max-w-[200px]">
+        {label}
+      </p>
     </div>
   )
 }
@@ -148,7 +154,7 @@ const RangeCounter: React.FC<{
   return (
     <div className="flex flex-col items-center text-center">
       {/* Range Display */}
-      <div className="mb-3 flex items-center justify-center gap-2">
+      <div className="mb-2 sm:mb-3 flex items-center justify-center gap-1 sm:gap-2">
         {/* Start Value */}
         <div className="flex items-center">
           <NumberTicker
@@ -157,15 +163,19 @@ const RangeCounter: React.FC<{
             direction="up"
             delay={0}
             decimalPlaces={0}
-            className="text-4xl font-bold text-white md:text-5xl lg:text-6xl"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
           />
           {isPercentage && (
-            <span className="text-4xl font-bold text-white md:text-5xl lg:text-6xl ml-1">%</span>
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+              %
+            </span>
           )}
         </div>
 
         {/* Separator */}
-        <span className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">-</span>
+        <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+          -
+        </span>
 
         {/* End Value */}
         <div className="flex items-center">
@@ -175,16 +185,20 @@ const RangeCounter: React.FC<{
             direction="up"
             delay={0.5}
             decimalPlaces={0}
-            className="text-4xl font-bold text-white md:text-5xl lg:text-6xl"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
           />
           {isPercentage && (
-            <span className="text-4xl font-bold text-white md:text-5xl lg:text-6xl ml-1">%</span>
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+              %
+            </span>
           )}
         </div>
       </div>
 
       {/* Label */}
-      <p className="text-sm text-white/80 md:text-base max-w-[200px]">{label}</p>
+      <p className="text-xs sm:text-sm md:text-base text-white/80 max-w-[150px] sm:max-w-[200px]">
+        {label}
+      </p>
     </div>
   )
 }
@@ -198,7 +212,7 @@ const PercentageRangeCounter: React.FC<{
   return (
     <div className="flex flex-col items-center text-center">
       {/* Range Display */}
-      <div className="mb-3 flex items-center justify-center gap-2">
+      <div className="mb-2 sm:mb-3 flex items-center justify-center gap-1 sm:gap-2">
         {/* Start Value */}
         <div className="flex items-center">
           <NumberTicker
@@ -207,13 +221,17 @@ const PercentageRangeCounter: React.FC<{
             direction="up"
             delay={0}
             decimalPlaces={0}
-            className="text-4xl font-bold text-white md:text-5xl lg:text-6xl"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
           />
-          <span className="text-4xl font-bold text-white md:text-5xl lg:text-6xl ml-1">%</span>
+          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+            %
+          </span>
         </div>
 
         {/* Separator */}
-        <span className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">-</span>
+        <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+          -
+        </span>
 
         {/* End Value */}
         <div className="flex items-center">
@@ -223,14 +241,18 @@ const PercentageRangeCounter: React.FC<{
             direction="up"
             delay={0.5}
             decimalPlaces={0}
-            className="text-4xl font-bold text-white md:text-5xl lg:text-6xl"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
           />
-          <span className="text-4xl font-bold text-white md:text-5xl lg:text-6xl ml-1">%</span>
+          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+            %
+          </span>
         </div>
       </div>
 
       {/* Label */}
-      <p className="text-sm text-white/80 md:text-base max-w-[200px]">{label}</p>
+      <p className="text-xs sm:text-sm md:text-base text-white/80 max-w-[150px] sm:max-w-[200px]">
+        {label}
+      </p>
     </div>
   )
 }
@@ -264,23 +286,29 @@ export const NumberCountersBlock: React.FC<NumberCountersBlockType> = ({
   const getLayoutClasses = () => {
     switch (layout) {
       case 'row':
-        return 'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12'
+        return 'grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-12'
       case 'column':
-        return 'flex flex-col space-y-8 md:space-y-12'
+        return 'flex flex-col space-y-6 sm:space-y-8 md:space-y-12'
       case 'grid':
       default:
-        return 'grid grid-cols-2 gap-8 md:gap-12 lg:gap-16'
+        return 'grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16'
     }
   }
 
   return (
-    <section className={`py-16 md:py-20 ${getBackgroundClasses()}`}>
-      <div className="container mx-auto px-6 md:px-8">
+    <section className={`py-12 sm:py-16 md:py-20 ${getBackgroundClasses()}`}>
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
         {/* Header */}
         {(title || description) && (
-          <div className="mb-12 text-center">
-            {title && <h2 className="text-3xl font-bold mb-4 md:text-4xl">{title}</h2>}
-            {description && <p className="text-lg opacity-80 max-w-3xl mx-auto">{description}</p>}
+          <div className="mb-8 sm:mb-10 md:mb-12 text-center">
+            {title && (
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">{title}</h2>
+            )}
+            {description && (
+              <p className="text-sm sm:text-base md:text-lg opacity-80 max-w-2xl sm:max-w-3xl mx-auto">
+                {description}
+              </p>
+            )}
           </div>
         )}
 

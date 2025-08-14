@@ -86,6 +86,7 @@ export const RetailerShowcaseBlock: React.FC<RetailerShowcaseBlockType> = ({
   title,
   description,
   retailers,
+  backgroundImage,
 }) => {
   if (!retailers?.length) return null
 
@@ -95,17 +96,30 @@ export const RetailerShowcaseBlock: React.FC<RetailerShowcaseBlockType> = ({
 
   return (
     <section className="relative overflow-hidden bg-neutral-950">
-      {/* subtle starry/dots vibe behind (optional – remove if you already have a background) */}
-      <div className="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:24px_24px]" />
+      {/* Background image */}
+      {backgroundImage && (
+        <div className="absolute inset-0">
+          <Media resource={backgroundImage} imgClassName="w-full h-full object-cover" fill />
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-neutral-950/70" />
+        </div>
+      )}
 
-      <div className="relative mx-auto w-full max-w-[1440px] px-6 py-16 md:px-10 md:py-20">
+      {/* subtle starry/dots vibe behind (only if no background image) */}
+      {!backgroundImage && (
+        <div className="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:24px_24px]" />
+      )}
+
+      <div className="relative mx-auto w-full max-w-[1440px] px-6 pl-16 py-12 sm:py-16 md:pl-10 md:py-20 pr-0">
         {/* Header mirrors screenshot: big, bold, two-row capable */}
-        <div className="mb-10 text-left md:mb-14">
-          <h2 className="whitespace-pre-line text-3xl font-bold leading-tight text-white md:text-5xl">
+        <div className="mb-8 text-left sm:mb-10 md:mb-12 lg:mb-14">
+          <h2 className="whitespace-pre-line text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
             {title}
           </h2>
           {description && (
-            <p className="mt-4 max-w-3xl text-base text-neutral-300 md:text-lg">{description}</p>
+            <p className="mt-3 max-w-2xl text-sm text-neutral-300 sm:mt-4 sm:text-base md:text-lg lg:text-xl xl:max-w-3xl">
+              {description}
+            </p>
           )}
         </div>
 

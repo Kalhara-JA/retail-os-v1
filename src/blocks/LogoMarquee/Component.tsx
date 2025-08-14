@@ -99,19 +99,19 @@ export const LogoMarqueeBlock: React.FC<LogoMarqueeBlockType> = ({
   return (
     <section className={`py-16 md:py-20 ${getBackgroundClasses()}`}>
       <div className="container mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Left Side - Text Content */}
-          <div className="space-y-6">
-            <div className="text-lg text-gray-600 leading-relaxed">
-              <RichText data={description} />
+          <div className="lg:col-span-2 space-y-6">
+            <div className="text-lg text-black leading-relaxed">
+              <RichText data={description} className="text-black" />
             </div>
           </div>
 
           {/* Right Side - Logo Marquee */}
-          <div className="space-y-8">
+          <div className="lg:col-span-3 space-y-2">
             {/* Row 1 */}
             <Marquee
-              className="py-4"
+              className="py-2"
               pauseOnHover={marqueeSettings?.pauseOnHover ?? false}
               reverse={marqueeSettings?.reverse ?? false}
               style={
@@ -128,7 +128,7 @@ export const LogoMarqueeBlock: React.FC<LogoMarqueeBlockType> = ({
 
             {/* Row 2 */}
             <Marquee
-              className="py-4"
+              className="py-2"
               pauseOnHover={marqueeSettings?.pauseOnHover ?? false}
               reverse={!(marqueeSettings?.reverse ?? false)} // Opposite direction for visual interest
               style={
@@ -145,7 +145,7 @@ export const LogoMarqueeBlock: React.FC<LogoMarqueeBlockType> = ({
 
             {/* Row 3 */}
             <Marquee
-              className="py-4"
+              className="py-2"
               pauseOnHover={marqueeSettings?.pauseOnHover ?? false}
               reverse={marqueeSettings?.reverse ?? false}
               style={

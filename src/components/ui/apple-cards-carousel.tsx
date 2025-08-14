@@ -72,9 +72,6 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   return (
     <CarouselContext.Provider value={{ onCardClose: handleCardClose, currentIndex }}>
       <div className="relative">
-        {/* right fade like the screenshot */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-neutral-950 to-transparent md:w-28" />
-
         <div
           ref={ref}
           onScroll={updateArrows}
@@ -94,8 +91,6 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
               {el}
             </motion.div>
           ))}
-          {/* trailing padding so last card isn't glued to the edge */}
-          <div className="min-w-[8%] md:min-w-[20%]" />
         </div>
 
         {/* Nav arrows – compact, bottom-left like the screenshot */}

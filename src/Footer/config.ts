@@ -152,22 +152,6 @@ export const Footer: GlobalConfig = {
         description: 'Copyright text',
       },
     },
-    {
-      name: 'navItems',
-      type: 'array',
-      fields: [
-        link({
-          appearances: false,
-        }),
-      ],
-      maxRows: 6,
-      admin: {
-        initCollapsed: true,
-        components: {
-          RowLabel: '@/Footer/RowLabel#RowLabel',
-        },
-      },
-    },
   ],
   hooks: {
     afterChange: [revalidateFooter],
