@@ -14,6 +14,12 @@ import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Banner } from '../../blocks/Banner/config'
 import { Code } from '../../blocks/Code/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { TwoColumnRow } from '../../blocks/TwoColumnRow/config'
+import { HorizontalScrollCards } from '../../blocks/HorizontalScrollFramer/config'
+import { RetailerShowcase } from '../../blocks/RetailerShowcase/config'
+import { NumberCounters } from '../../blocks/NumberCounters/config'
+import { FeatureShowcase } from '../../blocks/FeatureShowcase/config'
+import { LogoMarquee } from '../../blocks/LogoMarquee/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
@@ -92,7 +98,19 @@ export const Posts: CollectionConfig<'posts'> = {
                   return [
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
+                    BlocksFeature({
+                      blocks: [
+                        Banner,
+                        Code,
+                        MediaBlock,
+                        TwoColumnRow,
+                        HorizontalScrollCards,
+                        RetailerShowcase,
+                        NumberCounters,
+                        FeatureShowcase,
+                        LogoMarquee,
+                      ],
+                    }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),

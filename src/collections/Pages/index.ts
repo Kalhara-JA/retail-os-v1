@@ -7,6 +7,13 @@ import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { TitleBlock } from '../../blocks/TitleBlock/config'
+import { TwoColumnRow } from '../../blocks/TwoColumnRow/config'
+import { HorizontalScrollCards } from '../../blocks/HorizontalScrollFramer/config'
+import { RetailerShowcase } from '../../blocks/RetailerShowcase/config'
+import { NumberCounters } from '../../blocks/NumberCounters/config'
+import { FeatureShowcase } from '../../blocks/FeatureShowcase/config'
+import { LogoMarquee } from '../../blocks/LogoMarquee/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -75,7 +82,20 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                TitleBlock,
+                TwoColumnRow,
+                HorizontalScrollCards,
+                RetailerShowcase,
+                NumberCounters,
+                FeatureShowcase,
+                LogoMarquee,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

@@ -1,12 +1,5 @@
 import type { Field } from 'payload'
 
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
 import { linkGroup } from '@/fields/linkGroup'
 
 export const hero: Field = {
@@ -39,19 +32,48 @@ export const hero: Field = {
       required: true,
     },
     {
-      name: 'richText',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
+      name: 'title',
+      type: 'text',
+      label: 'Main Title',
+      admin: {
+        description: 'The main heading of the hero section',
+      },
+    },
+    {
+      name: 'title2',
+      type: 'array',
+      label: 'Second Title Phrases',
+      admin: {
+        description: 'Add multiple phrases for the rotating second title (minimum 3 recommended)',
+      },
+      fields: [
+        {
+          name: 'phrase',
+          type: 'text',
+          required: true,
+          admin: {
+            description: 'A phrase for the rotating title',
+          },
         },
-      }),
-      label: false,
+      ],
+      minRows: 3,
+      maxRows: 10,
+    },
+    {
+      name: 'subtitle',
+      type: 'text',
+      label: 'Subtitle',
+      admin: {
+        description: 'The subtitle or secondary heading',
+      },
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+      label: 'Description',
+      admin: {
+        description: 'A brief description or supporting text',
+      },
     },
     linkGroup({
       overrides: {

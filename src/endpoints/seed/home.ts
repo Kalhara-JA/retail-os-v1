@@ -20,124 +20,16 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
           link: {
             type: 'custom',
             appearance: 'default',
-            label: 'All posts',
-            url: '/posts',
-          },
-        },
-        {
-          link: {
-            type: 'custom',
-            appearance: 'outline',
-            label: 'Contact',
+            label: 'Start With RetailOs Today',
             url: '/contact',
           },
         },
       ],
       media: heroImage.id,
-      richText: {
-        root: {
-          type: 'root',
-          children: [
-            {
-              type: 'heading',
-              children: [
-                {
-                  type: 'text',
-                  detail: 0,
-                  format: 0,
-                  mode: 'normal',
-                  style: '',
-                  text: 'Payload Website Template',
-                  version: 1,
-                },
-              ],
-              direction: 'ltr',
-              format: '',
-              indent: 0,
-              tag: 'h1',
-              version: 1,
-            },
-            {
-              type: 'paragraph',
-              children: [
-                {
-                  type: 'link',
-                  children: [
-                    {
-                      type: 'text',
-                      detail: 0,
-                      format: 0,
-                      mode: 'normal',
-                      style: '',
-                      text: 'Visit the admin dashboard',
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  fields: {
-                    linkType: 'custom',
-                    newTab: false,
-                    url: '/admin',
-                  },
-                  format: '',
-                  indent: 0,
-                  version: 3,
-                },
-                {
-                  type: 'text',
-                  detail: 0,
-                  format: 0,
-                  mode: 'normal',
-                  style: '',
-                  text: " to begin managing this site's content. The code for this template is completely open-source and can be found ",
-                  version: 1,
-                },
-                {
-                  type: 'link',
-                  children: [
-                    {
-                      type: 'text',
-                      detail: 0,
-                      format: 0,
-                      mode: 'normal',
-                      style: '',
-                      text: 'on our Github',
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  fields: {
-                    linkType: 'custom',
-                    newTab: true,
-                    url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
-                  },
-                  format: '',
-                  indent: 0,
-                  version: 3,
-                },
-                {
-                  type: 'text',
-                  detail: 0,
-                  format: 0,
-                  mode: 'normal',
-                  style: '',
-                  text: '. ',
-                  version: 1,
-                },
-              ],
-              direction: 'ltr',
-              format: '',
-              indent: 0,
-              textFormat: 0,
-              version: 1,
-            },
-          ],
-          direction: 'ltr',
-          format: '',
-          indent: 0,
-          version: 1,
-        },
-      },
+      title: 'Be The Retail Brand',
+      subtitle: 'With Full Control Across Every Sales Channel',
+      description:
+        'Transform your retail business with our comprehensive platform that gives you complete control across all your sales channels.',
     },
     layout: [
       {
@@ -666,10 +558,11 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
       },
     ],
     meta: {
-      description: 'An open-source website built with Payload and Next.js.',
+      description:
+        'Be The Retail Brand with full control across every sales channel. Transform your retail business with RetailOs.',
       image: heroImage.id,
-      title: 'Payload Website Template',
+      title: 'RetailOs - Be The Retail Brand',
     },
-    title: 'Home',
+    title: 'RetailOs - Be The Retail Brand',
   }
 }

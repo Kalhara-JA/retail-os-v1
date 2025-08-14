@@ -1,5 +1,5 @@
-import tailwindcssAnimate from 'tailwindcss-animate'
-import typography from '@tailwindcss/typography'
+const tailwindcssAnimate = require('tailwindcss-animate')
+const typography = require('@tailwindcss/typography')
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -49,6 +49,8 @@ const config = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        marquee: 'marquee var(--duration) linear infinite',
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -83,6 +85,7 @@ const config = {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+          hover: '#016285',
         },
         ring: 'hsl(var(--ring))',
         secondary: {
@@ -92,6 +95,16 @@ const config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
+        sidebar: {
+          DEFAULT: 'hsl(var(--sidebar-background))',
+          foreground: 'hsl(var(--sidebar-foreground))',
+          primary: 'hsl(var(--sidebar-primary))',
+          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+          accent: 'hsl(var(--sidebar-accent))',
+          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+          border: 'hsl(var(--sidebar-border))',
+          ring: 'hsl(var(--sidebar-ring))',
+        },
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
@@ -106,48 +119,50 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+        },
+        'marquee-vertical': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap)))' },
+        },
       },
-      typography: () => ({
+      typography: {
         DEFAULT: {
-          css: [
-            {
-              '--tw-prose-body': 'var(--text)',
-              '--tw-prose-headings': 'var(--text)',
-              h1: {
-                fontWeight: 'normal',
-                marginBottom: '0.25em',
-              },
+          css: {
+            '--tw-prose-body': 'var(--text)',
+            '--tw-prose-headings': 'var(--text)',
+            h1: {
+              fontWeight: 'normal',
+              marginBottom: '0.25em',
             },
-          ],
+          },
         },
         base: {
-          css: [
-            {
-              h1: {
-                fontSize: '2.5rem',
-              },
-              h2: {
-                fontSize: '1.25rem',
-                fontWeight: 600,
-              },
+          css: {
+            h1: {
+              fontSize: '2.5rem',
             },
-          ],
+            h2: {
+              fontSize: '1.25rem',
+              fontWeight: 600,
+            },
+          },
         },
         md: {
-          css: [
-            {
-              h1: {
-                fontSize: '3.5rem',
-              },
-              h2: {
-                fontSize: '1.5rem',
-              },
+          css: {
+            h1: {
+              fontSize: '3.5rem',
             },
-          ],
+            h2: {
+              fontSize: '1.5rem',
+            },
+          },
         },
-      }),
+      },
     },
   },
 }
 
-export default config
+module.exports = config
