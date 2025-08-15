@@ -24,16 +24,19 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 201 100% 35%; /* #1085AF */
+    --primary: 201 100% 35%;
+    /* #1085AF */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 45 100% 40%; /* #CDA300 */
+    --secondary: 45 100% 40%;
+    /* #CDA300 */
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 201 100% 35%; /* #1085AF */
+    --accent: 201 100% 35%;
+    /* #1085AF */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -41,7 +44,8 @@
 
     --border: 240 6% 80%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 201 100% 35%; /* #1085AF */
+    --ring: 201 100% 35%;
+    /* #1085AF */
 
     --radius: 0.2rem;
 
@@ -55,7 +59,31 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 201 100% 35%; /* #1085AF */
+    --sidebar-ring: 201 100% 35%;
+    /* #1085AF */
+
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(calc(-100% - var(--gap)));
+      }
+    }
+
+    @keyframes marquee-vertical {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(calc(-100% - var(--gap)));
+      }
+    }
   }
 
   [data-theme='dark'] {
@@ -68,10 +96,12 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 201 100% 35%; /* #1085AF */
+    --primary: 201 100% 35%;
+    /* #1085AF */
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 45 100% 40%; /* #CDA300 */
+    --secondary: 45 100% 40%;
+    /* #CDA300 */
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
@@ -90,6 +120,29 @@
     --success: 196 100% 14%;
     --warning: 34 51% 25%;
     --error: 10 39% 43%;
+
+    --animate-marquee: marquee var(--duration) infinite linear;
+    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(calc(-100% - var(--gap)));
+      }
+    }
+
+    @keyframes marquee-vertical {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(calc(-100% - var(--gap)));
+      }
+    }
   }
 
   .dark {
@@ -123,23 +176,23 @@
   .bg-primary-hover {
     background-color: #016285;
   }
-  
+
   .text-primary-hover {
     color: #016285;
   }
-  
+
   .border-primary-hover {
     border-color: #016285;
   }
-  
+
   .hover\:bg-primary-hover:hover {
     background-color: #016285;
   }
-  
+
   .hover\:text-primary-hover:hover {
     color: #016285;
   }
-  
+
   .hover\:border-primary-hover:hover {
     border-color: #016285;
   }
@@ -167,24 +220,25 @@ html[data-theme='light'] {
 @theme inline {
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+}
 
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
+/* Global marquee keyframes - ensure they work in production */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
   }
 
-  @keyframes marquee-vertical {
-    from {
-      transform: translateY(0);
-    }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+}
 
-    to {
-      transform: translateY(calc(-100% - var(--gap)));
-    }
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-100% - var(--gap, 1rem)));
   }
 }

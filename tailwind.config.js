@@ -25,6 +25,11 @@ const config = {
     'bg-success/30',
     'border-warning',
     'bg-warning/30',
+    // Marquee animations
+    'animate-marquee',
+    'animate-marquee-vertical',
+    'marquee',
+    'marquee-vertical',
   ],
   theme: {
     container: {
