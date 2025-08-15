@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
+import { Button } from '@/components/ui/button'
 import { HeaderNav, HeaderActions } from './Nav'
 import { MobileMenu } from './Nav/MobileMenu'
 
@@ -46,7 +47,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[9998] text-white transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[9997] text-white transition-all duration-300 ${
           isScrolled ? 'bg-black/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
         }`}
         {...(theme ? { 'data-theme': theme } : {})}
@@ -73,10 +74,31 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               <HeaderActions data={data} />
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button
-                className="text-white hover:text-gray-300"
+            {/* Mobile Actions */}
+            <div className="md:hidden flex items-center gap-4">
+              {/* Book a Demo Button */}
+              {data?.demoButton && (
+                <button
+                  className="text-white hover:text-gray-300 underline underline-offset-4 hover:no-underline transition-all duration-200 text-sm font-medium"
+                  onClick={() => {
+                    if (data.demoButton?.link?.type === 'custom' && data.demoButton.link.url) {
+                      if (data.demoButton.link.newTab) {
+                        window.open(data.demoButton.link.url, '_blank')
+                      } else {
+                        window.location.href = data.demoButton.link.url
+                      }
+                    }
+                  }}
+                >
+                  {data.demoButton.text || 'Book a Demo'}
+                </button>
+              )}
+
+              {/* Mobile Menu Button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-white hover:text-gray-300 hover:bg-white/10"
                 onClick={() => setIsMobileMenuOpen(true)}
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -87,7 +109,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
-              </button>
+                <span className="sr-only">Open menu</span>
+              </Button>
             </div>
           </div>
         </div>

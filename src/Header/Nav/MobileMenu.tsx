@@ -1,12 +1,12 @@
 'use client'
 
 import React, { useState } from 'react'
-import { ChevronDown, ChevronUp, X } from 'lucide-react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import { CMSLink } from '@/components/Link'
 import { Button } from '@/components/ui/button'
 import { Globe2 } from 'lucide-react'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetOverlay } from '@/components/ui/sheet'
 
 import type { Header as HeaderType } from '@/payload-types'
 
@@ -32,85 +32,88 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ data, isOpen, onClose })
     setOpenDropdowns(newOpenDropdowns)
   }
 
-  if (!isOpen) return null
-
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999] md:hidden">
-      <Card className="fixed top-0 right-0 h-full w-80 bg-gray-900 border-gray-700 shadow-xl rounded-none">
-        <CardHeader className="flex items-center justify-between p-4 border-b border-gray-700">
-          <h2 className="text-white font-semibold">Menu</h2>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onClose}
-            className="text-white hover:text-gray-300 hover:bg-white/10"
-          >
-            <X className="h-6 w-6" />
-          </Button>
-        </CardHeader>
+    <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <SheetOverlay className="z-[9998]" />
+      <SheetContent
+        side="right"
+        className="w-[320px] sm:w-[400px] bg-black border-gray-700 p-0 z-[9999]"
+        style={{ zIndex: 9999 }}
+      >
+        <SheetHeader className="px-6 py-4 border-b border-gray-700">
+          <SheetTitle className="text-white font-semibold text-left">Menu</SheetTitle>
+        </SheetHeader>
 
-        <CardContent className="p-4 space-y-4">
-          {navItems.map((navItem, i) => {
-            const { link, hasDropdown, dropdownItems } = navItem
+        <div className="flex-1 overflow-y-auto">
+          <div className="px-6 py-4 space-y-2">
+            {navItems.map((navItem, i) => {
+              const { link, hasDropdown, dropdownItems } = navItem
 
-            if (hasDropdown && dropdownItems) {
-              return (
-                <Collapsible
-                  key={i}
-                  open={openDropdowns.has(i)}
-                  onOpenChange={() => handleDropdownToggle(i)}
-                >
-                  <CollapsibleTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      className="flex items-center justify-between w-full text-white hover:text-gray-300 hover:bg-white/10 transition-colors"
-                    >
-                      {link.label}
-                      {openDropdowns.has(i) ? (
-                        <ChevronUp className="h-4 w-4" />
-                      ) : (
-                        <ChevronDown className="h-4 w-4" />
-                      )}
-                    </Button>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent className="ml-4 space-y-2 mt-2">
-                    {dropdownItems.map((item, itemIndex) => (
-                      <div key={itemIndex} className="space-y-2">
-                        <h4 className="text-gray-300 font-medium">{item.title}</h4>
-                        <div className="ml-4 space-y-1">
-                          {item.items?.map((subItem, subIndex) => (
-                            <CMSLink
-                              key={subIndex}
-                              {...subItem.link}
-                              appearance="link"
-                              className="block text-gray-400 hover:text-white transition-colors p-2 rounded hover:bg-gray-800"
-                            >
-                              <div className="space-y-1">
-                                {subItem.description && (
-                                  <div className="text-sm text-gray-500">{subItem.description}</div>
-                                )}
+              if (hasDropdown && dropdownItems) {
+                return (
+                  <Collapsible
+                    key={i}
+                    open={openDropdowns.has(i)}
+                    onOpenChange={() => handleDropdownToggle(i)}
+                  >
+                    <CollapsibleTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className="flex items-center justify-between w-full text-white hover:text-gray-300 hover:bg-white/10 transition-colors h-auto p-3"
+                      >
+                        <span className="text-left">{link.label}</span>
+                        {openDropdowns.has(i) ? (
+                          <ChevronUp className="h-4 w-4 flex-shrink-0" />
+                        ) : (
+                          <ChevronDown className="h-4 w-4 flex-shrink-0" />
+                        )}
+                      </Button>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="ml-4 space-y-2 mt-2 data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up overflow-hidden transition-all duration-300 ease-in-out">
+                      {dropdownItems.map((item, itemIndex) => (
+                        <div key={itemIndex} className="space-y-2">
+                          <h4 className="text-gray-300 font-medium text-sm">{item.title}</h4>
+                          <div className="ml-4 space-y-1">
+                            {item.items?.map((subItem, subIndex) => (
+                              <div key={subIndex} onClick={onClose} className="group">
+                                <div className="p-2 rounded hover:bg-gray-800 transition-colors">
+                                  <CMSLink
+                                    {...subItem.link}
+                                    appearance="link"
+                                    className="block text-gray-400 group-hover:text-white transition-colors text-sm"
+                                  >
+                                    <div className="space-y-1">
+                                      {subItem.description && (
+                                        <div className="text-xs text-gray-500 group-hover:text-gray-300">
+                                          {subItem.description}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </CMSLink>
+                                </div>
                               </div>
-                            </CMSLink>
-                          ))}
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </CollapsibleContent>
-                </Collapsible>
+                      ))}
+                    </CollapsibleContent>
+                  </Collapsible>
+                )
+              }
+
+              return (
+                <div key={i} onClick={onClose}>
+                  <CMSLink
+                    {...link}
+                    appearance="link"
+                    className="block text-white hover:text-gray-300 transition-colors py-3 px-3 rounded hover:bg-white/10"
+                  />
+                </div>
               )
-            }
+            })}
+          </div>
 
-            return (
-              <CMSLink
-                key={i}
-                {...link}
-                appearance="link"
-                className="block text-white hover:text-gray-300 transition-colors py-2"
-              />
-            )
-          })}
-
-          <div className="pt-4 border-t border-gray-700 space-y-4">
+          <div className="px-6 py-4 border-t border-gray-700 space-y-4">
             {showLanguageSelector && (
               <Button
                 variant="ghost"
@@ -124,7 +127,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ data, isOpen, onClose })
 
             {demoButton && (
               <Button
-                className="w-full bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-full font-medium"
+                className="w-full bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium"
                 onClick={() => {
                   if (demoButton.link?.type === 'custom' && demoButton.link.url) {
                     if (demoButton.link.newTab) {
@@ -133,14 +136,15 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ data, isOpen, onClose })
                       window.location.href = demoButton.link.url
                     }
                   }
+                  onClose()
                 }}
               >
                 {demoButton.text || 'Book a Demo'}
               </Button>
             )}
           </div>
-        </CardContent>
-      </Card>
-    </div>
+        </div>
+      </SheetContent>
+    </Sheet>
   )
 }

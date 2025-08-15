@@ -76,7 +76,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                   {link.label}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="w-screen max-w-6xl bg-gray-900 border border-gray-700 rounded-lg shadow-2xl p-8">
+                  <div className="w-screen max-w-6xl bg-black border border-gray-700 rounded-lg shadow-2xl p-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                       {dropdownItems.map((item, index) => (
                         <div key={index} className="space-y-4">
@@ -93,21 +93,23 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                             {item.items && item.items.length > 0 ? (
                               item.items.map((subItem, subIndex) => (
                                 <div key={subIndex} className="group">
-                                  <NavigationMenuLink asChild>
-                                    <CMSLink
-                                      {...subItem.link}
-                                      appearance="link"
-                                      className="block p-3 rounded-lg hover:bg-gray-800 transition-all duration-200 group-hover:bg-gray-800"
-                                    >
-                                      <div className="space-y-1">
-                                        {subItem.description && (
-                                          <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
-                                            {subItem.description}
-                                          </div>
-                                        )}
-                                      </div>
-                                    </CMSLink>
-                                  </NavigationMenuLink>
+                                  <div className="p-3 rounded-lg hover:bg-gray-800 transition-all duration-200">
+                                    <NavigationMenuLink asChild>
+                                      <CMSLink
+                                        {...subItem.link}
+                                        appearance="link"
+                                        className="block transition-all duration-200"
+                                      >
+                                        <div className="space-y-1">
+                                          {subItem.description && (
+                                            <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                                              {subItem.description}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </CMSLink>
+                                    </NavigationMenuLink>
+                                  </div>
                                 </div>
                               ))
                             ) : (

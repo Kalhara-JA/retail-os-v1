@@ -30,6 +30,11 @@ const config = {
     'animate-marquee-vertical',
     'marquee',
     'marquee-vertical',
+    // Collapsible animations
+    'animate-collapsible-down',
+    'animate-collapsible-up',
+    'data-[state=open]:animate-collapsible-down',
+    'data-[state=closed]:animate-collapsible-up',
   ],
   theme: {
     container: {
@@ -54,6 +59,8 @@ const config = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'collapsible-down': 'collapsible-down 0.3s ease-out',
+        'collapsible-up': 'collapsible-up 0.3s ease-out',
         marquee: 'marquee var(--duration) linear infinite',
         'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
       },
@@ -123,6 +130,14 @@ const config = {
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
+        },
+        'collapsible-down': {
+          from: { height: '0', opacity: '0' },
+          to: { height: 'var(--radix-collapsible-content-height)', opacity: '1' },
+        },
+        'collapsible-up': {
+          from: { height: 'var(--radix-collapsible-content-height)', opacity: '1' },
+          to: { height: '0', opacity: '0' },
         },
         marquee: {
           from: { transform: 'translateX(0)' },
