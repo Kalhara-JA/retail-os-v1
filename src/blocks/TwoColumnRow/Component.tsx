@@ -73,6 +73,79 @@ const MediaColumn: React.FC<{
   )
 }
 
+const MobileMediaColumn: React.FC<{
+  content: any
+  headline?: string
+  isFirst?: boolean
+}> = ({ content, headline, isFirst = false }) => {
+  const { media, overlayText, enableLink, link } = content
+
+  return (
+    <div className={`relative w-full aspect-square lg:hidden ${isFirst ? '' : 'mt-0'}`}>
+      {media && (
+        <div className="relative w-full h-full">
+          <Media resource={media} imgClassName="w-full h-full object-cover" fill />
+
+          {/* Headline overlay - positioned at bottom left */}
+          {headline && (
+            <div className="absolute bottom-4 left-0">
+              <div className="bg-white px-4 py-2 rounded-r-full shadow-lg">
+                <p className="text-sm font-medium text-gray-900 uppercase tracking-wide">
+                  {headline}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Original overlay text if exists */}
+          {overlayText && (
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+              <div className="text-center text-white p-8">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">{overlayText}</h3>
+                {enableLink && link && <CMSLink {...link} />}
+              </div>
+            </div>
+          )}
+
+          {enableLink && link && !overlayText && (
+            <div className="absolute bottom-4 right-4">
+              <CMSLink {...link} />
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+const MobileTextColumn: React.FC<{
+  content: any
+}> = ({ content }) => {
+  const { title, bodyText, enableLink, link } = content
+
+  return (
+    <div className="bg-white px-4 py-8 lg:hidden">
+      <div className="flex flex-col space-y-4">
+        {title && (
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">{title}</h2>
+        )}
+
+        {bodyText && (
+          <div className="text-base text-gray-700 leading-relaxed">
+            <RichText data={bodyText} className="text-gray-700" enableGutter={false} />
+          </div>
+        )}
+
+        {enableLink && link && (
+          <div className="pt-2">
+            <CMSLink {...link} className="text-primary hover:text-primary-hover underline" />
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 const ColumnContent: React.FC<{
   column: any
 }> = ({ column }) => {
@@ -146,7 +219,8 @@ const StickyRow: React.FC<{
         <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20" />
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch min-h-[85vh] relative z-10">
+      {/* Desktop Layout */}
+      <div className="hidden lg:grid grid-cols-2 items-stretch min-h-[85vh] relative z-10">
         <motion.div
           className="order-2 lg:order-1 h-full"
           initial={{ opacity: 0, x: -50 }}
@@ -167,6 +241,48 @@ const StickyRow: React.FC<{
           <ColumnContent column={right} />
         </motion.div>
       </div>
+
+      {/* Mobile Layout */}
+      <div className="lg:hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: '-50px' }}
+        >
+          {/* Handle different column combinations */}
+          {left.type === 'media' && right.type === 'text' ? (
+            <>
+              <MobileMediaColumn
+                content={left.media}
+                headline={right.text?.headline}
+                isFirst={true}
+              />
+              <MobileTextColumn content={right.text} />
+            </>
+          ) : right.type === 'media' && left.type === 'text' ? (
+            <>
+              <MobileMediaColumn
+                content={right.media}
+                headline={left.text?.headline}
+                isFirst={true}
+              />
+              <MobileTextColumn content={left.text} />
+            </>
+          ) : left.type === 'media' && right.type === 'media' ? (
+            <>
+              <MobileMediaColumn content={left.media} isFirst={true} />
+              <MobileMediaColumn content={right.media} isFirst={false} />
+            </>
+          ) : (
+            // Fallback to original layout if not media/text combination
+            <div className="grid grid-cols-1 items-stretch">
+              <ColumnContent column={left} />
+              <ColumnContent column={right} />
+            </div>
+          )}
+        </motion.div>
+      </div>
     </motion.div>
   )
 }
@@ -182,7 +298,9 @@ export const TwoColumnRowBlock: React.FC<TwoColumnRowBlockProps> = (props) => {
     <div className="relative bg-gray-100">
       <div className="space-y-0">
         {rows.map((row, rowIndex) => (
-          <StickyRow key={rowIndex} row={row} index={rowIndex} totalRows={rows.length} />
+          <div key={rowIndex} className={rowIndex === 0 ? '' : 'lg:mt-0'}>
+            <StickyRow row={row} index={rowIndex} totalRows={rows.length} />
+          </div>
         ))}
       </div>
     </div>

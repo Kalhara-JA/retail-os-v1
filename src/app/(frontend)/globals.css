@@ -163,12 +163,15 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
     @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+  }
+
+  /* Remove borders from pseudo-elements */
+  *::before,
+  *::after {
+    border: none !important;
+    outline: none !important;
   }
 }
 
@@ -208,12 +211,15 @@ html[data-theme='light'] {
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Remove borders from pseudo-elements */
+  *::before,
+  *::after {
+    border: none !important;
+    outline: none !important;
   }
 }
 
