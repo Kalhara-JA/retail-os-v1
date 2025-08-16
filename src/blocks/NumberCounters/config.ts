@@ -129,7 +129,6 @@ const counterFields: Field[] = [
     min: 0,
     max: 5,
     admin: {
-      condition: (_, siblingData) => siblingData?.valueType === 'single',
       description: 'Delay before animation starts (seconds)',
     },
   },

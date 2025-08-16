@@ -2474,7 +2474,7 @@ export interface Footer {
         /**
          * Social media platform
          */
-        platform: 'youtube' | 'linkedin' | 'instagram' | 'facebook';
+        platform: 'youtube' | 'linkedin' | 'instagram' | 'facebook' | 'tiktok';
         /**
          * URL for the social media profile
          */
@@ -2502,6 +2502,55 @@ export interface Footer {
    * Copyright text
    */
   copyright?: string | null;
+  /**
+   * Configure email content for newsletter subscription form
+   */
+  newsletterEmailConfig?: {
+    /**
+     * Subject line for welcome emails sent to new subscribers
+     */
+    welcomeEmailSubject?: string | null;
+    /**
+     * Email body content for welcome emails. Use {{email}} for subscriber email, {{date}} for current date.
+     */
+    welcomeEmailBody?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Subject line for admin notification emails
+     */
+    adminNotificationSubject?: string | null;
+    /**
+     * Email body content for admin notifications. Use {{email}} for subscriber email, {{date}} for current date.
+     */
+    adminNotificationBody?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2700,6 +2749,14 @@ export interface FooterSelect<T extends boolean = true> {
         id?: T;
       };
   copyright?: T;
+  newsletterEmailConfig?:
+    | T
+    | {
+        welcomeEmailSubject?: T;
+        welcomeEmailBody?: T;
+        adminNotificationSubject?: T;
+        adminNotificationBody?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -25,6 +25,7 @@
     "@hookform/resolvers": "^5.2.1",
     "@payloadcms/admin-bar": "3.50.0",
     "@payloadcms/db-postgres": "3.50.0",
+    "@payloadcms/email-nodemailer": "^3.52.0",
     "@payloadcms/live-preview-react": "3.50.0",
     "@payloadcms/next": "3.50.0",
     "@payloadcms/payload-cloud": "3.50.0",

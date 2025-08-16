@@ -2,6 +2,7 @@ import type { GlobalConfig } from 'payload'
 
 import { link } from '@/fields/link'
 import { revalidateFooter } from './hooks/revalidateFooter'
+import { defaultLexical } from '@/fields/defaultLexical'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
@@ -91,6 +92,7 @@ export const Footer: GlobalConfig = {
             { label: 'LinkedIn', value: 'linkedin' },
             { label: 'Instagram', value: 'instagram' },
             { label: 'Facebook', value: 'facebook' },
+            { label: 'TikTok', value: 'tiktok' },
           ],
           admin: {
             description: 'Social media platform',
@@ -110,6 +112,7 @@ export const Footer: GlobalConfig = {
         { platform: 'linkedin', url: 'https://linkedin.com' },
         { platform: 'instagram', url: 'https://instagram.com' },
         { platform: 'facebook', url: 'https://facebook.com' },
+        { platform: 'tiktok', url: 'https://tiktok.com' },
       ],
       admin: {
         description: 'Social media links',
@@ -151,6 +154,50 @@ export const Footer: GlobalConfig = {
       admin: {
         description: 'Copyright text',
       },
+    },
+    {
+      name: 'newsletterEmailConfig',
+      type: 'group',
+      label: 'Newsletter Email Configuration',
+      admin: {
+        description: 'Configure email content for newsletter subscription form',
+      },
+      fields: [
+        {
+          name: 'welcomeEmailSubject',
+          type: 'text',
+          defaultValue: 'Welcome to Retail OS Newsletter!',
+          admin: {
+            description: 'Subject line for welcome emails sent to new subscribers',
+          },
+        },
+        {
+          name: 'welcomeEmailBody',
+          type: 'richText',
+          admin: {
+            description:
+              'Email body content for welcome emails. Use {{email}} for subscriber email, {{date}} for current date.',
+          },
+          editor: defaultLexical,
+        },
+        {
+          name: 'adminNotificationSubject',
+          type: 'text',
+          defaultValue: 'New Newsletter Subscription',
+          admin: {
+            description: 'Subject line for admin notification emails',
+          },
+        },
+        {
+          name: 'adminNotificationBody',
+          type: 'richText',
+          admin: {
+            description:
+              'Email body content for admin notifications. Use {{email}} for subscriber email, {{date}} for current date.',
+          },
+          editor: defaultLexical,
+        },
+      ],
     },
   ],
   hooks: {

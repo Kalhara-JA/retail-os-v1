@@ -6,12 +6,14 @@ import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { fileURLToPath } from 'url'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
+
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { WhatsApp } from './WhatsApp/config'
@@ -25,6 +27,33 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  email:
+    process.env.SMTP_USER && process.env.SMTP_PASS
+      ? nodemailerAdapter({
+          defaultFromAddress: process.env.EMAIL_FROM || 'noreply@retail-os.com',
+          defaultFromName: 'Retail OS',
+          transportOptions: {
+            host: process.env.SMTP_HOST || 'smtp.gmail.com',
+            port: parseInt(process.env.SMTP_PORT || '587'),
+            auth: {
+              user: process.env.SMTP_USER,
+              pass: process.env.SMTP_PASS,
+            },
+            secure: process.env.SMTP_SECURE === 'true',
+            // Add connection timeout and retry settings
+            connectionTimeout: 60000, // 60 seconds
+            greetingTimeout: 30000, // 30 seconds
+            socketTimeout: 60000, // 60 seconds
+            // Add TLS options for better connection stability
+            tls: {
+              rejectUnauthorized: false,
+            },
+            // Add debug option for troubleshooting
+            debug: process.env.NODE_ENV === 'development',
+            logger: process.env.NODE_ENV === 'development',
+          },
+        })
+      : undefined,
   admin: {
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.

@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import { isValidEmail, sanitizeEmail } from '../utilities/email'
 
 interface EmailFormProps {
   placeholder: string
@@ -13,14 +14,35 @@ export const EmailForm: React.FC<EmailFormProps> = ({ placeholder, buttonText })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!email) return
+
+    const sanitizedEmail = sanitizeEmail(email)
+
+    if (!isValidEmail(sanitizedEmail)) {
+      setMessage('Please enter a valid email address.')
+      return
+    }
+
     setIsSubmitting(true)
     setMessage('')
+
     try {
-      await new Promise((r) => setTimeout(r, 900))
-      setMessage("Thank you! We'll be in touch soon.")
-      setEmail('')
-    } catch (e) {
+      const response = await fetch('/api/newsletter-subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: sanitizedEmail }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setMessage("Thank you! We'll be in touch soon.")
+        setEmail('')
+      } else {
+        setMessage(data.error || 'Something went wrong. Please try again.')
+      }
+    } catch (error) {
       setMessage('Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)

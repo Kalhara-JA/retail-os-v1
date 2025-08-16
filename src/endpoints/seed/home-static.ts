@@ -6,13 +6,13 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
   _status: 'published',
   hero: {
     type: 'lowImpact',
-    title: 'Payload Website Template',
+    title: 'RetailOs',
     description:
       'Visit the admin dashboard to make your account and seed content for your website.',
   },
   meta: {
     description: 'An open-source website built with Payload and Next.js.',
-    title: 'Payload Website Template',
+    title: 'RetailOs',
   },
   title: 'Home',
   layout: [],

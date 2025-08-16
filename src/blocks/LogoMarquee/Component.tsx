@@ -97,7 +97,7 @@ export const LogoMarqueeBlock: React.FC<LogoMarqueeBlockType> = ({
   const row3 = logos.slice(logosPerRow * 2)
 
   return (
-    <section className={`py-16 md:py-20 ${getBackgroundClasses()}`}>
+    <section className={`pb-8 md:pb-12 ${getBackgroundClasses()}`}>
       <div className="container mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Left Side - Text Content */}

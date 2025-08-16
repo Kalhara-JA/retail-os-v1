@@ -48,12 +48,12 @@ export async function Footer() {
 
       {/* CONTENT */}
       <div className="relative z-10">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6 py-8 md:py-12">
           <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 lg:gap-16 items-center">
             {/* Left Side - Content */}
-            <div className="text-left space-y-6 sm:space-y-8 w-full sm:w-11/12 md:w-11/12 lg:w-11/12">
+            <div className="text-left space-y-4 sm:space-y-6 w-full sm:w-11/12 md:w-11/12 lg:w-11/12">
               {/* Headline */}
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-2 sm:space-y-3">
                 <h2 className="font-bold tracking-tight text-balance leading-[1.1] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
                   <span className="block text-white">{stopManaging}</span>
                   <span className="block">
@@ -92,7 +92,7 @@ export async function Footer() {
 
         {/* Bottom strip */}
         <div className="border-t border-white/10">
-          <div className="mx-auto max-w-7xl px-6 py-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="mx-auto max-w-7xl px-6 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             {/* Legal Links - Left Side */}
             <div className="flex items-center gap-6 order-1">
               {legalLinks?.map((link: any, idx: number) => (

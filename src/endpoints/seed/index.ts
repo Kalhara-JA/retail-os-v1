@@ -9,6 +9,8 @@ import { imageHero1 } from './image-hero-1'
 import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
+import { newsletterForm } from './newsletter-form'
+import { defaultWelcomeEmailBody, defaultAdminNotificationBody } from './footer-email-content'
 
 const collections: CollectionSlug[] = [
   'categories',
@@ -18,6 +20,7 @@ const collections: CollectionSlug[] = [
   'forms',
   'form-submissions',
   'search',
+  'email-templates' as CollectionSlug,
 ]
 const globals: GlobalSlug[] = ['header', 'footer']
 
@@ -255,13 +258,20 @@ export const seed = async ({
     },
   })
 
-  payload.logger.info(`— Seeding contact form...`)
+  payload.logger.info(`— Seeding forms...`)
 
-  const contactForm = await payload.create({
-    collection: 'forms',
-    depth: 0,
-    data: contactFormData,
-  })
+  const [contactForm, newsletterFormDoc] = await Promise.all([
+    payload.create({
+      collection: 'forms',
+      depth: 0,
+      data: contactFormData,
+    }),
+    payload.create({
+      collection: 'forms',
+      depth: 0,
+      data: newsletterForm,
+    }),
+  ])
 
   payload.logger.info(`— Seeding pages...`)
 
@@ -308,6 +318,12 @@ export const seed = async ({
     payload.updateGlobal({
       slug: 'footer',
       data: {
+        newsletterEmailConfig: {
+          welcomeEmailSubject: 'Welcome to Retail OS Newsletter!',
+          welcomeEmailBody: defaultWelcomeEmailBody as any,
+          adminNotificationSubject: 'New Newsletter Subscription',
+          adminNotificationBody: defaultAdminNotificationBody as any,
+        },
       },
     }),
   ])

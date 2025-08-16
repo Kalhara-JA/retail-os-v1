@@ -10,12 +10,13 @@ import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
+import { useFormEmailTemplates } from '@/hooks/useFormEmailTemplates'
 
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
+  return doc?.title ? `${doc.title}` : 'RetailOs'
 }
 
 const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
@@ -76,8 +77,14 @@ export const plugins: Plugin[] = [
               }),
             }
           }
+
           return field
         })
+      },
+    },
+    formSubmissionOverrides: {
+      hooks: {
+        afterChange: [useFormEmailTemplates],
       },
     },
   }),

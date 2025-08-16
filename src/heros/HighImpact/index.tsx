@@ -44,31 +44,34 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
           <CardContent className="p-0">
             {/* Hero Content */}
             <div className="space-y-0">
-              {/* Main Title */}
-              {title && (
-                <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12">
-                  <h1 className="text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
-                    {title}
-                  </h1>
-                </div>
-              )}
+              {/* Title Container - Same row on desktop, two rows on mobile */}
+              <div className="flex flex-col lg:flex-row lg:items-center lg:gap-4">
+                {/* Main Title */}
+                {title && (
+                  <div className="w-full lg:w-auto">
+                    <h1 className="text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
+                      {title}
+                    </h1>
+                  </div>
+                )}
 
-              {/* Second Title */}
-              {title2 && Array.isArray(title2) && title2.length > 0 && (
-                <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 mt-0">
-                  <WordRotate
-                    words={title2.map((item: any) => item.phrase)}
-                    duration={3000}
-                    className="text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
-                    motionProps={{
-                      initial: { opacity: 0, y: -20 },
-                      animate: { opacity: 1, y: 0 },
-                      exit: { opacity: 0, y: 20 },
-                      transition: { duration: 0.3, ease: 'easeOut' },
-                    }}
-                  />
-                </div>
-              )}
+                {/* Second Title */}
+                {title2 && Array.isArray(title2) && title2.length > 0 && (
+                  <div className="w-full lg:w-auto mt-0 lg:mt-0">
+                    <WordRotate
+                      words={title2.map((item: any) => item.phrase)}
+                      duration={3000}
+                      className="text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
+                      motionProps={{
+                        initial: { opacity: 0, y: -20 },
+                        animate: { opacity: 1, y: 0 },
+                        exit: { opacity: 0, y: 20 },
+                        transition: { duration: 0.3, ease: 'easeOut' },
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
 
               {/* Subtitle */}
               {subtitle && (
