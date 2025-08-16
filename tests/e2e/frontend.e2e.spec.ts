@@ -17,4 +17,21 @@ test.describe('Frontend', () => {
 
     await expect(heading).toHaveText('Payload Website Template')
   })
+
+  test('WhatsApp button is present and functional', async ({ page }) => {
+    await page.goto('http://localhost:3000')
+
+    // Check if WhatsApp button exists
+    const whatsappButton = page.locator('a[href*="wa.me"]')
+    await expect(whatsappButton).toBeVisible()
+
+    // Check if button has correct styling
+    await expect(whatsappButton).toHaveClass(/bg-green-500/)
+    await expect(whatsappButton).toHaveClass(/rounded-full/)
+
+    // Check if button opens WhatsApp link in new tab
+    const href = await whatsappButton.getAttribute('href')
+    expect(href).toMatch(/^https:\/\/wa\.me\/\d+\?text=/)
+    expect(href).toContain('target="_blank"')
+  })
 })

@@ -103,10 +103,16 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    whatsapp: Whatsapp;
+    phone: Phone;
+    'cookie-consent': CookieConsent;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    whatsapp: WhatsappSelect<false> | WhatsappSelect<true>;
+    phone: PhoneSelect<false> | PhoneSelect<true>;
+    'cookie-consent': CookieConsentSelect<false> | CookieConsentSelect<true>;
   };
   locale: null;
   user: User & {
@@ -2501,6 +2507,113 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "whatsapp".
+ */
+export interface Whatsapp {
+  id: number;
+  /**
+   * Show or hide the floating WhatsApp button
+   */
+  enabled?: boolean | null;
+  /**
+   * Phone number for WhatsApp (include country code, e.g., +1234567890)
+   */
+  phoneNumber: string;
+  /**
+   * Default message that will be pre-filled when users click the WhatsApp button
+   */
+  message?: string | null;
+  /**
+   * Position of the WhatsApp button on the screen
+   */
+  position?: ('bottom-right' | 'bottom-left') | null;
+  /**
+   * Size of the WhatsApp button
+   */
+  size?: ('small' | 'medium' | 'large') | null;
+  /**
+   * Text shown when hovering over the WhatsApp button
+   */
+  tooltipText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "phone".
+ */
+export interface Phone {
+  id: number;
+  /**
+   * Show or hide the floating phone button
+   */
+  enabled?: boolean | null;
+  /**
+   * Phone number for direct calling (include country code, e.g., +1234567890)
+   */
+  phoneNumber: string;
+  /**
+   * Position of the phone button on the screen
+   */
+  position?: ('bottom-right' | 'bottom-left') | null;
+  /**
+   * Size of the phone button
+   */
+  size?: ('small' | 'medium' | 'large') | null;
+  /**
+   * Text shown when hovering over the phone button
+   */
+  tooltipText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cookie-consent".
+ */
+export interface CookieConsent {
+  id: number;
+  /**
+   * Show or hide the cookie consent banner
+   */
+  enabled?: boolean | null;
+  /**
+   * Main title of the cookie consent banner
+   */
+  title?: string | null;
+  /**
+   * Main message explaining cookie usage
+   */
+  message?: string | null;
+  /**
+   * Text for the accept button
+   */
+  acceptText?: string | null;
+  /**
+   * Text for the decline button
+   */
+  declineText?: string | null;
+  /**
+   * Text for the learn more link
+   */
+  learnMoreText?: string | null;
+  /**
+   * URL for the learn more link (privacy policy page)
+   */
+  learnMoreUrl?: string | null;
+  /**
+   * Position of the cookie consent banner
+   */
+  position?: ('bottom' | 'top') | null;
+  /**
+   * Visual theme of the cookie consent banner
+   */
+  theme?: ('light' | 'dark') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -2587,6 +2700,53 @@ export interface FooterSelect<T extends boolean = true> {
         id?: T;
       };
   copyright?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "whatsapp_select".
+ */
+export interface WhatsappSelect<T extends boolean = true> {
+  enabled?: T;
+  phoneNumber?: T;
+  message?: T;
+  position?: T;
+  size?: T;
+  tooltipText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "phone_select".
+ */
+export interface PhoneSelect<T extends boolean = true> {
+  enabled?: T;
+  phoneNumber?: T;
+  position?: T;
+  size?: T;
+  tooltipText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cookie-consent_select".
+ */
+export interface CookieConsentSelect<T extends boolean = true> {
+  enabled?: T;
+  title?: T;
+  message?: T;
+  acceptText?: T;
+  declineText?: T;
+  learnMoreText?: T;
+  learnMoreUrl?: T;
+  position?: T;
+  theme?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
