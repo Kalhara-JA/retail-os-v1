@@ -155,9 +155,9 @@ const StickyRow: React.FC<{
 
   return (
     <article className="sticky " style={{ top, zIndex, position: 'sticky' }}>
-      <div className="relative h-[90vh] bg-white">
+      <div className="relative min-h-screen bg-white">
         {/* Desktop */}
-        <div className="hidden lg:grid grid-cols-2 items-stretch h-[90vh] relative z-10">
+        <div className="hidden lg:grid grid-cols-2 items-stretch min-h-screen relative z-10">
           <div className="order-2 lg:order-1 h-full">
             <ColumnContent column={left} />
           </div>
