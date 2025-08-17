@@ -18,13 +18,13 @@ const useViewport = () => {
   const [{ vw, vh, ready }, set] = useState({ vw: 1200, vh: 800, ready: false })
   useLayoutEffect(() => {
     const update = () => {
-      const vv = window.visualViewport
+      const vv = (window as any).visualViewport as VisualViewport | undefined
       const nextVW = Math.round(vv?.width ?? window.innerWidth)
       const nextVH = Math.round(vv?.height ?? window.innerHeight)
       set({ vw: nextVW, vh: nextVH, ready: true })
     }
     update()
-    const vv = window.visualViewport
+    const vv = (window as any).visualViewport as VisualViewport | undefined
     vv?.addEventListener('resize', update)
     vv?.addEventListener('scroll', update)
     window.addEventListener('resize', update)
@@ -273,7 +273,7 @@ const HorizontalScrollCarousel: React.FC<{
     if (!node) return null
     const rect = node.getBoundingClientRect()
     const topAbs = window.scrollY + rect.top
-    const vhNow = Math.round(window.visualViewport?.height ?? window.innerHeight)
+    const vhNow = Math.round((window as any).visualViewport?.height ?? window.innerHeight)
     const start = topAbs - (vhNow - viewportHeightPx) / 2
     const end = start + (sectionHeightPx - (vhNow - viewportHeightPx))
     const length = Math.max(1, end - start)
@@ -282,13 +282,15 @@ const HorizontalScrollCarousel: React.FC<{
 
   const isInView = useInView(targetRef, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' })
 
+  // *** MOBILE-ONLY: Do NOT lock body overscroll. Let scroll chain naturally. ***
   useEffect(() => {
+    if (isMobile) return
     const prev = document.body.style.overscrollBehaviorY
     if (isInView) document.body.style.overscrollBehaviorY = 'none'
     return () => {
       document.body.style.overscrollBehaviorY = prev
     }
-  }, [isInView])
+  }, [isInView, isMobile])
 
   const cardCenterAt = useCallback(
     (idx: number, currX = 0) => sidePad + idx * (cardW + cardGap) + cardW / 2 + currX,
@@ -345,11 +347,11 @@ const HorizontalScrollCarousel: React.FC<{
     return nearest
   }, [cards.length, cardLeftAt, cardCenterAt, travel, vw, getAnchors, isMobile])
 
-  // Normalize once after accurate measure
+  // Normalize once after accurate measure (DISABLED on mobile for smoother entry)
   const normalizedRef = useRef(false)
   const { ready: vpReady } = useViewport()
   useEffect(() => {
-    if (!vpReady || normalizedRef.current) return
+    if (isMobile || !vpReady || normalizedRef.current) return
     const a = getAnchors()
     if (!a) return
     const y = window.scrollY
@@ -363,11 +365,11 @@ const HorizontalScrollCarousel: React.FC<{
     const targetY = a.start + s * a.length
     window.scrollTo(0, Math.round(targetY))
     normalizedRef.current = true
-  }, [vpReady, getAnchors, computeIndexFromScroll, progressForIndex])
+  }, [isMobile, vpReady, getAnchors, computeIndexFromScroll, progressForIndex])
 
-  // Snap logic
+  // Snap logic (DISABLED on mobile to keep flicks fluid and allow easy exit)
   useEffect(() => {
-    if (!isInView) return
+    if (!isInView || isMobile) return
     let quietTimer: number | null = null
     const onScroll = () => {
       const a = getAnchors()
@@ -387,23 +389,14 @@ const HorizontalScrollCarousel: React.FC<{
         const idx = computeIndexFromScroll()
         const p = clamp((window.scrollY - anchors.start) / anchors.length, 0, 1)
         const currX = -travel * p
-        let distPx: number
-        if (isMobile) {
-          const leftTarget = sidePad
-          distPx = Math.abs(cardLeftAt(idx, currX) - leftTarget)
-        } else {
-          const centerTarget = vw / 2
-          distPx = Math.abs(cardCenterAt(idx, currX) - centerTarget)
-        }
-        const snapThreshold = isMobile ? Math.max(32, cardW * 0.15) : Math.max(48, cardW * 0.25)
+        const centerTarget = vw / 2
+        const distPx: number = Math.abs(cardCenterAt(idx, currX) - centerTarget)
+        const snapThreshold = Math.max(48, cardW * 0.25)
         const nearTop = p < 0.12
         if (nearTop && scrollDirRef.current === 'up') return
-        const nearBottom = p > 0.88
-        if (isMobile && nearBottom && scrollDirRef.current === 'down') return
-        if (distPx > snapThreshold) return
         const s = progressForIndex(idx)
         const targetY = anchors.start + s * anchors.length
-        scrollToY(targetY, 520, easeOutQuint, { forceRAF: true })
+        if (distPx <= snapThreshold) scrollToY(targetY, 520, easeOutQuint, { forceRAF: true })
       }, 90)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -415,16 +408,15 @@ const HorizontalScrollCarousel: React.FC<{
     }
   }, [
     isInView,
+    isMobile,
     getAnchors,
     computeIndexFromScroll,
     vw,
     travel,
     cardCenterAt,
-    cardLeftAt,
     cardW,
     progressForIndex,
     scrollToY,
-    isMobile,
   ])
 
   const scrollToProgress = useCallback(
@@ -504,7 +496,7 @@ const HorizontalScrollCarousel: React.FC<{
     }
   }, [dragging, handleDragMove, handleDragEnd])
 
-  // Mobile horizontal swipe
+  // Mobile horizontal swipe (MOBILE-ONLY tweaks: no pointer capture, higher intent threshold, rAF throttle)
   const panRef = useRef({
     active: false,
     startX: 0,
@@ -512,9 +504,9 @@ const HorizontalScrollCarousel: React.FC<{
     startScrollY: 0,
     kind: 'none' as 'none' | 'h' | 'v',
   })
+  const panRaf = useRef<number | null>(null)
   const onPanPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isMobile || travel <= 0) return
-    ;(e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId)
     panRef.current.active = true
     panRef.current.startX = e.clientX
     panRef.current.startY = e.clientY
@@ -526,30 +518,39 @@ const HorizontalScrollCarousel: React.FC<{
     const dx = e.clientX - panRef.current.startX
     const dy = e.clientY - panRef.current.startY
     if (panRef.current.kind === 'none') {
-      if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.2) panRef.current.kind = 'h'
-      else if (Math.abs(dy) > 8) {
+      // Require clearer horizontal intent to avoid hijacking vertical scroll
+      if (Math.abs(dx) > 14 && Math.abs(dx) > Math.abs(dy) * 1.5) panRef.current.kind = 'h'
+      else if (Math.abs(dy) > 10) {
         panRef.current.kind = 'v'
         return
       } else return
     }
     if (panRef.current.kind === 'h') {
+      // Only prevent default once we've committed to horizontal handling
       e.preventDefault()
       const a = getAnchors()
       if (!a) return
-      const dp = dx / Math.max(1, travel)
-      const targetY = clamp(panRef.current.startScrollY - dp * a.length, a.start, a.end)
-      window.scrollTo(0, targetY)
+      const run = () => {
+        const dp = dx / Math.max(1, travel)
+        const targetY = clamp(panRef.current.startScrollY - dp * a.length, a.start, a.end)
+        window.scrollTo(0, targetY)
+        panRaf.current = null
+      }
+      if (panRaf.current == null) panRaf.current = requestAnimationFrame(run)
     }
   }
   const onPanPointerUp = () => {
     if (!panRef.current.active) return
     panRef.current.active = false
+    if (panRaf.current != null) cancelAnimationFrame(panRaf.current)
+    panRaf.current = null
     const a = getAnchors()
     if (!a) return
     if (!isInView) return
     const idx = computeIndexFromScroll()
     const s = progressForIndex(idx)
     const targetY = a.start + s * a.length
+    // Softer snap on mobile
     scrollToY(targetY, 420, easeOutQuint, { forceRAF: true })
   }
 
@@ -570,8 +571,9 @@ const HorizontalScrollCarousel: React.FC<{
         style={{
           height: viewportHeightPx,
           top: stickyTop,
-          overscrollBehaviorY: 'none' as any,
-          touchAction: 'pan-y' as any,
+          // MOBILE-ONLY: allow scroll chaining and native gestures
+          overscrollBehaviorY: (isMobile ? 'auto' : 'none') as any,
+          touchAction: (isMobile ? 'auto' : 'pan-y') as any,
           contain: 'layout paint' as any,
         }}
         onPointerDown={onPanPointerDown}
