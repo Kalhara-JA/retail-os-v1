@@ -110,7 +110,7 @@ export const RetailerShowcaseBlock: React.FC<RetailerShowcaseBlockType> = ({
         <div className="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:24px_24px]" />
       )}
 
-      <div className="relative mx-auto w-full max-w-[1440px] px-6 pl-16 py-12 sm:py-16 md:pl-10 md:py-20 pr-0">
+      <div className="relative mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-16 xl:px-4 py-8 md:py-12 lg:py-16">
         {/* Header mirrors screenshot: big, bold, two-row capable */}
         <div className="mb-8 text-left sm:mb-10 md:mb-12 lg:mb-14 max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl">
           <h2 className="whitespace-pre-line text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">

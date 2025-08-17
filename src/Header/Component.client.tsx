@@ -53,13 +53,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         {...(theme ? { 'data-theme': theme } : {})}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between py-4">
             {/* Left side: Logo + Navigation */}
             <div className="flex items-center gap-8">
               {/* Logo */}
               <div className="flex-shrink-0">
                 <Link href="/">
-                  <Logo loading="eager" priority="high" />
+                  <Logo loading="eager" priority="high" logoConfig={data?.logo} />
                 </Link>
               </div>
 

@@ -1,14 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {
-  useRef,
-  useEffect,
-  useCallback,
-  useState,
-  useMemo,
-  useLayoutEffect,
-} from 'react'
+import { useRef, useEffect, useCallback, useState, useMemo, useLayoutEffect } from 'react'
 import { motion, useTransform, useScroll, useReducedMotion } from 'framer-motion'
 
 import type { HorizontalScrollCardsBlock as HorizontalScrollScrollCardsBlockProps } from '@/payload-types'
@@ -21,10 +14,8 @@ import { Media } from '../../components/Media'
 
 const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v))
 
-// Visual viewport-aware sizing (safe defaults to avoid blank screens)
 const useViewport = () => {
   const [{ vw, vh, ready }, set] = useState({ vw: 1200, vh: 800, ready: false })
-
   useLayoutEffect(() => {
     const update = () => {
       const vv = window.visualViewport
@@ -32,24 +23,20 @@ const useViewport = () => {
       const nextVH = Math.round(vv?.height ?? window.innerHeight)
       set({ vw: nextVW, vh: nextVH, ready: true })
     }
-
     update()
     const vv = window.visualViewport
     vv?.addEventListener('resize', update)
-    vv?.addEventListener('scroll', update) // fires on URL bar show/hide
+    vv?.addEventListener('scroll', update)
     window.addEventListener('resize', update)
-
     return () => {
       vv?.removeEventListener('resize', update)
       vv?.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
   }, [])
-
   return { vw, vh, ready }
 }
 
-// Observe if the section is in view so we don't hijack the page scroll when it's off-screen
 const useInView = (ref: React.RefObject<Element | null>, options?: IntersectionObserverInit) => {
   const [inView, setInView] = useState(false)
   useEffect(() => {
@@ -65,18 +52,15 @@ const useInView = (ref: React.RefObject<Element | null>, options?: IntersectionO
   return inView
 }
 
-// rAF-based smooth scroll with cancellation + native fallback
 const useSmoothScroll = () => {
   const prefersReduced = useReducedMotion()
   const rafRef = useRef<number | null>(null)
-
   const cancel = () => {
     if (rafRef.current != null) {
       cancelAnimationFrame(rafRef.current)
       rafRef.current = null
     }
   }
-
   const scrollToY = useCallback(
     (
       targetY: number,
@@ -85,14 +69,12 @@ const useSmoothScroll = () => {
       opts: { forceRAF?: boolean; after?: () => void } = {},
     ) => {
       targetY = Math.round(targetY)
-      cancel()
-
+      if (rafRef.current != null) cancelAnimationFrame(rafRef.current)
       if (prefersReduced || duration <= 0) {
         window.scrollTo(0, targetY)
         opts.after?.()
         return
       }
-
       if (!opts.forceRAF) {
         try {
           window.scrollTo({ top: targetY, behavior: 'smooth' as ScrollBehavior })
@@ -103,11 +85,9 @@ const useSmoothScroll = () => {
           return
         } catch {}
       }
-
       const startY = window.scrollY
       const distance = targetY - startY
       const startTime = performance.now()
-
       const step = (now: number) => {
         const p = clamp((now - startTime) / duration, 0, 1)
         const e = easing(p)
@@ -123,13 +103,10 @@ const useSmoothScroll = () => {
     },
     [prefersReduced],
   )
-
   useEffect(() => () => cancel(), [])
-
   return scrollToY
 }
 
-// Easing
 const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
 const easeOutQuint = (t: number) => 1 - Math.pow(1 - t, 5)
 
@@ -146,45 +123,75 @@ type CardData = {
 }
 
 // ------------------------------------------------------
-// Card
+// Card (stacked layout on all breakpoints)
 // ------------------------------------------------------
 
+// Mobile (<sm): image height animates (visiblePx), text below.
+// Desktop (>=sm): image sits in a fixed-height box; we animate clip from the TOP.
+// Text never moves and is fully visible.
 const Card: React.FC<{
   card: CardData
   width: number
-  height: number
-  clipPath: any // MotionValue<string> | string
-  imageScale?: any // MotionValue<number> | number
-}> = ({ card, width, height, clipPath, imageScale }) => {
+  outerHeight: number
+  imageHeight: number
+  visiblePx: any
+  imageScale?: any
+}> = ({ card, width, outerHeight, imageHeight, visiblePx, imageScale }) => {
+  const clipTop = useTransform(visiblePx as any, (v: number) => Math.max(0, imageHeight - v))
+  const clipPath = useTransform(clipTop, (topPx: number) => `inset(${topPx}px 0px 0px 0px)`)
+
   return (
     <div
-      className="group relative overflow-hidden rounded-2xl bg-white"
-      style={{ width, height }}
+      className="group relative rounded-2xl bg-white overflow-hidden"
+      style={{ width, height: outerHeight }}
     >
-      {/* Static full-size image; visibility controlled by clip-path (trim from BOTTOM) */}
-      <motion.div
-        className="absolute inset-0 will-change-[clip-path,transform]"
-        style={{ clipPath, scale: imageScale || 1, transformOrigin: 'center center' }}
-      >
-        <Media
-          resource={card.image}
-          imgClassName="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-        />
-      </motion.div>
+      <div className="flex flex-col h-full">
+        {/* IMAGE (MOBILE) — height animates */}
+        <motion.div
+          className="relative overflow-hidden block sm:hidden"
+          style={{ height: visiblePx }}
+        >
+          <motion.div
+            className="absolute inset-0"
+            style={{ scale: imageScale || 1, transformOrigin: '50% 100%' }}
+          >
+            <Media
+              resource={card.image}
+              className="w-full h-full"
+              imgClassName="w-full h-full object-cover object-bottom origin-bottom"
+            />
+          </motion.div>
+        </motion.div>
 
-      {/* Bottom content area */}
-      <div className="absolute inset-0 z-10 flex flex-col justify-end p-4 sm:p-5 md:p-6 pointer-events-none">
-        <div className="p-4 sm:p-5 md:p-6 rounded-xl bg-white/95 backdrop-blur pointer-events-auto shadow-[0_1px_0_rgba(0,0,0,0.04)]">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-2 line-clamp-2">
+        {/* IMAGE (DESKTOP/TABLET) — fixed box, animate top clip */}
+        <div className="hidden sm:block relative overflow-hidden" style={{ height: imageHeight }}>
+          <motion.div
+            className="absolute inset-0 will-change-[clip-path,transform]"
+            style={{ clipPath }}
+          >
+            <motion.div
+              className="absolute inset-0"
+              style={{ scale: imageScale || 1, transformOrigin: '50% 100%' }}
+            >
+              <Media
+                resource={card.image}
+                className="w-full h-full"
+                imgClassName="w-full h-full object-cover object-bottom origin-bottom"
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* TEXT (always fully visible on desktop) */}
+        <div className="p-4 sm:p-5 md:p-6 mb-12">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-2">
             {card.title}
           </h3>
           {card.description && (
-            <p className="text-gray-700 text-sm md:text-base mb-4 line-clamp-3">
-              {card.description}
-            </p>
+            <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4">{card.description}</p>
           )}
           {card.enableLink && card.link && (
-            <div className="mt-3 md:mt-4">
+            <div className="mt-2 md:mt-3">
               <CMSLink {...card.link} />
             </div>
           )}
@@ -203,10 +210,10 @@ const HorizontalScrollCarousel: React.FC<{
   width: number
   height: number
   gap?: number
-  minReveal?: number // 0..1
-  maxReveal?: number // 0..1
+  minReveal?: number // 0..1 of imageHeight
+  maxReveal?: number
   focusRadius?: number
-}> = ({ cards, width, height, gap = 20, minReveal = 0.5, maxReveal = 1.0, focusRadius = 0.6 }) => {
+}> = ({ cards, width, height, gap = 20, minReveal = 0.62, maxReveal = 1.0, focusRadius = 0.6 }) => {
   const scrollbarRef = useRef<HTMLDivElement>(null)
   const targetRef = useRef<HTMLElement>(null)
   const { vw, vh, ready } = useViewport()
@@ -214,49 +221,53 @@ const HorizontalScrollCarousel: React.FC<{
 
   const isMobile = vw < 640
 
-  // Track scroll direction (for escape zones)
+  // Track scroll direction
   const lastScrollYRef = useRef<number>(typeof window !== 'undefined' ? window.scrollY : 0)
   const scrollDirRef = useRef<'up' | 'down'>('down')
 
-  // Responsive card sizing
-  const { cardW, cardH, cardGap, sidePad } = useMemo(() => {
+  // Responsive sizing
+  const { cardW, cardOuterH, imageH, cardGap, sidePad } = useMemo(() => {
     const isTablet = vw >= 640 && vw < 1024
 
-    // MOBILE: cards should be narrower than the viewport so multiple peek
     const mobileSidePad = 16
-    const mobileScale = 0.68 // ~68% of viewport width
+    const mobileScale = 0.68
     const mobileW = Math.min(width, Math.floor(vw * mobileScale))
 
     const w = isMobile
       ? clamp(mobileW, 200, Math.min(width, vw - (mobileSidePad + 24)))
       : isTablet
-      ? Math.min(width, Math.floor(vw * 0.55))
-      : width
+        ? Math.min(width, Math.floor(vw * 0.55))
+        : width
 
-    const h = Math.round((height / width) * w)
+    // Image height: slightly smaller on desktop to free space for text
+    const baseImgH = Math.round((height / width) * w)
+    const imgH = isMobile ? Math.round(baseImgH * 0.9) : Math.round(baseImgH * 0.8)
+
+    // Reserve space for text BELOW image (more generous on desktop)
+    const reserve = isMobile
+      ? Math.round(Math.max(200, Math.min(320, imgH * 0.55)))
+      : Math.round(Math.max(220, Math.min(420, imgH * 0.6)))
+
+    const outerH = imgH + reserve
+
     const g = isMobile ? 10 : isTablet ? 18 : gap
-
-    // align first card near the left edge on mobile
     const sp = isMobile ? mobileSidePad : Math.max(0, (vw - w) / 2)
 
-    return { cardW: w, cardH: h, cardGap: g, sidePad: sp }
+    return { cardW: w, cardOuterH: outerH, imageH: imgH, cardGap: g, sidePad: sp }
   }, [vw, width, height, gap, isMobile])
 
   // Layout
   const trackWidth = cards.length * cardW + (cards.length - 1) * cardGap + sidePad * 2
   const travel = Math.max(0, trackWidth - vw)
 
-  // Vertical section height sized by travel so the horizontal motion completes exactly once
-  const viewportHeightPx = clamp(cardH + 120, 420, Math.min(720, Math.max(520, vh * 0.7)))
-  const sectionHeightPx = viewportHeightPx + travel + 120 // cushion
+  // Vertical section sized by OUTER height
+  const viewportHeightPx = clamp(cardOuterH + 120, 420, Math.min(780, Math.max(540, vh * 0.7)))
+  const sectionHeightPx = viewportHeightPx + travel + 120
 
   const { scrollYProgress } = useScroll({ target: targetRef })
-  const xRaw = useTransform(scrollYProgress, [0, 1], [0, -travel])
+  const x = useTransform(scrollYProgress, [0, 1], [0, -travel])
 
-  // Direct mapping (no spring) to avoid rubber-band feel on mobile
-  const x = xRaw
-
-  // Anchors (use visual viewport height to match URL bar dynamics)
+  // Anchors
   const getAnchors = useCallback(() => {
     const node = targetRef.current
     if (!node) return null
@@ -269,10 +280,8 @@ const HorizontalScrollCarousel: React.FC<{
     return { start, end, length }
   }, [sectionHeightPx, viewportHeightPx])
 
-  // Observe visibility to avoid hijacking scroll when off-screen
   const isInView = useInView(targetRef, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' })
 
-  // Reduce page overscroll rubber-banding while the section is in view
   useEffect(() => {
     const prev = document.body.style.overscrollBehaviorY
     if (isInView) document.body.style.overscrollBehaviorY = 'none'
@@ -281,7 +290,6 @@ const HorizontalScrollCarousel: React.FC<{
     }
   }, [isInView])
 
-  // Geometry helpers
   const cardCenterAt = useCallback(
     (idx: number, currX = 0) => sidePad + idx * (cardW + cardGap) + cardW / 2 + currX,
     [sidePad, cardW, cardGap],
@@ -294,33 +302,25 @@ const HorizontalScrollCarousel: React.FC<{
   const progressForIndex = useCallback(
     (idx: number) => {
       const viewportCenter = vw / 2
-      const leftInset = sidePad
       if (isMobile) {
-        // align LEFT edge to a small inset
-        const cardLeft = sidePad + idx * (cardW + cardGap)
-        const desiredX = leftInset - cardLeft
+        const desiredX = sidePad - (sidePad + idx * (cardW + cardGap))
         return clamp(-desiredX / Math.max(1, travel), 0, 1)
       } else {
-        // align CENTER on larger screens
-        const cardCenter = sidePad + idx * (cardW + cardGap) + cardW / 2
-        const desiredX = viewportCenter - cardCenter
+        const desiredX = viewportCenter - (sidePad + idx * (cardW + cardGap) + cardW / 2)
         return clamp(-desiredX / Math.max(1, travel), 0, 1)
       }
     },
     [vw, sidePad, cardW, cardGap, travel, isMobile],
   )
 
-  // Current index
   const [currentIndex, setCurrentIndex] = useState(0)
   const computeIndexFromScroll = useCallback(() => {
     const a = getAnchors()
     if (!a) return 0
     const p = clamp((window.scrollY - a.start) / a.length, 0, 1)
     const currX = -travel * p
-
     let nearest = 0
     let best = Infinity
-
     if (isMobile) {
       const leftTarget = sidePad
       for (let i = 0; i < cards.length; i++) {
@@ -342,48 +342,40 @@ const HorizontalScrollCarousel: React.FC<{
         }
       }
     }
-
     return nearest
   }, [cards.length, cardLeftAt, cardCenterAt, travel, vw, getAnchors, isMobile])
 
-  // *** Normalize scroll->x mapping ONCE after the first accurate measure ***
-  // This fixes the wrong "starting point" on mobile refresh without blanking anything.
+  // Normalize once after accurate measure
   const normalizedRef = useRef(false)
+  const { ready: vpReady } = useViewport()
   useEffect(() => {
-    if (!ready || normalizedRef.current) return
+    if (!vpReady || normalizedRef.current) return
     const a = getAnchors()
     if (!a) return
-
-    // Only correct if we're within the section (avoid jumping other parts of the page)
     const y = window.scrollY
     const within = y > a.start - 40 && y < a.end + 40
     if (!within) {
       normalizedRef.current = true
       return
     }
-
     const idx = computeIndexFromScroll()
     const s = progressForIndex(idx)
     const targetY = a.start + s * a.length
     window.scrollTo(0, Math.round(targetY))
     normalizedRef.current = true
-  }, [ready, getAnchors, computeIndexFromScroll, progressForIndex])
+  }, [vpReady, getAnchors, computeIndexFromScroll, progressForIndex])
 
-  // Accurate snap after scroll pause — escape zones at top (all) and bottom (mobile)
+  // Snap logic
   useEffect(() => {
     if (!isInView) return
-
     let quietTimer: number | null = null
     const onScroll = () => {
       const a = getAnchors()
       if (!a) return
-
-      // track direction
       const currY = window.scrollY
-      scrollDirRef.current = currY < lastScrollYRef.current ? 'up' : 'down'
+      const prevY = lastScrollYRef.current
+      scrollDirRef.current = currY < prevY ? 'up' : 'down'
       lastScrollYRef.current = currY
-
-      // ignore when far outside our band's vertical range
       if (currY < a.start - 40 || currY > a.end + 40) return
 
       setCurrentIndex(computeIndexFromScroll())
@@ -393,11 +385,8 @@ const HorizontalScrollCarousel: React.FC<{
         const anchors = getAnchors()
         if (!anchors) return
         const idx = computeIndexFromScroll()
-
-        // compute progress within band and proximity to alignment target
         const p = clamp((window.scrollY - anchors.start) / anchors.length, 0, 1)
         const currX = -travel * p
-
         let distPx: number
         if (isMobile) {
           const leftTarget = sidePad
@@ -406,26 +395,17 @@ const HorizontalScrollCarousel: React.FC<{
           const centerTarget = vw / 2
           distPx = Math.abs(cardCenterAt(idx, currX) - centerTarget)
         }
-
         const snapThreshold = isMobile ? Math.max(32, cardW * 0.15) : Math.max(48, cardW * 0.25)
-
-        // Escape zone near the top when scrolling up (all viewports)
         const nearTop = p < 0.12
         if (nearTop && scrollDirRef.current === 'up') return
-
-        // Escape zone near the bottom when scrolling down on MOBILE
         const nearBottom = p > 0.88
         if (isMobile && nearBottom && scrollDirRef.current === 'down') return
-
-        // Only snap if close enough
         if (distPx > snapThreshold) return
-
         const s = progressForIndex(idx)
         const targetY = anchors.start + s * anchors.length
         scrollToY(targetY, 520, easeOutQuint, { forceRAF: true })
       }, 90)
     }
-
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
     return () => {
@@ -447,7 +427,6 @@ const HorizontalScrollCarousel: React.FC<{
     isMobile,
   ])
 
-  // Programmatic scrolling
   const scrollToProgress = useCallback(
     (p: number, forceAccurate = false) => {
       const a = getAnchors()
@@ -468,7 +447,6 @@ const HorizontalScrollCarousel: React.FC<{
     [cards.length, travel, progressForIndex, scrollToProgress],
   )
 
-  // Arrow buttons — always able to reach hard edges
   const onPrev = () => {
     if (currentIndex <= 0) return scrollToProgress(0, true)
     scrollToCard(currentIndex - 1)
@@ -478,17 +456,15 @@ const HorizontalScrollCarousel: React.FC<{
     scrollToCard(currentIndex + 1)
   }
 
-  // Drag handlers for scroll bar (rAF throttled) + precise snap on release
+  // Draggable scrollbar
   const [dragging, setDragging] = useState(false)
   const rafMove = useRef<number | null>(null)
-
   const handleDragStart = (e: React.PointerEvent) => {
     e.preventDefault()
     setDragging(true)
     document.body.style.cursor = 'grabbing'
     document.body.style.userSelect = 'none'
   }
-
   const handleDragMove = useCallback(
     (e: PointerEvent) => {
       if (!dragging || !scrollbarRef.current) return
@@ -497,7 +473,6 @@ const HorizontalScrollCarousel: React.FC<{
       const p = rect.width > 0 ? clickX / rect.width : 0
       const a = getAnchors()
       if (!a) return
-
       const run = () => {
         const targetY = a.start + p * a.length
         window.scrollTo(0, targetY)
@@ -507,12 +482,10 @@ const HorizontalScrollCarousel: React.FC<{
     },
     [dragging, getAnchors],
   )
-
   const handleDragEnd = useCallback(() => {
     setDragging(false)
     document.body.style.cursor = ''
     document.body.style.userSelect = ''
-    // Snap to the precise nearest card after drag end if still in view
     const a = getAnchors()
     if (!a) return
     if (!isInView) return
@@ -521,7 +494,6 @@ const HorizontalScrollCarousel: React.FC<{
     const targetY = a.start + s * a.length
     scrollToY(targetY, 520, easeOutQuint, { forceRAF: true })
   }, [getAnchors, isInView, computeIndexFromScroll, progressForIndex, scrollToY])
-
   useEffect(() => {
     if (!dragging) return
     document.addEventListener('pointermove', handleDragMove)
@@ -532,7 +504,7 @@ const HorizontalScrollCarousel: React.FC<{
     }
   }, [dragging, handleDragMove, handleDragEnd])
 
-  // Direct horizontal swipe on mobile to move between cards (maps to vertical scroll progress)
+  // Mobile horizontal swipe
   const panRef = useRef({
     active: false,
     startX: 0,
@@ -540,7 +512,6 @@ const HorizontalScrollCarousel: React.FC<{
     startScrollY: 0,
     kind: 'none' as 'none' | 'h' | 'v',
   })
-
   const onPanPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isMobile || travel <= 0) return
     ;(e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId)
@@ -550,23 +521,17 @@ const HorizontalScrollCarousel: React.FC<{
     panRef.current.startScrollY = window.scrollY
     panRef.current.kind = 'none'
   }
-
   const onPanPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!panRef.current.active) return
     const dx = e.clientX - panRef.current.startX
     const dy = e.clientY - panRef.current.startY
-
     if (panRef.current.kind === 'none') {
-      if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.2) {
-        panRef.current.kind = 'h'
-      } else if (Math.abs(dy) > 8) {
+      if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.2) panRef.current.kind = 'h'
+      else if (Math.abs(dy) > 8) {
         panRef.current.kind = 'v'
         return
-      } else {
-        return
-      }
+      } else return
     }
-
     if (panRef.current.kind === 'h') {
       e.preventDefault()
       const a = getAnchors()
@@ -576,12 +541,9 @@ const HorizontalScrollCarousel: React.FC<{
       window.scrollTo(0, targetY)
     }
   }
-
   const onPanPointerUp = () => {
     if (!panRef.current.active) return
     panRef.current.active = false
-
-    // Snap to nearest card
     const a = getAnchors()
     if (!a) return
     if (!isInView) return
@@ -596,7 +558,10 @@ const HorizontalScrollCarousel: React.FC<{
   const thumbLeft = useTransform(progress, (p) => `${p * (1 - thumbFrac) * 100}%`)
   const thumbWidth = `${thumbFrac * 100}%`
   const canScroll = travel > 0
-  const stickyTop = `calc(50svh - ${viewportHeightPx / 2}px)` // `svh` handles mobile URL bar; falls back gracefully
+
+  // Place controls closer to the very bottom
+  const controlsBottom = 'bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-0'
+  const stickyTop = `calc(50svh - ${viewportHeightPx / 2}px)`
 
   return (
     <section ref={targetRef} className="relative" style={{ height: sectionHeightPx }}>
@@ -613,7 +578,6 @@ const HorizontalScrollCarousel: React.FC<{
         onPointerMove={onPanPointerMove}
         onPointerUp={onPanPointerUp}
       >
-        {/* Vertically centered row */}
         <div className="flex h-full items-center">
           <motion.div
             style={{ x, paddingLeft: sidePad, paddingRight: sidePad }}
@@ -625,7 +589,8 @@ const HorizontalScrollCarousel: React.FC<{
                 card={card}
                 index={i}
                 width={cardW}
-                height={cardH}
+                imageH={imageH}
+                outerH={cardOuterH}
                 gap={cardGap}
                 sidePad={sidePad}
                 vw={vw}
@@ -639,12 +604,13 @@ const HorizontalScrollCarousel: React.FC<{
           </motion.div>
         </div>
 
-        {/* Bottom scrollbar + arrows */}
         {canScroll && (
-          <div className="absolute bottom-4 left-0 right-0 z-10 pointer-events-auto">
-            <div className="mx-auto w-[clamp(200px,50vw,640px)] px-2">
-              <div className="flex items-center gap-4">
-                {/* Track (draggable scroll bar) */}
+          <div className={`absolute left-0 right-0 z-10 pointer-events-auto ${controlsBottom}`}>
+            <div
+              className="mx-auto px-4 sm:px-6 md:px-8"
+              style={{ width: isMobile ? 'calc(100vw - 32px)' : 'clamp(200px, 50vw, 640px)' }}
+            >
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
                 <div
                   ref={scrollbarRef}
                   className={`relative h-2 rounded-full bg-neutral-300 flex-1 overflow-hidden ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
@@ -655,13 +621,11 @@ const HorizontalScrollCarousel: React.FC<{
                     style={{ left: thumbLeft, width: thumbWidth }}
                   />
                 </div>
-
-                {/* Arrows */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <button
                     onClick={onPrev}
                     aria-label="Previous"
-                    className="h-9 w-9 rounded-full border border-neutral-400 grid text-black place-items-center hover:bg-neutral-100 active:scale-95 transition disabled:opacity-40"
+                    className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border border-neutral-400 grid text-black place-items-center hover:bg-neutral-100 active:scale-95 transition disabled:opacity-40"
                     disabled={!canScroll}
                   >
                     ‹
@@ -669,7 +633,7 @@ const HorizontalScrollCarousel: React.FC<{
                   <button
                     onClick={onNext}
                     aria-label="Next"
-                    className="h-9 w-9 rounded-full border border-neutral-400 grid text-black place-items-center hover:bg-neutral-100 active:scale-95 transition disabled:opacity-40"
+                    className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border border-neutral-400 grid text-black place-items-center hover:bg-neutral-100 active:scale-95 transition disabled:opacity-40"
                     disabled={!canScroll}
                   >
                     ›
@@ -692,7 +656,8 @@ const CardWithTransform: React.FC<{
   card: CardData
   index: number
   width: number
-  height: number
+  imageH: number
+  outerH: number
   gap: number
   sidePad: number
   vw: number
@@ -705,7 +670,8 @@ const CardWithTransform: React.FC<{
   card,
   index,
   width,
-  height,
+  imageH,
+  outerH,
   gap,
   sidePad,
   vw,
@@ -726,14 +692,20 @@ const CardWithTransform: React.FC<{
 
   const visiblePx = useTransform(
     focusFactor,
-    (f) => minReveal * height + (maxReveal - minReveal) * f * height,
+    (f) => minReveal * imageH + (maxReveal - minReveal) * f * imageH,
   )
-  const clipPath = useTransform(visiblePx, (v) => `inset(0px 0px ${Math.max(0, height - v)}px 0px)`)
   const imageScale = useTransform(focusFactor, (f) => 0.84 + 0.16 * f)
 
   return (
-    <div className="shrink-0" style={{ marginRight: isLast ? 0 : gap }}>
-      <Card card={card} width={width} height={height} clipPath={clipPath} imageScale={imageScale} />
+    <div className="shrink-0 mb-8 lg:mb-12" style={{ marginRight: isLast ? 0 : gap }}>
+      <Card
+        card={card}
+        width={width}
+        outerHeight={outerH}
+        imageHeight={imageH}
+        visiblePx={visiblePx}
+        imageScale={imageScale}
+      />
     </div>
   )
 }
@@ -742,11 +714,12 @@ const CardWithTransform: React.FC<{
 // Public block
 // ------------------------------------------------------
 
-export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollScrollCardsBlockProps> = (props) => {
+export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollScrollCardsBlockProps> = (
+  props,
+) => {
   const { cards, cardWidth = '450', cardHeight = '450' } = props
   if (!cards || cards.length === 0) return null
 
-  // Treat these as maximums; component scales down responsively
   const width = parseInt(cardWidth || '450', 10)
   const height = parseInt(cardHeight || '450', 10)
 
@@ -757,7 +730,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollScrollCardsBlo
         width={width}
         height={height}
         gap={22}
-        minReveal={0.5}
+        minReveal={0.62}
         maxReveal={1.0}
         focusRadius={0.6}
       />

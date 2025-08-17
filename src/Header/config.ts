@@ -10,6 +10,112 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
+      name: 'logo',
+      type: 'group',
+      label: 'Logo Configuration',
+      admin: {
+        description: 'Configure the logo that appears in the header',
+      },
+      fields: [
+        {
+          name: 'type',
+          type: 'radio',
+          label: 'Logo Type',
+          defaultValue: 'symbol',
+          options: [
+            {
+              label: 'Logo Symbol Only',
+              value: 'symbol',
+            },
+            {
+              label: 'Logo with Company Name',
+              value: 'symbolWithText',
+            },
+            {
+              label: 'Custom Logo Image',
+              value: 'customImage',
+            },
+          ],
+          admin: {
+            description: 'Choose how the logo should be displayed',
+          },
+        },
+        {
+          name: 'customImage',
+          type: 'upload',
+          label: 'Custom Logo Image',
+          relationTo: 'media',
+          admin: {
+            condition: (_, siblingData) => siblingData?.type === 'customImage',
+            description:
+              'Upload a custom logo image (recommended: SVG or PNG with transparent background)',
+          },
+        },
+        {
+          name: 'companyName',
+          type: 'text',
+          label: 'Company Name',
+          defaultValue: 'RetailOs',
+          admin: {
+            condition: (_, siblingData) => siblingData?.type === 'symbolWithText',
+            description: 'The company name to display next to the logo symbol',
+          },
+        },
+        {
+          name: 'logoColor',
+          type: 'select',
+          label: 'Logo Color Scheme',
+          defaultValue: 'default',
+          options: [
+            {
+              label: 'Default (Multi-colored)',
+              value: 'default',
+            },
+            {
+              label: 'White',
+              value: 'white',
+            },
+            {
+              label: 'Black',
+              value: 'black',
+            },
+            {
+              label: 'Primary Brand Color',
+              value: 'primary',
+            },
+          ],
+          admin: {
+            condition: (_, siblingData) => siblingData?.type !== 'customImage',
+            description: 'Choose the color scheme for the logo symbol',
+          },
+        },
+        {
+          name: 'textColor',
+          type: 'select',
+          label: 'Company Name Color',
+          defaultValue: 'white',
+          options: [
+            {
+              label: 'White',
+              value: 'white',
+            },
+            {
+              label: 'Black',
+              value: 'black',
+            },
+            {
+              label: 'Primary Brand Color',
+              value: 'primary',
+            },
+          ],
+          admin: {
+            condition: (_, siblingData) => siblingData?.type === 'symbolWithText',
+            description: 'Choose the color for the company name text',
+          },
+        },
+      ],
+    },
+    {
       name: 'navItems',
       type: 'array',
       label: 'Navigation Items',

@@ -2345,6 +2345,31 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
+  /**
+   * Configure the logo that appears in the header
+   */
+  logo?: {
+    /**
+     * Choose how the logo should be displayed
+     */
+    type?: ('symbol' | 'symbolWithText' | 'customImage') | null;
+    /**
+     * Upload a custom logo image (recommended: SVG or PNG with transparent background)
+     */
+    customImage?: (number | null) | Media;
+    /**
+     * The company name to display next to the logo symbol
+     */
+    companyName?: string | null;
+    /**
+     * Choose the color scheme for the logo symbol
+     */
+    logoColor?: ('default' | 'white' | 'black' | 'primary') | null;
+    /**
+     * Choose the color for the company name text
+     */
+    textColor?: ('white' | 'black' | 'primary') | null;
+  };
   navItems?:
     | {
         link: {
@@ -2666,6 +2691,15 @@ export interface CookieConsent {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  logo?:
+    | T
+    | {
+        type?: T;
+        customImage?: T;
+        companyName?: T;
+        logoColor?: T;
+        textColor?: T;
+      };
   navItems?:
     | T
     | {
