@@ -40,11 +40,19 @@ export const hero: Field = {
       },
     },
     {
-      name: 'title2',
-      type: 'array',
-      label: 'Second Title Phrases',
+      name: 'subtitle',
+      type: 'text',
+      label: 'Subtitle (optional fallback)',
       admin: {
-        description: 'Add multiple phrases for the rotating second title (minimum 3 recommended)',
+        description: 'Fallback subtitle text. Use "Subtitle Phrases" below for rotating phrases.',
+      },
+    },
+    {
+      name: 'subtitlePhrases',
+      type: 'array',
+      label: 'Subtitle Phrases (rotating)',
+      admin: {
+        description: 'Add multiple phrases for the rotating subtitle (minimum 3 recommended)',
       },
       fields: [
         {
@@ -52,20 +60,12 @@ export const hero: Field = {
           type: 'text',
           required: true,
           admin: {
-            description: 'A phrase for the rotating title',
+            description: 'A phrase for the rotating subtitle',
           },
         },
       ],
       minRows: 3,
       maxRows: 10,
-    },
-    {
-      name: 'subtitle',
-      type: 'text',
-      label: 'Subtitle',
-      admin: {
-        description: 'The subtitle or secondary heading',
-      },
     },
     {
       name: 'description',

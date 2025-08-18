@@ -161,21 +161,21 @@ export interface Page {
      */
     title?: string | null;
     /**
-     * Add multiple phrases for the rotating second title (minimum 3 recommended)
+     * Fallback subtitle text. Use "Subtitle Phrases" below for rotating phrases.
      */
-    title2?:
+    subtitle?: string | null;
+    /**
+     * Add multiple phrases for the rotating subtitle (minimum 3 recommended)
+     */
+    subtitlePhrases?:
       | {
           /**
-           * A phrase for the rotating title
+           * A phrase for the rotating subtitle
            */
           phrase: string;
           id?: string | null;
         }[]
       | null;
-    /**
-     * The subtitle or secondary heading
-     */
-    subtitle?: string | null;
     /**
      * A brief description or supporting text
      */
@@ -1522,13 +1522,13 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         title?: T;
-        title2?:
+        subtitle?: T;
+        subtitlePhrases?:
           | T
           | {
               phrase?: T;
               id?: T;
             };
-        subtitle?: T;
         description?: T;
         links?:
           | T
@@ -2447,9 +2447,22 @@ export interface Header {
     };
   };
   /**
-   * Show the language selector button in the header
+   * Configure the language selector button in the header
    */
-  showLanguageSelector?: boolean | null;
+  languageSelector?: {
+    /**
+     * Show the language selector button in the header
+     */
+    show?: boolean | null;
+    /**
+     * Upload a custom icon for the language selector button (recommended: SVG or PNG with transparent background)
+     */
+    icon?: (number | null) | Media;
+    /**
+     * Choose the size of the language selector button
+     */
+    size?: ('small' | 'medium' | 'large') | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2750,7 +2763,13 @@ export interface HeaderSelect<T extends boolean = true> {
               newTab?: T;
             };
       };
-  showLanguageSelector?: T;
+  languageSelector?:
+    | T
+    | {
+        show?: T;
+        icon?: T;
+        size?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

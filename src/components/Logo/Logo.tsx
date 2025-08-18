@@ -16,10 +16,19 @@ interface Props {
   loading?: 'lazy' | 'eager'
   priority?: 'auto' | 'high' | 'low'
   logoConfig?: LogoConfig
+  width?: string
+  responsiveWidth?: string
 }
 
 export const Logo = (props: Props) => {
-  const { loading: loadingFromProps, priority: priorityFromProps, className, logoConfig } = props
+  const {
+    loading: loadingFromProps,
+    priority: priorityFromProps,
+    className,
+    logoConfig,
+    width,
+    responsiveWidth,
+  } = props
 
   const loading = loadingFromProps || 'lazy'
   const priority = priorityFromProps || 'low'
@@ -80,10 +89,13 @@ export const Logo = (props: Props) => {
   // Render custom image logo
   if (type === 'customImage' && logoConfig?.customImage) {
     return (
-      <div className={clsx('flex items-center', className)}>
+      <div
+        className={clsx('flex items-center', responsiveWidth || className)}
+        style={!responsiveWidth && width ? { width } : undefined}
+      >
         <Media
           resource={logoConfig.customImage}
-          className="w-32 h-auto object-contain"
+          className="w-full h-auto object-contain"
           loading={loading}
           priority={priority === 'high'}
         />
@@ -92,7 +104,10 @@ export const Logo = (props: Props) => {
   }
 
   return (
-    <div className={clsx('flex items-center gap-2', className)}>
+    <div
+      className={clsx('flex items-center gap-2', responsiveWidth || className)}
+      style={!responsiveWidth && width ? { width } : undefined}
+    >
       {/* Logo Symbol - Multi-colored interlocking shapes */}
       <div className="relative w-8 h-8">
         {/* Red shape */}

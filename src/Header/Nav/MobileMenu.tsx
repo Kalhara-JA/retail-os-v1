@@ -19,7 +19,7 @@ interface MobileMenuProps {
 export const MobileMenu: React.FC<MobileMenuProps> = ({ data, isOpen, onClose }) => {
   const navItems = data?.navItems || []
   const demoButton = data?.demoButton
-  const showLanguageSelector = data?.showLanguageSelector ?? true
+  const showLanguageSelector = data?.languageSelector?.show ?? true
   const [openDropdowns, setOpenDropdowns] = useState<Set<number>>(new Set())
 
   const handleDropdownToggle = (index: number) => {

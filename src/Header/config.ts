@@ -368,13 +368,58 @@ export const Header: GlobalConfig = {
       ],
     },
     {
-      name: 'showLanguageSelector',
-      type: 'checkbox',
-      label: 'Show Language Selector',
-      defaultValue: true,
+      name: 'languageSelector',
+      type: 'group',
+      label: 'Language Selector',
       admin: {
-        description: 'Show the language selector button in the header',
+        description: 'Configure the language selector button in the header',
       },
+      fields: [
+        {
+          name: 'show',
+          type: 'checkbox',
+          label: 'Show Language Selector',
+          defaultValue: true,
+          admin: {
+            description: 'Show the language selector button in the header',
+          },
+        },
+        {
+          name: 'icon',
+          type: 'upload',
+          label: 'Icon',
+          relationTo: 'media',
+          admin: {
+            condition: (_, siblingData) => siblingData?.show !== false,
+            description:
+              'Upload a custom icon for the language selector button (recommended: SVG or PNG with transparent background)',
+          },
+        },
+        {
+          name: 'size',
+          type: 'select',
+          label: 'Button Size',
+          defaultValue: 'medium',
+          options: [
+            {
+              label: 'Small',
+              value: 'small',
+            },
+            {
+              label: 'Medium',
+              value: 'medium',
+            },
+            {
+              label: 'Large',
+              value: 'large',
+            },
+          ],
+          admin: {
+            condition: (_, siblingData) => siblingData?.show !== false,
+            description: 'Choose the size of the language selector button',
+          },
+        },
+      ],
     },
   ],
   hooks: {

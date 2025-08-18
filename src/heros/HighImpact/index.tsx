@@ -6,7 +6,6 @@ import type { Page } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { WordRotate } from '@/components/ui/word-rotate'
 
@@ -14,9 +13,9 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
   links,
   media,
   title,
-  title2,
   subtitle,
   description,
+  ...rest
 }) => {
   const { setHeaderTheme } = useHeaderTheme()
 
@@ -24,11 +23,10 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
     setHeaderTheme('dark')
   })
 
+  const subtitlePhrases = (rest as any)?.subtitlePhrases as { phrase: string }[] | undefined
+
   return (
-    <div
-      className="relative -mt-[10.4rem] flex items-center justify-center text-white min-h-screen"
-      data-theme="dark"
-    >
+    <div className="relative -mt-[10.4rem] flex text-white min-h-screen" data-theme="dark">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         {media && typeof media === 'object' && (
@@ -39,29 +37,34 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
       </div>
 
       {/* Content Container */}
-      <div className="container relative z-10 flex items-center justify-start">
+      <div className="relative z-10 flex items-center justify-start px-4 sm:px-6 md:px-8 lg:px-16">
         <Card className="bg-transparent border-none shadow-none max-w-6xl">
           <CardContent className="p-0">
             {/* Hero Content */}
-            <div className="space-y-0">
-              {/* Title Container - Same row on desktop, two rows on mobile */}
-              <div className="flex flex-col lg:flex-row lg:items-center lg:gap-4">
-                {/* Main Title */}
-                {title && (
-                  <div className="w-full lg:w-auto">
-                    <h1 className="text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
-                      {title}
-                    </h1>
-                  </div>
-                )}
+            <div className="space-y-8">
+              {/* Title Container */}
+              {title && (
+                <div className="w-full lg:w-auto">
+                  <h1 className="text-6xl md:text-5xl lg:text-6xl xl:text-8xl font-normal text-white leading-[1.2] md:leading-[0.9] lg:leading-[0.8]">
+                    {title?.split(' ').map((word, index) => (
+                      <span key={index}>
+                        {word}
+                        {index === 1 && <br className="md:hidden" />}
+                        {index < title.split(' ').length - 1 && ' '}
+                      </span>
+                    ))}
+                  </h1>
+                </div>
+              )}
 
-                {/* Second Title */}
-                {title2 && Array.isArray(title2) && title2.length > 0 && (
-                  <div className="w-full lg:w-auto mt-0 lg:mt-0">
+              {/* Subtitle (rotating phrases preferred) */}
+              {(subtitlePhrases && subtitlePhrases.length > 0) || subtitle ? (
+                <div className="w-full sm:w-8/12 md:w-9/12 lg:w-8/12 xl:w-9/12">
+                  {subtitlePhrases && subtitlePhrases.length > 0 ? (
                     <WordRotate
-                      words={title2.map((item: any) => item.phrase)}
+                      words={subtitlePhrases.map((item) => item.phrase)}
                       duration={3000}
-                      className="text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
+                      className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white !leading-[1.3]"
                       motionProps={{
                         initial: { opacity: 0, y: -20 },
                         animate: { opacity: 1, y: 0 },
@@ -69,23 +72,18 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                         transition: { duration: 0.3, ease: 'easeOut' },
                       }}
                     />
-                  </div>
-                )}
-              </div>
-
-              {/* Subtitle */}
-              {subtitle && (
-                <div className="w-full sm:w-10/12 md:w-9/12 lg:w-8/12 xl:w-7/12">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium text-white leading-relaxed">
-                    {subtitle}
-                  </h2>
+                  ) : (
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white !leading-[1.3]">
+                      {subtitle}
+                    </h2>
+                  )}
                 </div>
-              )}
+              ) : null}
 
               {/* Description */}
               {description && (
                 <div className="w-full sm:w-9/12 md:w-8/12 lg:w-7/12 xl:w-6/12">
-                  <p className="text-lg md:text-xl lg:text-2xl text-gray-200 leading-relaxed">
+                  <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed">
                     {description}
                   </p>
                 </div>
@@ -99,7 +97,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                       <div key={i} className="w-full sm:w-auto">
                         <CMSLink
                           {...link}
-                          className="inline-block w-full sm:w-auto bg-primary hover:bg-primary-hover text-white rounded-full font-semibold text-lg transition-colors duration-200 text-center"
+                          className="inline-block w-full sm:w-auto bg-primary hover:bg-primary-hover text-white rounded-full font-normal text-lg md:text-xl lg:text-3xl px-6 py-3 md:px-10 md:py-5 lg:px-16 lg:py-8 transition-colors duration-200 text-center flex items-center justify-center"
                         />
                       </div>
                     )

@@ -4,6 +4,7 @@ import React from 'react'
 import { Globe2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CMSLink } from '@/components/Link'
+import { Media } from '@/components/Media'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -72,7 +73,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           if (hasDropdown && dropdownItems && dropdownItems.length > 0) {
             return (
               <NavigationMenuItem key={i}>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:text-gray-300 hover:bg-white/10 border-none data-[state=open]:bg-white/10 data-[state=open]:text-gray-300">
+                <NavigationMenuTrigger className="bg-transparent text-white hover:text-primary-hover hover:bg-white/10 border-none data-[state=open]:bg-white/10 data-[state=open]:text-primary-hover text-sm md:text-base lg:text-lg font-light">
                   {link.label}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -86,7 +87,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                                 {getIcon(item.icon)}
                               </div>
                             )}
-                            <h3 className="text-white font-semibold text-lg">{item.title}</h3>
+                            <h3 className="text-white font-semibold text-xl">{item.title}</h3>
                           </div>
 
                           <div className="space-y-3">
@@ -98,11 +99,11 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                                       <CMSLink
                                         {...subItem.link}
                                         appearance="link"
-                                        className="block transition-all duration-200"
+                                        className="block transition-all duration-200 text-base"
                                       >
                                         <div className="space-y-1">
                                           {subItem.description && (
-                                            <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                                            <div className="text-base text-gray-400 group-hover:text-gray-300 transition-colors">
                                               {subItem.description}
                                             </div>
                                           )}
@@ -113,7 +114,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                                 </div>
                               ))
                             ) : (
-                              <div className="text-gray-400 text-sm p-3">No items available</div>
+                              <div className="text-gray-400 text-base p-3">No items available</div>
                             )}
                           </div>
                         </div>
@@ -131,7 +132,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="text-white hover:text-gray-300 transition-colors"
+                  className="text-white hover:text-primary-hover transition-colors text-sm md:text-base lg:text-lg font-light"
                 />
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -145,7 +146,21 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 // Separate component for right-side elements
 export const HeaderActions: React.FC<{ data: HeaderType }> = ({ data }) => {
   const demoButton = data?.demoButton
-  const showLanguageSelector = data?.showLanguageSelector ?? true
+  const languageSelector = data?.languageSelector
+  const showLanguageSelector = languageSelector?.show ?? true
+  const customIcon = languageSelector?.icon
+  const buttonSize = languageSelector?.size || 'medium'
+
+  const getButtonSizeClasses = () => {
+    switch (buttonSize) {
+      case 'small':
+        return 'h-7 w-7 md:h-8 md:w-8 lg:h-9 lg:w-9 p-1.5 md:p-2'
+      case 'large':
+        return 'h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12 p-2.5 md:p-3'
+      default:
+        return 'h-8 w-8 md:h-9 md:w-9 lg:h-10 lg:w-10 p-2 md:p-2.5'
+    }
+  }
 
   return (
     <div className="flex items-center gap-4">
@@ -153,16 +168,23 @@ export const HeaderActions: React.FC<{ data: HeaderType }> = ({ data }) => {
         <Button
           variant="ghost"
           size="icon"
-          className="text-white hover:text-gray-300 hover:bg-white/10"
+          className={`text-white hover:text-primary-hover hover:bg-white/10 ${getButtonSizeClasses()}`}
         >
-          <Globe2 className="h-5 w-5" />
+          {customIcon ? (
+            <Media
+              resource={customIcon}
+              className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 object-contain"
+            />
+          ) : (
+            <Globe2 className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+          )}
           <span className="sr-only">Language Selector</span>
         </Button>
       )}
 
       {demoButton && (
         <Button
-          className="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-full font-medium"
+          className="bg-primary hover:bg-primary-hover text-white px-8 py-2.5 md:px-10 md:py-3 lg:px-12 lg:py-4 rounded-full font-light text-base md:text-lg lg:text-xl"
           onClick={() => {
             if (demoButton.link?.type === 'custom' && demoButton.link.url) {
               if (demoButton.link.newTab) {
