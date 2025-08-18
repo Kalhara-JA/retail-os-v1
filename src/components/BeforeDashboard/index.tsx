@@ -2,6 +2,7 @@ import { Banner } from '@payloadcms/ui/elements/Banner'
 import React from 'react'
 
 import { SeedButton } from './SeedButton'
+import { SeedFileManager } from './SeedFileManager'
 import './index.scss'
 
 const baseClass = 'before-dashboard'
@@ -15,12 +16,19 @@ const BeforeDashboard: React.FC = () => {
       Here&apos;s what to do next:
       <ul className={`${baseClass}__instructions`}>
         <li>
+          <strong>Quick Seed:</strong>
           <SeedButton />
-          {' with a few pages, posts, and projects to jump-start your new site, then '}
+          {' with demo data to jump-start your new site, then '}
           <a href="/" target="_blank">
             visit your website
           </a>
           {' to see the results.'}
+        </li>
+        <li>
+          <strong>Seed File Manager:</strong> Generate, manage, and use seed files with timestamps
+          and descriptions:
+          <br />
+          <SeedFileManager />
         </li>
         <li>
           If you created this repo using Payload Cloud, head over to GitHub and clone it to your

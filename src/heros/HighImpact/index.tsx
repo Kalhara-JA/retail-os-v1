@@ -41,7 +41,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
         <Card className="bg-transparent border-none shadow-none max-w-6xl">
           <CardContent className="p-0">
             {/* Hero Content */}
-            <div className="space-y-8">
+            <div className="space-y-3 lg:space-y-1">
               {/* Title Container */}
               {title && (
                 <div className="w-full lg:w-auto">
@@ -64,7 +64,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                     <WordRotate
                       words={subtitlePhrases.map((item) => item.phrase)}
                       duration={3000}
-                      className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white !leading-[1.3]"
+                      className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl font-normal text-white !leading-[1.4] "
                       motionProps={{
                         initial: { opacity: 0, y: -20 },
                         animate: { opacity: 1, y: 0 },
@@ -73,7 +73,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                       }}
                     />
                   ) : (
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white !leading-[1.3]">
+                    <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl font-normal text-white !leading-[1.4]">
                       {subtitle}
                     </h2>
                   )}
@@ -91,13 +91,13 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 
               {/* Call to Action Buttons */}
               {Array.isArray(links) && links.length > 0 && (
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-4 pt-4 lg:pt-12">
                   {links.map(({ link }, i) => {
                     return (
                       <div key={i} className="w-full sm:w-auto">
                         <CMSLink
                           {...link}
-                          className="inline-block w-full sm:w-auto bg-primary hover:bg-primary-hover text-white rounded-full font-normal text-lg md:text-xl lg:text-3xl px-6 py-3 md:px-10 md:py-5 lg:px-16 lg:py-8 transition-colors duration-200 text-center flex items-center justify-center"
+                          className="inline-block w-full sm:w-auto bg-primary hover:bg-primary-hover text-white rounded-full font-light text-xl md:text-xl lg:text-3xl px-6 py-5 md:px-8 md:py-5 lg:px-12 lg:py-8 transition-colors duration-200 text-center flex items-center justify-center"
                         />
                       </div>
                     )

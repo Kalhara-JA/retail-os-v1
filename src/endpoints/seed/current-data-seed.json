@@ -1,0 +1,2992 @@
+{
+  "collections": {
+    "categories": [],
+    "media": [
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/globe%201.png",
+        "thumbnailURL": null,
+        "filename": "globe 1.png",
+        "mimeType": "image/png",
+        "filesize": 543,
+        "width": 26,
+        "height": 26,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/logo.svg",
+        "thumbnailURL": "/api/media/file/image-post3-2-300x169.webp",
+        "filename": "logo.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 9097,
+        "width": 198,
+        "height": 44,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "/api/media/file/image-post3-2-300x169.webp",
+            "width": 300,
+            "height": 169,
+            "mimeType": "image/webp",
+            "filesize": 1240,
+            "filename": "image-post3-2-300x169.webp"
+          },
+          "square": {
+            "url": "/api/media/file/image-post3-2-500x500.webp",
+            "width": 500,
+            "height": 500,
+            "mimeType": "image/webp",
+            "filesize": 2732,
+            "filename": "image-post3-2-500x500.webp"
+          },
+          "small": {
+            "url": "/api/media/file/image-post3-2-600x338.webp",
+            "width": 600,
+            "height": 338,
+            "mimeType": "image/webp",
+            "filesize": 3018,
+            "filename": "image-post3-2-600x338.webp"
+          },
+          "medium": {
+            "url": "/api/media/file/image-post3-2-900x506.webp",
+            "width": 900,
+            "height": 506,
+            "mimeType": "image/webp",
+            "filesize": 5010,
+            "filename": "image-post3-2-900x506.webp"
+          },
+          "large": {
+            "url": "/api/media/file/image-post3-2-1400x788.webp",
+            "width": 1400,
+            "height": 788,
+            "mimeType": "image/webp",
+            "filesize": 9070,
+            "filename": "image-post3-2-1400x788.webp"
+          },
+          "xlarge": {
+            "url": "/api/media/file/image-post3-2-1920x1080.webp",
+            "width": 1920,
+            "height": 1080,
+            "mimeType": "image/webp",
+            "filesize": 14662,
+            "filename": "image-post3-2-1920x1080.webp"
+          },
+          "og": {
+            "url": "/api/media/file/image-post3-2-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 6950,
+            "filename": "image-post3-2-1200x630.webp"
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image-post2-2.webp",
+        "thumbnailURL": "/api/media/file/image-post2-2-300x169.webp",
+        "filename": "image-post2-2.webp",
+        "mimeType": "image/webp",
+        "filesize": 22332,
+        "width": 1920,
+        "height": 1080,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "/api/media/file/image-post2-2-300x169.webp",
+            "width": 300,
+            "height": 169,
+            "mimeType": "image/webp",
+            "filesize": 2248,
+            "filename": "image-post2-2-300x169.webp"
+          },
+          "square": {
+            "url": "/api/media/file/image-post2-2-500x500.webp",
+            "width": 500,
+            "height": 500,
+            "mimeType": "image/webp",
+            "filesize": 4952,
+            "filename": "image-post2-2-500x500.webp"
+          },
+          "small": {
+            "url": "/api/media/file/image-post2-2-600x338.webp",
+            "width": 600,
+            "height": 338,
+            "mimeType": "image/webp",
+            "filesize": 5066,
+            "filename": "image-post2-2-600x338.webp"
+          },
+          "medium": {
+            "url": "/api/media/file/image-post2-2-900x506.webp",
+            "width": 900,
+            "height": 506,
+            "mimeType": "image/webp",
+            "filesize": 8036,
+            "filename": "image-post2-2-900x506.webp"
+          },
+          "large": {
+            "url": "/api/media/file/image-post2-2-1400x788.webp",
+            "width": 1400,
+            "height": 788,
+            "mimeType": "image/webp",
+            "filesize": 13880,
+            "filename": "image-post2-2-1400x788.webp"
+          },
+          "xlarge": {
+            "url": "/api/media/file/image-post2-2-1920x1080.webp",
+            "width": 1920,
+            "height": 1080,
+            "mimeType": "image/webp",
+            "filesize": 22332,
+            "filename": "image-post2-2-1920x1080.webp"
+          },
+          "og": {
+            "url": "/api/media/file/image-post2-2-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 11010,
+            "filename": "image-post2-2-1200x630.webp"
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image-post1-2.webp",
+        "thumbnailURL": "/api/media/file/image-post1-2-300x169.webp",
+        "filename": "image-post1-2.webp",
+        "mimeType": "image/webp",
+        "filesize": 15924,
+        "width": 1920,
+        "height": 1080,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "/api/media/file/image-post1-2-300x169.webp",
+            "width": 300,
+            "height": 169,
+            "mimeType": "image/webp",
+            "filesize": 1524,
+            "filename": "image-post1-2-300x169.webp"
+          },
+          "square": {
+            "url": "/api/media/file/image-post1-2-500x500.webp",
+            "width": 500,
+            "height": 500,
+            "mimeType": "image/webp",
+            "filesize": 3792,
+            "filename": "image-post1-2-500x500.webp"
+          },
+          "small": {
+            "url": "/api/media/file/image-post1-2-600x338.webp",
+            "width": 600,
+            "height": 338,
+            "mimeType": "image/webp",
+            "filesize": 3622,
+            "filename": "image-post1-2-600x338.webp"
+          },
+          "medium": {
+            "url": "/api/media/file/image-post1-2-900x506.webp",
+            "width": 900,
+            "height": 506,
+            "mimeType": "image/webp",
+            "filesize": 5936,
+            "filename": "image-post1-2-900x506.webp"
+          },
+          "large": {
+            "url": "/api/media/file/image-post1-2-1400x788.webp",
+            "width": 1400,
+            "height": 788,
+            "mimeType": "image/webp",
+            "filesize": 10210,
+            "filename": "image-post1-2-1400x788.webp"
+          },
+          "xlarge": {
+            "url": "/api/media/file/image-post1-2-1920x1080.webp",
+            "width": 1920,
+            "height": 1080,
+            "mimeType": "image/webp",
+            "filesize": 15924,
+            "filename": "image-post1-2-1920x1080.webp"
+          },
+          "og": {
+            "url": "/api/media/file/image-post1-2-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 8114,
+            "filename": "image-post1-2-1200x630.webp"
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image-hero1-2.webp",
+        "thumbnailURL": "/api/media/file/image-hero1-2-300x169.webp",
+        "filename": "image-hero1-2.webp",
+        "mimeType": "image/webp",
+        "filesize": 49432,
+        "width": 3200,
+        "height": 1800,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "/api/media/file/image-hero1-2-300x169.webp",
+            "width": 300,
+            "height": 169,
+            "mimeType": "image/webp",
+            "filesize": 2544,
+            "filename": "image-hero1-2-300x169.webp"
+          },
+          "square": {
+            "url": "/api/media/file/image-hero1-2-500x500.webp",
+            "width": 500,
+            "height": 500,
+            "mimeType": "image/webp",
+            "filesize": 4810,
+            "filename": "image-hero1-2-500x500.webp"
+          },
+          "small": {
+            "url": "/api/media/file/image-hero1-2-600x338.webp",
+            "width": 600,
+            "height": 338,
+            "mimeType": "image/webp",
+            "filesize": 5750,
+            "filename": "image-hero1-2-600x338.webp"
+          },
+          "medium": {
+            "url": "/api/media/file/image-hero1-2-900x506.webp",
+            "width": 900,
+            "height": 506,
+            "mimeType": "image/webp",
+            "filesize": 9402,
+            "filename": "image-hero1-2-900x506.webp"
+          },
+          "large": {
+            "url": "/api/media/file/image-hero1-2-1400x788.webp",
+            "width": 1400,
+            "height": 788,
+            "mimeType": "image/webp",
+            "filesize": 16492,
+            "filename": "image-hero1-2-1400x788.webp"
+          },
+          "xlarge": {
+            "url": "/api/media/file/image-hero1-2-1920x1080.webp",
+            "width": 1920,
+            "height": 1080,
+            "mimeType": "image/webp",
+            "filesize": 24346,
+            "filename": "image-hero1-2-1920x1080.webp"
+          },
+          "og": {
+            "url": "/api/media/file/image-hero1-2-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 12846,
+            "filename": "image-hero1-2-1200x630.webp"
+          }
+        }
+      }
+    ],
+    "pages": [
+      {
+        "title": "Home",
+        "hero": {
+          "type": "highImpact",
+          "title": "Be The Retail Brand",
+          "subtitle": "With Full Control Across Every Sales Channel",
+          "subtitlePhrases": [
+            {
+              "id": "68a36539219acaa2b28b51f0",
+              "phrase": "With Full Control Across Every Sales Channel"
+            },
+            {
+              "id": "68a3658449d1ee05f8c044c9",
+              "phrase": "Second Phrase Testing Word Rotation 123"
+            },
+            {
+              "id": "68a365a149d1ee05f8c044cb",
+              "phrase": "Third Phrase Testing Word Rotation 456"
+            }
+          ],
+          "description": null,
+          "links": [
+            {
+              "id": "689e6e95f8eaac3b904f13b1",
+              "link": {
+                "type": "reference",
+                "newTab": null,
+                "reference": {
+                  "relationTo": "pages",
+                  "value": 1
+                },
+                "url": null,
+                "label": "Start With RetailOs Today",
+                "appearance": "default"
+              }
+            }
+          ],
+          "media": 5
+        },
+        "layout": [
+          {
+            "id": "689e6eeff8eaac3b904f13b3",
+            "title": "What If Running Retail Felt Simple Again?",
+            "blockName": "Title 1",
+            "blockType": "titleBlock"
+          },
+          {
+            "id": "689e6fb6f8eaac3b904f13b5",
+            "blockName": "Two Columns",
+            "rows": [
+              {
+                "id": "689e6fbff8eaac3b904f13b7",
+                "left": {
+                  "type": "text",
+                  "text": {
+                    "headline": "The Problem",
+                    "title": "You’re trying to grow but your tech is slowing you down.",
+                    "bodyText": {
+                      "root": {
+                        "type": "root",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "format": "",
+                            "indent": 0,
+                            "version": 1,
+                            "children": [
+                              {
+                                "mode": "normal",
+                                "text": "You’re managing ecommerce, marketplaces, apps, POS, and campaigns on top of an ERP that was never built for digital.",
+                                "type": "text",
+                                "style": "",
+                                "detail": 0,
+                                "format": 0,
+                                "version": 1
+                              },
+                              {
+                                "type": "linebreak",
+                                "version": 1
+                              },
+                              {
+                                "mode": "normal",
+                                "text": "You’re patching systems, chasing integrations, and working too hard to deliver the customer experience you know they deserve.",
+                                "type": "text",
+                                "style": "",
+                                "detail": 0,
+                                "format": 0,
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "textStyle": "",
+                            "textFormat": 0
+                          }
+                        ],
+                        "direction": "ltr"
+                      }
+                    },
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  },
+                  "media": {
+                    "media": null,
+                    "overlayText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  }
+                },
+                "right": {
+                  "type": "media",
+                  "text": {
+                    "headline": null,
+                    "title": null,
+                    "bodyText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  },
+                  "media": {
+                    "media": 6,
+                    "overlayText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  }
+                }
+              },
+              {
+                "id": "689e7011f8eaac3b904f13b9",
+                "left": {
+                  "type": "media",
+                  "text": {
+                    "headline": null,
+                    "title": null,
+                    "bodyText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  },
+                  "media": {
+                    "media": 7,
+                    "overlayText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  }
+                },
+                "right": {
+                  "type": "text",
+                  "text": {
+                    "headline": "The Solution",
+                    "title": "Finally, one platform that helps you run every part of your retail business without the chaos.",
+                    "bodyText": {
+                      "root": {
+                        "type": "root",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "format": "",
+                            "indent": 0,
+                            "version": 1,
+                            "children": [
+                              {
+                                "mode": "normal",
+                                "text": "RetailOs gives you one platform to manage your entire digital operation ",
+                                "type": "text",
+                                "style": "",
+                                "detail": 0,
+                                "format": 0,
+                                "version": 1
+                              },
+                              {
+                                "type": "linebreak",
+                                "version": 1
+                              },
+                              {
+                                "mode": "normal",
+                                "text": "ERP, POS, ecommerce, marketplaces, inventory, pricing, catalogs, and marketing. Everything’s connected. Everything just works. You stay focused on growth we’ll handle the complexity.",
+                                "type": "text",
+                                "style": "",
+                                "detail": 0,
+                                "format": 0,
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "textStyle": "",
+                            "textFormat": 0
+                          }
+                        ],
+                        "direction": "ltr"
+                      }
+                    },
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  },
+                  "media": {
+                    "media": null,
+                    "overlayText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  }
+                }
+              },
+              {
+                "id": "689e7049f8eaac3b904f13be",
+                "left": {
+                  "type": "text",
+                  "text": {
+                    "headline": "The Result",
+                    "title": "When everything works together, your business grows faster and your customers feel it",
+                    "bodyText": {
+                      "root": {
+                        "type": "root",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "format": "",
+                            "indent": 0,
+                            "version": 1,
+                            "children": [
+                              {
+                                "mode": "normal",
+                                "text": "your team runs every channel from one place, and your customers enjoy a seamless, branded experience online and in-store.You stay in control. They stay loyal.",
+                                "type": "text",
+                                "style": "",
+                                "detail": 0,
+                                "format": 0,
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "textStyle": "",
+                            "textFormat": 0
+                          }
+                        ],
+                        "direction": "ltr"
+                      }
+                    },
+                    "enableLink": true,
+                    "link": {
+                      "type": "reference",
+                      "reference": {
+                        "relationTo": "pages",
+                        "value": 1
+                      },
+                      "url": null,
+                      "label": "Book a Demo >",
+                      "newTab": null
+                    }
+                  },
+                  "media": {
+                    "media": null,
+                    "overlayText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  }
+                },
+                "right": {
+                  "type": "media",
+                  "text": {
+                    "headline": null,
+                    "title": null,
+                    "bodyText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  },
+                  "media": {
+                    "media": 8,
+                    "overlayText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  }
+                }
+              },
+              {
+                "id": "689e7083f8eaac3b904f13c1",
+                "left": {
+                  "type": "media",
+                  "text": {
+                    "headline": null,
+                    "title": null,
+                    "bodyText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  },
+                  "media": {
+                    "media": 6,
+                    "overlayText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  }
+                },
+                "right": {
+                  "type": "media",
+                  "text": {
+                    "headline": null,
+                    "title": null,
+                    "bodyText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  },
+                  "media": {
+                    "media": 7,
+                    "overlayText": null,
+                    "enableLink": null,
+                    "link": {
+                      "type": "reference",
+                      "url": null,
+                      "label": null,
+                      "newTab": null
+                    }
+                  }
+                }
+              }
+            ],
+            "blockType": "twoColumnRow"
+          },
+          {
+            "id": "689e7173f8eaac3b904f13c6",
+            "title": "What You Actually Get. 3 Critical Outcomes",
+            "blockName": "Title 2",
+            "blockType": "titleBlock"
+          },
+          {
+            "id": "689e718ff8eaac3b904f13c9",
+            "cardHeight": "550",
+            "cardWidth": "550",
+            "blockName": "Horizontal Cards",
+            "cards": [
+              {
+                "id": "689e7194f8eaac3b904f13cb",
+                "title": "Let your marketing team move at the speed of retail ",
+                "description": "Give them the freedom to create, launch, and update everything from landing pages to prices to promotions using simple no-code tools.\nNo bottlenecks. No dependencies. Just go.",
+                "image": 7,
+                "enableLink": null,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689e8345782dfc45ba9316b8",
+                "title": "Let your marketing team move at the speed of retail ",
+                "description": "Give them the freedom to create, launch, and update everything from landing pages to prices to promotions using simple no-code tools.\nNo bottlenecks. No dependencies. Just go.",
+                "image": 7,
+                "enableLink": null,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689e8347782dfc45ba9316bb",
+                "title": "Let your marketing team move at the speed of retail ",
+                "description": "Give them the freedom to create, launch, and update everything from landing pages to prices to promotions using simple no-code tools.\nNo bottlenecks. No dependencies. Just go.",
+                "image": 7,
+                "enableLink": null,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689e834a782dfc45ba9316be",
+                "title": "Let your marketing team move at the speed of retail ",
+                "description": "Give them the freedom to create, launch, and update everything from landing pages to prices to promotions using simple no-code tools.\nNo bottlenecks. No dependencies. Just go.",
+                "image": 7,
+                "enableLink": null,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              }
+            ],
+            "blockType": "horizontalScrollCards"
+          },
+          {
+            "id": "689e71d5f8eaac3b904f13df",
+            "title": "Retailers who stopped patching and started growing",
+            "description": null,
+            "backgroundImage": 5,
+            "blockName": "R",
+            "retailers": [
+              {
+                "id": "689e71edf8eaac3b904f13e1",
+                "logo": 6,
+                "coverImage": 7,
+                "title": null,
+                "subtitle": null,
+                "points": {
+                  "root": {
+                    "type": "root",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      }
+                    ],
+                    "direction": "ltr"
+                  }
+                },
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689e838f782dfc45ba9316c1",
+                "logo": 6,
+                "coverImage": 7,
+                "title": null,
+                "subtitle": null,
+                "points": {
+                  "root": {
+                    "type": "root",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      }
+                    ],
+                    "direction": "ltr"
+                  }
+                },
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689e8391782dfc45ba9316c4",
+                "logo": 6,
+                "coverImage": 7,
+                "title": null,
+                "subtitle": null,
+                "points": {
+                  "root": {
+                    "type": "root",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      }
+                    ],
+                    "direction": "ltr"
+                  }
+                },
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689e8393782dfc45ba9316c7",
+                "logo": 6,
+                "coverImage": 7,
+                "title": null,
+                "subtitle": null,
+                "points": {
+                  "root": {
+                    "type": "root",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      }
+                    ],
+                    "direction": "ltr"
+                  }
+                },
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689e8396782dfc45ba9316ca",
+                "logo": 6,
+                "coverImage": 7,
+                "title": null,
+                "subtitle": null,
+                "points": {
+                  "root": {
+                    "type": "root",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      },
+                      {
+                        "type": "paragraph",
+                        "format": "",
+                        "indent": 0,
+                        "version": 1,
+                        "children": [
+                          {
+                            "mode": "normal",
+                            "text": "A B2C eCommerce website",
+                            "type": "text",
+                            "style": "",
+                            "detail": 0,
+                            "format": 0,
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "textStyle": "",
+                        "textFormat": 0
+                      }
+                    ],
+                    "direction": "ltr"
+                  }
+                },
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              }
+            ],
+            "blockType": "retailerShowcase"
+          },
+          {
+            "id": "689ee45d782dfc45ba9316d1",
+            "title": "Grow Sales. Cut Costs. Launch Faster.",
+            "blockName": "Title 3",
+            "blockType": "titleBlock"
+          },
+          {
+            "id": "689ee491782dfc45ba9316d3",
+            "title": null,
+            "description": null,
+            "layout": "row",
+            "backgroundColor": "dark",
+            "blockName": "Counter",
+            "counters": [
+              {
+                "id": "689ee4aa782dfc45ba9316d4",
+                "valueType": "percentage",
+                "singleValue": 50,
+                "rangeStart": null,
+                "rangeEnd": null,
+                "percentageValue": 50,
+                "percentageRangeStart": null,
+                "percentageRangeEnd": null,
+                "isPercentage": true,
+                "label": " Savings on Design  and Development Costs",
+                "animationStartValue": 0,
+                "direction": "up",
+                "delay": 1,
+                "decimalPlaces": 0
+              },
+              {
+                "id": "689ee51e782dfc45ba9316d7",
+                "valueType": "range",
+                "singleValue": 5,
+                "rangeStart": 5,
+                "rangeEnd": 15,
+                "percentageValue": null,
+                "percentageRangeStart": null,
+                "percentageRangeEnd": null,
+                "isPercentage": true,
+                "label": "Increase in  Total Sales",
+                "animationStartValue": 0,
+                "direction": "up",
+                "delay": 1,
+                "decimalPlaces": 0
+              },
+              {
+                "id": "689ee5230f0bd30004bbc7c7",
+                "valueType": "range",
+                "singleValue": null,
+                "rangeStart": 25,
+                "rangeEnd": 40,
+                "percentageValue": null,
+                "percentageRangeStart": 25,
+                "percentageRangeEnd": 40,
+                "isPercentage": true,
+                "label": "Savings on  Operational Costs",
+                "animationStartValue": 0,
+                "direction": "up",
+                "delay": 1,
+                "decimalPlaces": 0
+              },
+              {
+                "id": "689ee5aa782dfc45ba9316d9",
+                "valueType": "single",
+                "singleValue": 6,
+                "rangeStart": null,
+                "rangeEnd": null,
+                "percentageValue": null,
+                "percentageRangeStart": null,
+                "percentageRangeEnd": null,
+                "isPercentage": false,
+                "label": "Months  Average ROI Payback",
+                "animationStartValue": 0,
+                "direction": "up",
+                "delay": 1,
+                "decimalPlaces": 0
+              }
+            ],
+            "blockType": "numberCounters"
+          },
+          {
+            "id": "689ee625782dfc45ba9316dc",
+            "title": "This is What Retail Freedom Looks Like",
+            "blockName": "Title 4",
+            "blockType": "titleBlock"
+          },
+          {
+            "id": "689ee741de58df66b6b89b2f",
+            "title": null,
+            "description": null,
+            "layout": "threeColumn",
+            "blockName": "Features",
+            "cards": [
+              {
+                "id": "689ee761de58df66b6b89b30",
+                "icon": 6,
+                "title": "Your marketing team controls the site. no dev. no delays.",
+                "description": "Drag. Drop. Done. Move content, update pages, and launch campaigns without waiting on anyone",
+                "backgroundColor": "teal",
+                "button": {
+                  "text": "Book a Demo",
+                  "link": {
+                    "type": "reference",
+                    "reference": {
+                      "relationTo": "pages",
+                      "value": 1
+                    },
+                    "url": null,
+                    "label": "Book a Demo",
+                    "newTab": null
+                  }
+                }
+              },
+              {
+                "id": "689ee7bcde58df66b6b89b32",
+                "icon": 6,
+                "title": "One place to manage every sales channel.",
+                "description": "Update prices, inventory, and catalogs across POS, marketplaces, and your site in real time, from one screen.",
+                "backgroundColor": "mustard",
+                "button": {
+                  "text": "Book a Demo",
+                  "link": {
+                    "type": "reference",
+                    "reference": {
+                      "relationTo": "pages",
+                      "value": 1
+                    },
+                    "url": null,
+                    "label": "Book a Demo",
+                    "newTab": null
+                  }
+                }
+              },
+              {
+                "id": "689ee7bede58df66b6b89b35",
+                "icon": 6,
+                "title": "Let your B2B buyers serve themselves.",
+                "description": "Quotes, orders, returns, inventory alerts, invoices, and more everything in one place, fully synced with your system",
+                "backgroundColor": "darkGray",
+                "button": {
+                  "text": "Book a Demo",
+                  "link": {
+                    "type": "reference",
+                    "reference": {
+                      "relationTo": "pages",
+                      "value": 1
+                    },
+                    "url": null,
+                    "label": "Book a Demo",
+                    "newTab": null
+                  }
+                }
+              }
+            ],
+            "blockType": "featureShowcase"
+          },
+          {
+            "id": "689ee7f9de58df66b6b89b38",
+            "title": " Works with what you have. Powers what’s next.",
+            "blockName": "Title 5",
+            "blockType": "titleBlock"
+          },
+          {
+            "id": "689ee811de58df66b6b89b3a",
+            "description": {
+              "root": {
+                "type": "root",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "RetailOS connects your ERP, POS, WMS, and ",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      },
+                      {
+                        "type": "linebreak",
+                        "version": 1
+                      },
+                      {
+                        "mode": "normal",
+                        "text": "marketplaces with live, ",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      },
+                      {
+                        "type": "linebreak",
+                        "version": 1
+                      },
+                      {
+                        "mode": "normal",
+                        "text": "two-way sync.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      },
+                      {
+                        "type": "linebreak",
+                        "version": 1
+                      },
+                      {
+                        "mode": "normal",
+                        "text": "Inventory, orders, prices, and customers always ",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      },
+                      {
+                        "type": "linebreak",
+                        "version": 1
+                      },
+                      {
+                        "mode": "normal",
+                        "text": "up to date, everywhere.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "textStyle": "",
+                    "textFormat": 0
+                  }
+                ],
+                "direction": "ltr"
+              }
+            },
+            "backgroundColor": "white",
+            "blockName": "Marquee",
+            "logos": [
+              {
+                "id": "689ee83fde58df66b6b89b3b",
+                "logo": 8,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689ee876de58df66b6b89b3d",
+                "logo": 8,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689ee879de58df66b6b89b40",
+                "logo": 8,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689ee87bde58df66b6b89b43",
+                "logo": 8,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689ee87cde58df66b6b89b46",
+                "logo": 8,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "689ee87ede58df66b6b89b49",
+                "logo": 8,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              }
+            ],
+            "blockType": "logoMarquee",
+            "marqueeSettings": {
+              "speed": "fast",
+              "pauseOnHover": true,
+              "reverse": false
+            }
+          }
+        ],
+        "meta": {
+          "title": "Home",
+          "image": null,
+          "description": "RetailOs.ai"
+        },
+        "publishedAt": "2025-08-14T23:13:42.058Z",
+        "slug": "home",
+        "slugLock": false,
+        "_status": "published"
+      }
+    ],
+    "posts": [],
+    "forms": [],
+    "form-submissions": [],
+    "search": [],
+    "users": [
+      {
+        "name": "Kalhara JA",
+        "email": "kalhara.ja@gmail.com",
+        "sessions": [
+          {
+            "id": "5ef77642-bc2f-477d-ac37-7fa39b647222",
+            "createdAt": "2025-08-18T18:20:58.319Z",
+            "expiresAt": "2025-08-18T20:20:58.319Z"
+          }
+        ]
+      }
+    ]
+  },
+  "globals": {
+    "header": {
+      "id": 1,
+      "logo": {
+        "type": "customImage",
+        "customImage": 8,
+        "companyName": "RetailOs",
+        "logoColor": "default",
+        "textColor": "white"
+      },
+      "navItems": [
+        {
+          "id": "689ee3d7782dfc45ba9316cc",
+          "hasDropdown": null,
+          "dropdownItems": [],
+          "link": {
+            "type": "reference",
+            "newTab": null,
+            "reference": {
+              "relationTo": "pages",
+              "value": 1
+            },
+            "url": null,
+            "label": "Why RetailOs"
+          }
+        },
+        {
+          "id": "689ee3f7782dfc45ba9316cd",
+          "hasDropdown": null,
+          "dropdownItems": [],
+          "link": {
+            "type": "reference",
+            "newTab": null,
+            "reference": {
+              "relationTo": "pages",
+              "value": 1
+            },
+            "url": null,
+            "label": "What You Get"
+          }
+        },
+        {
+          "id": "689ee407782dfc45ba9316ce",
+          "hasDropdown": null,
+          "dropdownItems": [],
+          "link": {
+            "type": "reference",
+            "newTab": null,
+            "reference": {
+              "relationTo": "pages",
+              "value": 1
+            },
+            "url": null,
+            "label": "Success Stories"
+          }
+        },
+        {
+          "id": "689ee414782dfc45ba9316cf",
+          "hasDropdown": null,
+          "dropdownItems": [],
+          "link": {
+            "type": "reference",
+            "newTab": null,
+            "reference": {
+              "relationTo": "pages",
+              "value": 1
+            },
+            "url": null,
+            "label": "How It Works"
+          }
+        }
+      ],
+      "demoButton": {
+        "text": "Book a Demo",
+        "link": {
+          "type": "reference",
+          "url": null,
+          "reference": 1,
+          "newTab": null
+        }
+      },
+      "languageSelector": {
+        "show": true,
+        "icon": 9,
+        "size": "large"
+      },
+      "updatedAt": "2025-08-18T18:34:07.789Z",
+      "createdAt": "2025-08-15T07:39:28.035Z",
+      "globalType": "header"
+    },
+    "footer": {
+      "id": 1,
+      "backgroundImage": 5,
+      "headline": "Stop Managing Tech.",
+      "headlineHighlight": "Start Growing",
+      "headlineEnd": "Your Retail Business.",
+      "subheadline": "We'll Show You How RetailOs Helps You Move Faster, Simplify Operations, And Sell Smarter Starting Today",
+      "emailPlaceholder": "Enter your email...",
+      "buttonText": "Book a demo >",
+      "contactInfo": "Prefer To Talk Now? Call Us +972-54-586-3718",
+      "socialMedia": [
+        {
+          "id": "689ee8ab0f0bd30004bbc7c8",
+          "platform": "youtube",
+          "url": "https://youtube.com"
+        },
+        {
+          "id": "689ee8ab0f0bd30004bbc7c9",
+          "platform": "linkedin",
+          "url": "https://linkedin.com"
+        },
+        {
+          "id": "689ee8ab0f0bd30004bbc7ca",
+          "platform": "instagram",
+          "url": "https://instagram.com"
+        },
+        {
+          "id": "689ee8ab0f0bd30004bbc7cb",
+          "platform": "facebook",
+          "url": "https://facebook.com"
+        },
+        {
+          "id": "68a01c4f02414648ef464748",
+          "platform": "tiktok",
+          "url": "https://tiktok.com"
+        }
+      ],
+      "legalLinks": [
+        {
+          "id": "689ee8ab0f0bd30004bbc7cc",
+          "text": "Terms of Service",
+          "url": "/terms"
+        },
+        {
+          "id": "689ee8ab0f0bd30004bbc7cd",
+          "text": "Privacy Policy",
+          "url": "/privacy"
+        }
+      ],
+      "copyright": "RetailOs. All rights reserved.",
+      "newsletterEmailConfig": {
+        "welcomeEmailSubject": "Welcome to Retail OS Newsletter!",
+        "welcomeEmailBody": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  <div style=\"background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px; color: white; text-align: center;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <h1 style=\"margin: 0; font-size: 28px;\">Welcome to Retail OS!</h1>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <p style=\"margin: 10px 0 0 0; opacity: 0.9;\">Your retail operations companion</p>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  </div>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  <div style=\"padding: 30px; background: #f8f9fa; border-radius: 0 0 10px 10px;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <h2 style=\"color: #333; margin-top: 0;\">Thank you for subscribing!</h2>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <p style=\"color: #666; line-height: 1.6;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "      We're excited to have you on board! You'll now receive our latest updates, tips, and insights about retail operations directly to your inbox.KALHARA",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    </p>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <div style=\"background: #e9ecef; padding: 15px; border-radius: 5px; margin: 20px 0;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "      <p style=\"margin: 0; color: #495057;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "        <strong>Subscription Details:</strong><br>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "        Email: {{email}}<br>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "        Date: {{date}}",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "      </p>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    </div>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <p style=\"color: #666; line-height: 1.6;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "      If you didn't sign up for this newsletter, you can safely ignore this email or contact us to unsubscribe.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    </p>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <div style=\"margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "      <p style=\"color: #6c757d; font-size: 14px; margin: 0;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "        Best regards,<br>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "        The Retail OS Team",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "      </p>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    </div>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  </div>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "</div>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": "ltr"
+          }
+        },
+        "adminNotificationSubject": "New Newsletter Subscription",
+        "adminNotificationBody": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  <div style=\"background: #28a745; padding: 20px; border-radius: 10px; color: white;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <h2 style=\"margin: 0;\">New Newsletter Subscription</h2>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  </div>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  <div style=\"padding: 20px; background: #f8f9fa; border-radius: 0 0 10px 10px;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <p style=\"color: #333; margin-bottom: 15px;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "      A new user has subscribed to your newsletter:",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    </p>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    <div style=\"background: #e9ecef; padding: 15px; border-radius: 5px;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "      <p style=\"margin: 0; color: #495057;\">",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "        <strong>Email:</strong> {{email}}<br>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "        <strong>Date:</strong> {{date}}<br>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "        <strong>Time:</strong> {{time}}<br>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "        <strong>IP:</strong> {{ip}}",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "      </p>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "    </div>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "  </div>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "</div>",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": "ltr"
+          }
+        }
+      },
+      "updatedAt": "2025-08-16T08:20:13.118Z",
+      "createdAt": "2025-08-15T07:59:26.989Z",
+      "globalType": "footer"
+    },
+    "whatsapp": {
+      "id": 1,
+      "enabled": true,
+      "phoneNumber": "+1234567890",
+      "message": "Hello! I would like to know more about your services.",
+      "position": "bottom-right",
+      "size": "small",
+      "tooltipText": "Chat with us on WhatsApp",
+      "updatedAt": "2025-08-16T05:21:29.662Z",
+      "createdAt": "2025-08-16T04:44:49.885Z",
+      "globalType": "whatsapp"
+    },
+    "phone": {
+      "id": 1,
+      "enabled": true,
+      "phoneNumber": "+1234567890",
+      "position": "bottom-right",
+      "size": "small",
+      "tooltipText": "Call us now",
+      "updatedAt": "2025-08-16T05:21:46.762Z",
+      "createdAt": "2025-08-16T05:21:46.751Z",
+      "globalType": "phone"
+    },
+    "cookie-consent": {
+      "enabled": true,
+      "title": "We use cookies",
+      "message": "We use cookies to enhance your experience and analyze our traffic. By clicking \"Accept\", you consent to our use of cookies.",
+      "acceptText": "Accept",
+      "declineText": "Decline",
+      "learnMoreText": "Learn more",
+      "learnMoreUrl": "/privacy-policy",
+      "position": "bottom",
+      "theme": "light"
+    }
+  },
+  "generatedAt": "2025-08-18T19:52:56.110Z",
+  "version": "1.0.0",
+  "description": "Seed file generated from current database data"
+}
