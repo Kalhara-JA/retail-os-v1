@@ -22,7 +22,7 @@ const TextColumn: React.FC<{ content: any }> = ({ content }) => {
         )}
         {title && (
           <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-9/12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-black leading-[1.1] md:leading-[1.1] lg:leading-[1.2]">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-black leading-[1.1] md:leading-[1.1] lg:leading-[1.2]">
               {title}
             </h2>
           </div>
@@ -38,9 +38,9 @@ const TextColumn: React.FC<{ content: any }> = ({ content }) => {
         )}
         {enableLink && link && (
           <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-7/12 pt-4 text-black font-bold hover:underline transition-all duration-300">
-            <div className="flex items-center gap-2 text-md md:text-lg lg:text-xl">
+            <div className="flex items-center gap-2 text-base md:text-lg lg:text-xl xl:text-2xl">
               <CMSLink {...link} />
-              <MoveRight className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 font-light" />
+              <MoveRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7 font-light" />
             </div>
           </div>
         )}
@@ -60,15 +60,15 @@ const MediaColumn: React.FC<{ content: any }> = ({ content }) => {
           {/* Overlay for better text readability */}
           <div className="absolute inset-0 bg-black/40" />
           {overlayText && (
-            <div className="absolute inset-0 flex items-center justify-start px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+            <div className="absolute inset-0 flex items-center justify-start px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 md:py-12 lg:py-16">
               <div className="text-left text-white w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12">
-                <h3 className="text-6xl md:text-7xl lg:text-8xl font-light md:font-normal !leading-[1.2] mb-8">
+                <h3 className="text-3xl md:text-4xl lg:text-7xl 2xl:text-8xl font-light md:font-normal !leading-[1.1] md:!leading-[1.1] lg:!leading-[1.2] mb-6 md:mb-8">
                   {overlayText}
                 </h3>
                 {enableLink && link && (
-                  <div className="flex items-center gap-2 text-lg md:text-xl lg:text-2xl">
-                    <CMSLink {...link} className="text-white hover:text-gray-200" />
-                    <MoveRight className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
+                  <div className="flex items-center gap-2 text-base md:text-lg lg:text-xl xl:text-2xl">
+                    <CMSLink {...link} className="text-white hover:text-gray-200 underline" />
+                    <MoveRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7 text-white" />
                   </div>
                 )}
               </div>
@@ -196,7 +196,7 @@ const StickyRow: React.FC<{
         className={`relative bg-white ${left?.type === 'media' && right?.type === 'media' ? 'lg:min-h-[80vh]' : 'min-h-[80vh]'}`}
       >
         {/* Desktop */}
-        <div className="hidden lg:grid grid-cols-2 items-stretch min-h-[80vh] relative z-10">
+        <div className="hidden lg:grid grid-cols-2 items-stretch lg:min-h-[80vh] min-h-[100vh] relative z-10">
           <div className="order-2 lg:order-1 h-full">
             <ColumnContent column={left} />
           </div>
