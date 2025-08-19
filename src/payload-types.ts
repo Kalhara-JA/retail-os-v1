@@ -524,6 +524,23 @@ export interface ContentBlock {
  */
 export interface MediaBlock {
   media: number | Media;
+  variant?: ('default' | 'overlay') | null;
+  overlayTitle?: string | null;
+  enableOverlayLink?: boolean | null;
+  overlayLink?: {
+    type?: ('custom' | 'reference') | null;
+    url?: string | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    newTab?: boolean | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
@@ -1633,6 +1650,17 @@ export interface ContentBlockSelect<T extends boolean = true> {
  */
 export interface MediaBlockSelect<T extends boolean = true> {
   media?: T;
+  variant?: T;
+  overlayTitle?: T;
+  enableOverlayLink?: T;
+  overlayLink?:
+    | T
+    | {
+        type?: T;
+        url?: T;
+        reference?: T;
+        newTab?: T;
+      };
   id?: T;
   blockName?: T;
 }

@@ -90,6 +90,12 @@ export const RetailerShowcaseBlock: React.FC<RetailerShowcaseBlockType> = ({
 }) => {
   if (!retailers?.length) return null
 
+  const titleText = String(title ?? '')
+  const hasFullStops = titleText.includes('.')
+  const sentences = hasFullStops
+    ? (titleText.match(/[^.]+(?:\.)?/g) || []).map((s) => s)
+    : [titleText]
+
   const items = retailers.map((retailer, i) => (
     <RetailerCard key={i} retailer={retailer} index={i} />
   ))
@@ -110,11 +116,25 @@ export const RetailerShowcaseBlock: React.FC<RetailerShowcaseBlockType> = ({
         <div className="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:24px_24px]" />
       )}
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-16 xl:px-4 py-8 md:py-12 lg:py-16">
+      <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 md:py-12 lg:py-16">
         {/* Header mirrors screenshot: big, bold, two-row capable */}
-        <div className="mb-8 text-left sm:mb-10 md:mb-12 lg:mb-14 max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl">
-          <h2 className="whitespace-pre-line text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-            {title}
+        <div className="mb-8 text-left sm:mb-10 md:mb-12 lg:mb-14 w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-7/12">
+          <h2
+            className={`text-3xl md:text-4xl lg:text-7xl font-light md:font-normal !leading-[1.2] text-white`}
+          >
+            {hasFullStops
+              ? sentences.map((sentence, index) => (
+                  <React.Fragment key={`sentence-${index}`}>
+                    <span className="whitespace-nowrap">{sentence.trim()}</span>
+                    {index < sentences.length - 1 ? (
+                      <>
+                        {' '}
+                        <wbr />
+                      </>
+                    ) : null}
+                  </React.Fragment>
+                ))
+              : title}
           </h2>
           {description && (
             <p className="mt-3 max-w-2xl text-sm text-neutral-300 sm:mt-4 sm:text-base md:text-lg lg:text-xl xl:max-w-3xl">
