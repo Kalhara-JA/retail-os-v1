@@ -129,7 +129,7 @@ const MobileTextColumn: React.FC<{ content: any }> = ({ content }) => {
   const { title, bodyText, enableLink, link } = content || {}
 
   return (
-    <div className="bg-white px-4 py-8 lg:hidden">
+    <div className="bg-white px-4 py-8 pb-24 lg:hidden">
       <div className="flex flex-col space-y-4">
         {title && (
           <h2 className="pr-2 text-2xl md:text-3xl font-normal capitalize text-black leading-tight">
@@ -137,7 +137,7 @@ const MobileTextColumn: React.FC<{ content: any }> = ({ content }) => {
           </h2>
         )}
         {bodyText && (
-          <div className="pr-2 text-base text-black leading-relaxed">
+          <div className="pr-2 text-base text-black leading-relaxed pb-8">
             <RichText data={bodyText} className="text-black" enableGutter={false} />
           </div>
         )}
@@ -179,7 +179,7 @@ const StickyRow: React.FC<{
     if (typeof window !== 'undefined') {
       if (window.innerWidth >= 1024) return 120 // lg and up
       if (window.innerWidth >= 768) return 96 // md to lg
-      return 72 // mobile
+      return 0 // mobile - no header gap
     }
     return 120 // default for SSR
   }, [])
@@ -239,7 +239,7 @@ export const TwoColumnRowBlock: React.FC<TwoColumnRowBlockProps> = ({ rows }) =>
   if (!rows || rows.length === 0) return null
 
   // tune these to your layout
-  const STICKY_STEP = 10 // px between stacked tops
+  const STICKY_STEP = 0 // no step gap between rows
   const Z_BASE = 1 // bump if something else has high z-layers
 
   return (
