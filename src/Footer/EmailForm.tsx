@@ -50,29 +50,29 @@ export const EmailForm: React.FC<EmailFormProps> = ({ placeholder, buttonText })
   }
 
   return (
-    <div className="w-full max-w-md sm:max-w-lg md:max-w-xl">
+    <div className="w-full max-w-sm sm:max-w-lg md:max-w-xl">
       <form
         onSubmit={handleSubmit}
-        className="group flex items-center gap-2 sm:gap-3 rounded-2xl sm:rounded-2xl border border-black bg-white p-2 sm:p-3"
+        className="group flex items-center gap-1.5 sm:gap-3 rounded-2xl sm:rounded-2xl border border-black bg-white p-1.5 sm:p-3"
       >
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder={placeholder}
-          className="flex-1 rounded-lg sm:rounded-xl bg-white px-4 sm:px-5 py-3 sm:py-4 text-base sm:text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+          className="flex-1 rounded-md sm:rounded-2xl bg-white px-3 sm:px-5 py-2 sm:py-4 text-sm sm:text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
           required
         />
         <button
           type="submit"
           disabled={isSubmitting}
-          className="relative rounded-lg sm:rounded-xl px-5 sm:px-6 py-3 sm:py-4 text-base sm:text-base font-medium text-white transition-transform active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed bg-primary hover:bg-primary-hover shadow-[0_4px_12px_rgba(16,133,175,0.4)] sm:shadow-[0_6px_20px_rgba(16,133,175,0.45)] ring-1 ring-white/30"
+          className="relative rounded-xl sm:rounded-xl px-3 sm:px-6 py-2 sm:py-4 text-sm sm:text-base font-medium text-white transition-transform active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed bg-primary hover:bg-primary-hover shadow-[0_4px_12px_rgba(16,133,175,0.4)] sm:shadow-[0_6px_20px_rgba(16,133,175,0.45)] ring-1 ring-white/30"
         >
           {isSubmitting ? 'Sending...' : buttonText}
-          <span className="pointer-events-none absolute inset-0 rounded-lg sm:rounded-xl ring-1 ring-white/30" />
+          <span className="pointer-events-none absolute inset-0 rounded-2xl sm:rounded-2xl ring-1 ring-white/30" />
         </button>
       </form>
-      {message && <p className="mt-2 sm:mt-3 text-xs md:text-base text-white/80">{message}</p>}
+      {message && <p className="mt-1.5 sm:mt-3 text-xs md:text-base text-white/80">{message}</p>}
     </div>
   )
 }
