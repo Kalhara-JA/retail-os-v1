@@ -124,7 +124,15 @@ const featureCardFields: Field[] = [
       },
     ],
     admin: {
-      description: 'Background color for the card',
+      description: 'Background color for the card (shown when not hovering)',
+    },
+  },
+  {
+    name: 'backgroundVideo',
+    type: 'upload',
+    relationTo: 'media',
+    admin: {
+      description: 'Background video to show on hover (optional)',
     },
   },
   {

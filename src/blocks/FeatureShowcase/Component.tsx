@@ -3,10 +3,11 @@
 import React from 'react'
 import type { FeatureShowcaseBlock as FeatureShowcaseBlockType } from '@/payload-types'
 import { Media } from '@/components/Media'
+import { MoveRight } from 'lucide-react'
 
 // Individual Feature Card
 const FeatureCard: React.FC<{ card: FeatureShowcaseBlockType['cards'][0] }> = ({ card }) => {
-  const { icon, title, description, backgroundColor, button } = card
+  const { icon, title, description, backgroundColor, backgroundVideo, button } = card
 
   const getBackgroundClasses = () => {
     switch (backgroundColor) {
@@ -41,47 +42,56 @@ const FeatureCard: React.FC<{ card: FeatureShowcaseBlockType['cards'][0] }> = ({
 
   return (
     <div
-      className={`flex h-full min-h-[420px] md:min-h-[480px] lg:min-h-[520px] flex-col justify-center p-6 sm:p-8 lg:p-10 text-white rounded-t-3xl sm:rounded-none ${getBackgroundClasses()}`}
+      className={`group relative flex h-full min-h-[480px] md:min-h-[540px] lg:min-h-[720px] flex-col justify-center p-6 sm:p-8 lg:p-10 text-white rounded-t-3xl sm:rounded-none overflow-hidden ${getBackgroundClasses()}`}
     >
-      {/* Icon */}
-      <div className="mb-4 sm:mb-6 lg:mb-8">
-        <Media
-          resource={icon}
-          imgClassName="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 object-contain filter brightness-0 invert"
-        />
-      </div>
-
-      {/* Title */}
-      <h3 className="mb-3 sm:mb-4 lg:mb-6 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
-        {title}
-      </h3>
-
-      {/* Description */}
-      <p className="mb-4 sm:mb-6 lg:mb-8 leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl text-white/90">
-        {description}
-      </p>
-
-      {/* Action */}
-      {button && (
-        <div className="mt-4 sm:mt-6 lg:mt-8">
-          <a
-            href={getButtonLink()}
-            target={button.link?.newTab ? '_blank' : '_self'}
-            rel={button.link?.newTab ? 'noopener noreferrer' : undefined}
-            className="inline-flex items-center text-sm sm:text-base md:text-lg font-medium text-white hover:underline transition-colors"
-          >
-            {button.text}
-            <svg
-              className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
+      {/* Background Video */}
+      {backgroundVideo && (
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+          <Media
+            resource={backgroundVideo}
+            className="absolute inset-0 w-full h-full object-cover"
+            videoClassName="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Dark overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
       )}
+
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Icon */}
+        <div className="mb-4 sm:mb-6 lg:mb-8">
+          <Media
+            resource={icon}
+            imgClassName="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 object-contain filter brightness-0 invert"
+          />
+        </div>
+
+        {/* Title */}
+        <h3 className="mb-3 sm:mb-4 lg:mb-6 text-lg sm:text-xl md:text-2xl lg:text-3xl font-normal leading-tight max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+          {title}
+        </h3>
+
+        {/* Description */}
+        <p className="mb-4 sm:mb-6 lg:mb-8 !leading-[1.6] text-sm sm:text-base md:text-lg lg:text-xl font-light text-white/90 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm">
+          {description}
+        </p>
+
+        {/* Action */}
+        {button && (
+          <div className="mt-4 sm:mt-6 lg:mt-8">
+            <a
+              href={getButtonLink()}
+              target={button.link?.newTab ? '_blank' : '_self'}
+              rel={button.link?.newTab ? 'noopener noreferrer' : undefined}
+              className="inline-flex items-center text-sm sm:text-base md:text-lg font-medium text-white hover:underline transition-colors"
+            >
+              {button.text}
+              <MoveRight className="pl-2 w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 xl:w-7 xl:h-7 font-light" />
+            </a>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
@@ -104,7 +114,7 @@ export const FeatureShowcaseBlock: React.FC<FeatureShowcaseBlockType> = ({
         return 'grid grid-cols-1 gap-0 max-w-2xl mx-auto'
       case 'threeColumn':
       default:
-        return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-4'
+        return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-6'
     }
   }
 

@@ -48,20 +48,20 @@ export async function Footer() {
 
       {/* CONTENT */}
       <div className="relative z-10">
-        <div className="mx-auto max-w-7xl px-6 py-8 md:py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 lg:gap-16 items-center">
+        <div className="sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-8xl px-6 pt-16 pb-2 md:pt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-16 lg:gap-20 items-center">
             {/* Left Side - Content */}
-            <div className="text-left space-y-4 sm:space-y-6 w-full sm:w-11/12 md:w-11/12 lg:w-11/12">
+            <div className="text-left space-y-8 sm:space-y-10 w-full  md:w-11/12 lg:w-12/12">
               {/* Headline */}
-              <div className="space-y-2 sm:space-y-3">
-                <h2 className="font-bold tracking-tight text-balance leading-[1.1] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+              <div className="space-y-4 sm:space-y-6">
+                <h2 className="font-normal tracking-tight text-balance !leading-[1.3] md:!leading-[1.2] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
                   <span className="block text-white">{stopManaging}</span>
                   <span className="block">
                     <span className="text-primary">{headlineHighlight}</span>
-                    <span className="text-white"> {headlineEnd}</span>
+                    <span className="text-white "> {headlineEnd}</span>
                   </span>
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/85 leading-relaxed max-w-2xl">
+                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/85 leading-relaxed max-w-3xl">
                   {subheadline}
                 </p>
               </div>
@@ -75,7 +75,9 @@ export async function Footer() {
               </div>
 
               {/* Contact Info */}
-              <p className="text-sm sm:text-base md:text-lg text-white/85">{contactInfo}</p>
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-2xl text-white/85">
+                {contactInfo}
+              </p>
 
               {/* Social Icons */}
               <div className="flex justify-start">
@@ -92,14 +94,14 @@ export async function Footer() {
 
         {/* Bottom strip */}
         <div className="border-t border-white/10">
-          <div className="mx-auto max-w-7xl px-6 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             {/* Legal Links - Left Side */}
             <div className="flex items-center gap-6 order-1">
               {legalLinks?.map((link: any, idx: number) => (
                 <Link
                   key={idx}
                   href={link?.url || '#'}
-                  className="text-sm text-white/75 hover:text-white transition-colors"
+                  className="text-lg lg:text-lg text-white/75 hover:text-white transition-colors"
                 >
                   {link?.text || 'Link'}
                 </Link>
@@ -107,7 +109,9 @@ export async function Footer() {
             </div>
 
             {/* Copyright - Right Side */}
-            <div className="order-2 text-sm text-white/60 whitespace-nowrap">{copyright}</div>
+            <div className="order-2 text-lg lg:text-lg text-white/60 whitespace-nowrap">
+              {copyright}
+            </div>
           </div>
         </div>
       </div>

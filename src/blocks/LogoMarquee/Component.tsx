@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import type { LogoMarqueeBlock as LogoMarqueeBlockType } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { Marquee } from '@/components/ui/marquee'
@@ -9,7 +9,8 @@ import RichText from '@/components/RichText'
 // Individual Logo Component
 const LogoItem: React.FC<{
   logo: LogoMarqueeBlockType['logos'][0]
-}> = ({ logo }) => {
+  onHover: (isHovering: boolean) => void
+}> = ({ logo, onHover }) => {
   const { logo: logoMedia, companyName, highlighted, enableLink, link } = logo
 
   // Get button link
@@ -23,9 +24,15 @@ const LogoItem: React.FC<{
 
   const logoElement = (
     <div
-      className={`flex h-20 w-32 items-center justify-center rounded-lg bg-white p-4 shadow-sm transition-all hover:shadow-md ${
+      className={`flex h-16 w-56 items-center justify-center rounded-xl bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.8),0_4px_8px_rgba(0,0,0,0.1)] ${
         highlighted ? 'ring-2 ring-blue-500' : ''
       }`}
+      onMouseEnter={() => {
+        onHover(true)
+      }}
+      onMouseLeave={() => {
+        onHover(false)
+      }}
     >
       <Media
         resource={logoMedia}
@@ -44,6 +51,12 @@ const LogoItem: React.FC<{
         target={link?.newTab ? '_blank' : '_self'}
         rel={link?.newTab ? 'noopener noreferrer' : undefined}
         className="block"
+        onMouseEnter={() => {
+          onHover(true)
+        }}
+        onMouseLeave={() => {
+          onHover(false)
+        }}
       >
         {logoElement}
       </a>
@@ -53,6 +66,46 @@ const LogoItem: React.FC<{
   return logoElement
 }
 
+// Marquee Row with Fade Overlays
+const MarqueeRow: React.FC<{
+  logos: LogoMarqueeBlockType['logos']
+  reverse?: boolean
+  pauseOnHover?: boolean
+  duration: string
+  isPaused: boolean
+  onLogoHover: (isHovering: boolean) => void
+}> = ({ logos, reverse = false, pauseOnHover = false, duration, isPaused, onLogoHover }) => {
+  return (
+    <div className="relative overflow-hidden">
+      {/* Left fade overlay */}
+      <div className="absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+
+      {/* Right fade overlay */}
+      <div className="absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+
+      <Marquee
+        className={`py-4 ${isPaused ? '[&_.animate-marquee]:[animation-play-state:paused!important]' : ''}`}
+        pauseOnHover={false}
+        reverse={reverse}
+        style={
+          {
+            '--duration': duration,
+            '--gap': '2rem',
+          } as React.CSSProperties
+        }
+      >
+        {logos.map((logo, index) => (
+          <LogoItem
+            key={`${reverse ? 'reverse' : 'forward'}-${index}`}
+            logo={logo}
+            onHover={onLogoHover}
+          />
+        ))}
+      </Marquee>
+    </div>
+  )
+}
+
 // Main Component
 export const LogoMarqueeBlock: React.FC<LogoMarqueeBlockType> = ({
   description,
@@ -60,6 +113,8 @@ export const LogoMarqueeBlock: React.FC<LogoMarqueeBlockType> = ({
   marqueeSettings,
   backgroundColor = 'white',
 }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
   if (!logos || logos.length === 0) {
     return null
   }
@@ -83,7 +138,7 @@ export const LogoMarqueeBlock: React.FC<LogoMarqueeBlockType> = ({
       case 'slow':
         return '60s'
       case 'fast':
-        return '20s'
+        return '15s'
       case 'normal':
       default:
         return '40s'
@@ -96,69 +151,60 @@ export const LogoMarqueeBlock: React.FC<LogoMarqueeBlockType> = ({
   const row2 = logos.slice(logosPerRow, logosPerRow * 2)
   const row3 = logos.slice(logosPerRow * 2)
 
+  const marqueeDuration = getMarqueeSpeed()
+  const pauseOnHover = marqueeSettings?.pauseOnHover ?? false
+  const reverse = marqueeSettings?.reverse ?? false
+
+  // Handle hover for all logos
+  const handleLogoHover = (isHovering: boolean) => {
+    setIsHovered(isHovering)
+  }
+
   return (
     <section className={`pb-8 md:pb-12 ${getBackgroundClasses()}`}>
-      <div className="container mx-auto px-6 md:px-8">
+      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Left Side - Text Content */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="text-lg text-black leading-relaxed">
-              <RichText data={description} className="text-black" />
+          <div className="lg:col-span-2">
+            <div className=" text-black">
+              <RichText
+                data={description}
+                className="text-black md:text-2xl text-lg font-normal md:!leading-[1.6] !leading-[1.4] !mx-0"
+              />
             </div>
           </div>
 
           {/* Right Side - Logo Marquee */}
           <div className="lg:col-span-3 space-y-2">
             {/* Row 1 */}
-            <Marquee
-              className="py-2"
-              pauseOnHover={marqueeSettings?.pauseOnHover ?? false}
-              reverse={marqueeSettings?.reverse ?? false}
-              style={
-                {
-                  '--duration': getMarqueeSpeed(),
-                  '--gap': '2rem',
-                } as React.CSSProperties
-              }
-            >
-              {row1.map((logo, index) => (
-                <LogoItem key={`row1-${index}`} logo={logo} />
-              ))}
-            </Marquee>
+            <MarqueeRow
+              logos={row1}
+              reverse={reverse}
+              pauseOnHover={pauseOnHover}
+              duration={marqueeDuration}
+              isPaused={isHovered}
+              onLogoHover={handleLogoHover}
+            />
 
             {/* Row 2 */}
-            <Marquee
-              className="py-2"
-              pauseOnHover={marqueeSettings?.pauseOnHover ?? false}
-              reverse={!(marqueeSettings?.reverse ?? false)} // Opposite direction for visual interest
-              style={
-                {
-                  '--duration': getMarqueeSpeed(),
-                  '--gap': '2rem',
-                } as React.CSSProperties
-              }
-            >
-              {row2.map((logo, index) => (
-                <LogoItem key={`row2-${index}`} logo={logo} />
-              ))}
-            </Marquee>
+            <MarqueeRow
+              logos={row2}
+              reverse={!reverse} // Opposite direction for visual interest
+              pauseOnHover={pauseOnHover}
+              duration={marqueeDuration}
+              isPaused={isHovered}
+              onLogoHover={handleLogoHover}
+            />
 
             {/* Row 3 */}
-            <Marquee
-              className="py-2"
-              pauseOnHover={marqueeSettings?.pauseOnHover ?? false}
-              reverse={marqueeSettings?.reverse ?? false}
-              style={
-                {
-                  '--duration': getMarqueeSpeed(),
-                  '--gap': '2rem',
-                } as React.CSSProperties
-              }
-            >
-              {row3.map((logo, index) => (
-                <LogoItem key={`row3-${index}`} logo={logo} />
-              ))}
-            </Marquee>
+            <MarqueeRow
+              logos={row3}
+              reverse={reverse}
+              pauseOnHover={pauseOnHover}
+              duration={marqueeDuration}
+              isPaused={isHovered}
+              onLogoHover={handleLogoHover}
+            />
           </div>
         </div>
       </div>

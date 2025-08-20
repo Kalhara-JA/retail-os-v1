@@ -115,10 +115,10 @@ const Counter: React.FC<{
               direction={direction}
               delay={delay}
               decimalPlaces={decimalPlaces}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
             />
             {isPercentage && (
-              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+              <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
                 %
               </span>
             )}
@@ -126,11 +126,11 @@ const Counter: React.FC<{
         ) : (
           // For ranges and percentages, show the full text without animation
           <div className="flex items-center">
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
               {displayValue}
             </span>
             {isPercentage && (
-              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+              <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
                 %
               </span>
             )}
@@ -139,9 +139,7 @@ const Counter: React.FC<{
       </div>
 
       {/* Label */}
-      <p className="text-xs sm:text-sm md:text-base text-white/80 max-w-[150px] sm:max-w-[200px]">
-        {label}
-      </p>
+      <p className="text-md md:text-3xl max-w-sm text-white font-light ">{label}</p>
     </div>
   )
 }
@@ -166,22 +164,22 @@ const RangeCounter: React.FC<{
               direction="up"
               delay={delay || 0}
               decimalPlaces={0}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
             />
           ) : (
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
               0
             </span>
           )}
           {isPercentage && (
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
               %
             </span>
           )}
         </div>
 
         {/* Separator */}
-        <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+        <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
           -
         </span>
 
@@ -194,15 +192,15 @@ const RangeCounter: React.FC<{
               direction="up"
               delay={(delay || 0) + 0.5}
               decimalPlaces={0}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
             />
           ) : (
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
               0
             </span>
           )}
           {isPercentage && (
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
               %
             </span>
           )}
@@ -210,9 +208,7 @@ const RangeCounter: React.FC<{
       </div>
 
       {/* Label */}
-      <p className="text-xs sm:text-sm md:text-base text-white/80 max-w-[150px] sm:max-w-[200px]">
-        {label}
-      </p>
+      <p className="text-md md:text-3xl text-white font-light max-w-sm">{label}</p>
     </div>
   )
 }
@@ -237,20 +233,20 @@ const PercentageRangeCounter: React.FC<{
               direction="up"
               delay={delay || 0}
               decimalPlaces={0}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
             />
           ) : (
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
               0
             </span>
           )}
-          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+          <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
             %
           </span>
         </div>
 
         {/* Separator */}
-        <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+        <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
           -
         </span>
 
@@ -263,23 +259,21 @@ const PercentageRangeCounter: React.FC<{
               direction="up"
               delay={(delay || 0) + 0.5}
               decimalPlaces={0}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
             />
           ) : (
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
               0
             </span>
           )}
-          <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white ml-1">
+          <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
             %
           </span>
         </div>
       </div>
 
       {/* Label */}
-      <p className="text-xs sm:text-sm md:text-base text-white/80 max-w-[150px] sm:max-w-[200px]">
-        {label}
-      </p>
+      <p className="text-md md:text-3xl text-white font-light max-w-sm">{label}</p>
     </div>
   )
 }
@@ -338,23 +332,26 @@ export const NumberCountersBlock: React.FC<NumberCountersBlockType> = ({
   const getLayoutClasses = () => {
     switch (layout) {
       case 'row':
-        return 'grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-12'
+        return 'grid grid-cols-2 md:grid-cols-4 gap-12 sm:gap-6 md:gap-8 lg:gap-12'
       case 'column':
-        return 'flex flex-col space-y-6 sm:space-y-8 md:space-y-12'
+        return 'flex flex-col space-y-16 sm:space-y-8 md:space-y-12'
       case 'grid':
       default:
-        return 'grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16'
+        return 'grid grid-cols-2 gap-12 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16'
     }
   }
 
   return (
-    <section ref={sectionRef} className={`py-12 sm:py-16 md:py-20 ${getBackgroundClasses()}`}>
-      <div className="container mx-auto px-4 sm:px-6 md:px-8">
+    <section
+      ref={sectionRef}
+      className={`py-12 sm:py-16 md:py-12 px-4 sm:px-6 md:px-16 ${getBackgroundClasses()}`}
+    >
+      <div className="px-4 sm:px-6 md:px-16">
         {/* Header */}
         {(title || description) && (
           <div className="mb-8 sm:mb-10 md:mb-12 text-center">
             {title && (
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">{title}</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal mb-3 sm:mb-4">{title}</h2>
             )}
             {description && (
               <p className="text-sm sm:text-base md:text-lg opacity-80 max-w-2xl sm:max-w-3xl mx-auto">

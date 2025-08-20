@@ -5,6 +5,7 @@ import { cn } from '@/utilities/ui'
 import { AnimatePresence, motion } from 'motion/react'
 import { ImageProps } from 'next/image'
 import { useOutsideClick } from '@/hooks/use-outside-click'
+import { MoveLeft, MoveRight } from 'lucide-react'
 
 interface CarouselProps {
   items: React.ReactElement[]
@@ -94,22 +95,22 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         </div>
 
         {/* Nav arrows – compact, bottom-left like the screenshot */}
-        <div className="mt-2 flex items-center gap-2 md:mt-4">
+        <div className="mt-2 flex items-center gap-2 md:mt-4 max-md:hidden">
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-600 disabled:opacity-40"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white  text-white disabled:opacity-40"
             onClick={goLeft}
             disabled={!canLeft}
             aria-label="Scroll left"
           >
-            ‹
+            <MoveLeft className="h-4 w-4" />
           </button>
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-600 disabled:opacity-40"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white  text-white disabled:opacity-40"
             onClick={goRight}
             disabled={!canRight}
             aria-label="Scroll right"
           >
-            ›
+            <MoveRight className="h-4 w-4" />
           </button>
         </div>
       </div>

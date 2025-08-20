@@ -1148,9 +1148,13 @@ export interface FeatureShowcaseBlock {
      */
     description: string;
     /**
-     * Background color for the card
+     * Background color for the card (shown when not hovering)
      */
     backgroundColor?: ('teal' | 'mustard' | 'darkGray' | 'blue' | 'green' | 'purple' | 'orange' | 'red') | null;
+    /**
+     * Background video to show on hover (optional)
+     */
+    backgroundVideo?: (number | null) | Media;
     /**
      * Action button configuration
      */
@@ -1893,6 +1897,7 @@ export interface FeatureShowcaseBlockSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         backgroundColor?: T;
+        backgroundVideo?: T;
         button?:
           | T
           | {
