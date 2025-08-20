@@ -1,118 +1,9 @@
 'use client'
 
-import * as React from 'react'
-import { useRef, useEffect, useCallback, useState, useMemo, useLayoutEffect } from 'react'
-import { motion, useTransform, useScroll, useReducedMotion } from 'framer-motion'
-
-import type { HorizontalScrollCardsBlock as HorizontalScrollScrollCardsBlockProps } from '@/payload-types'
+import React, { useEffect, useRef } from 'react'
+import type { HorizontalScrollCardsBlock as HorizontalScrollCardsBlockProps } from '@/payload-types'
 import { CMSLink } from '../../components/Link'
 import { Media } from '../../components/Media'
-
-// ------------------------------------------------------
-// Helpers
-// ------------------------------------------------------
-
-const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v))
-
-const useViewport = () => {
-  const [{ vw, vh, ready }, set] = useState({ vw: 1200, vh: 800, ready: false })
-  useLayoutEffect(() => {
-    const update = () => {
-      const vv = (window as any).visualViewport as VisualViewport | undefined
-      const nextVW = Math.round(vv?.width ?? window.innerWidth)
-      const nextVH = Math.round(vv?.height ?? window.innerHeight)
-      set({ vw: nextVW, vh: nextVH, ready: true })
-    }
-    update()
-    const vv = (window as any).visualViewport as VisualViewport | undefined
-    vv?.addEventListener('resize', update)
-    vv?.addEventListener('scroll', update)
-    window.addEventListener('resize', update)
-    return () => {
-      vv?.removeEventListener('resize', update)
-      vv?.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
-  }, [])
-  return { vw, vh, ready }
-}
-
-const useInView = (ref: React.RefObject<Element | null>, options?: IntersectionObserverInit) => {
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    if (!ref.current) return
-    const el = ref.current
-    const io = new IntersectionObserver(
-      (entries) => setInView(entries[0]?.isIntersecting ?? false),
-      { threshold: 0.2, rootMargin: '0px 0px -10% 0px', ...(options || {}) },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [ref, options])
-  return inView
-}
-
-const useSmoothScroll = () => {
-  const prefersReduced = useReducedMotion()
-  const rafRef = useRef<number | null>(null)
-  const cancel = () => {
-    if (rafRef.current != null) {
-      cancelAnimationFrame(rafRef.current)
-      rafRef.current = null
-    }
-  }
-  const scrollToY = useCallback(
-    (
-      targetY: number,
-      duration = 520,
-      easing: (t: number) => number = (t) => t,
-      opts: { forceRAF?: boolean; after?: () => void } = {},
-    ) => {
-      targetY = Math.round(targetY)
-      if (rafRef.current != null) cancelAnimationFrame(rafRef.current)
-      if (prefersReduced || duration <= 0) {
-        window.scrollTo(0, targetY)
-        opts.after?.()
-        return
-      }
-      if (!opts.forceRAF) {
-        try {
-          window.scrollTo({ top: targetY, behavior: 'smooth' as ScrollBehavior })
-          window.setTimeout(() => {
-            window.scrollTo(0, targetY)
-            opts.after?.()
-          }, duration + 20)
-          return
-        } catch {}
-      }
-      const startY = window.scrollY
-      const distance = targetY - startY
-      const startTime = performance.now()
-      const step = (now: number) => {
-        const p = clamp((now - startTime) / duration, 0, 1)
-        const e = easing(p)
-        window.scrollTo(0, Math.round(startY + distance * e))
-        if (p < 1) {
-          rafRef.current = requestAnimationFrame(step)
-        } else {
-          window.scrollTo(0, targetY)
-          opts.after?.()
-        }
-      }
-      rafRef.current = requestAnimationFrame(step)
-    },
-    [prefersReduced],
-  )
-  useEffect(() => () => cancel(), [])
-  return scrollToY
-}
-
-const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
-const easeOutQuint = (t: number) => 1 - Math.pow(1 - t, 5)
-
-// ------------------------------------------------------
-// Types
-// ------------------------------------------------------
 
 type CardData = {
   title: string
@@ -122,620 +13,142 @@ type CardData = {
   link?: any
 }
 
-// ------------------------------------------------------
-// Card (stacked layout on all breakpoints)
-// ------------------------------------------------------
-
-// Mobile (<sm): image height animates (visiblePx), text below.
-// Desktop (>=sm): image sits in a fixed-height box; we animate clip from the TOP.
-// Text never moves and is fully visible.
-const Card: React.FC<{
-  card: CardData
-  width: number
-  outerHeight: number
-  imageHeight: number
-  visiblePx: any
-  imageScale?: any
-}> = ({ card, width, outerHeight, imageHeight, visiblePx, imageScale }) => {
-  const clipTop = useTransform(visiblePx as any, (v: number) => Math.max(0, imageHeight - v))
-  const clipPath = useTransform(clipTop, (topPx: number) => `inset(${topPx}px 0px 0px 0px)`)
-
-  return (
-    <div
-      className="group relative rounded-2xl bg-white overflow-hidden"
-      style={{ width, height: outerHeight }}
-    >
-      <div className="flex flex-col h-full">
-        {/* IMAGE (MOBILE) — height animates */}
-        <motion.div
-          className="relative overflow-hidden block sm:hidden"
-          style={{ height: visiblePx }}
-        >
-          <motion.div
-            className="absolute inset-0"
-            style={{ scale: imageScale || 1, transformOrigin: '50% 100%' }}
-          >
-            <Media
-              resource={card.image}
-              className="w-full h-full"
-              imgClassName="w-full h-full object-cover object-bottom origin-bottom"
-            />
-          </motion.div>
-        </motion.div>
-
-        {/* IMAGE (DESKTOP/TABLET) — fixed box, animate top clip */}
-        <div className="hidden sm:block relative overflow-hidden" style={{ height: imageHeight }}>
-          <motion.div
-            className="absolute inset-0 will-change-[clip-path,transform]"
-            style={{ clipPath }}
-          >
-            <motion.div
-              className="absolute inset-0"
-              style={{ scale: imageScale || 1, transformOrigin: '50% 100%' }}
-            >
-              <Media
-                resource={card.image}
-                className="w-full h-full"
-                imgClassName="w-full h-full object-cover object-bottom origin-bottom"
-              />
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* TEXT (always fully visible on desktop) */}
-        <div className="p-4 sm:p-5 md:p-6 mb-12">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-2">
-            {card.title}
-          </h3>
-          {card.description && (
-            <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4">{card.description}</p>
-          )}
-          {card.enableLink && card.link && (
-            <div className="mt-2 md:mt-3">
-              <CMSLink {...card.link} />
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ------------------------------------------------------
-// Carousel
-// ------------------------------------------------------
-
-const HorizontalScrollCarousel: React.FC<{
-  cards: CardData[]
-  width: number
-  height: number
-  gap?: number
-  minReveal?: number // 0..1 of imageHeight
-  maxReveal?: number
-  focusRadius?: number
-}> = ({ cards, width, height, gap = 20, minReveal = 0.62, maxReveal = 1.0, focusRadius = 0.6 }) => {
-  const scrollbarRef = useRef<HTMLDivElement>(null)
-  const targetRef = useRef<HTMLElement>(null)
-  const { vw, vh, ready } = useViewport()
-  const scrollToY = useSmoothScroll()
-
-  const isMobile = vw < 640
-
-  // Track scroll direction
-  const lastScrollYRef = useRef<number>(typeof window !== 'undefined' ? window.scrollY : 0)
-  const scrollDirRef = useRef<'up' | 'down'>('down')
-
-  // Responsive sizing
-  const { cardW, cardOuterH, imageH, cardGap, sidePad } = useMemo(() => {
-    const isTablet = vw >= 640 && vw < 1024
-
-    const mobileSidePad = 16
-    const mobileScale = 0.68
-    const mobileW = Math.min(width, Math.floor(vw * mobileScale))
-
-    const w = isMobile
-      ? clamp(mobileW, 200, Math.min(width, vw - (mobileSidePad + 24)))
-      : isTablet
-        ? Math.min(width, Math.floor(vw * 0.55))
-        : width
-
-    // Image height: slightly smaller on desktop to free space for text
-    const baseImgH = Math.round((height / width) * w)
-    const imgH = isMobile ? Math.round(baseImgH * 0.9) : Math.round(baseImgH * 0.8)
-
-    // Reserve space for text BELOW image (more generous on desktop)
-    const reserve = isMobile
-      ? Math.round(Math.max(200, Math.min(320, imgH * 0.55)))
-      : Math.round(Math.max(220, Math.min(420, imgH * 0.6)))
-
-    const outerH = imgH + reserve
-
-    const g = isMobile ? 10 : isTablet ? 18 : gap
-    const sp = isMobile ? mobileSidePad : Math.max(0, (vw - w) / 2)
-
-    return { cardW: w, cardOuterH: outerH, imageH: imgH, cardGap: g, sidePad: sp }
-  }, [vw, width, height, gap, isMobile])
-
-  // Layout
-  const trackWidth = cards.length * cardW + (cards.length - 1) * cardGap + sidePad * 2
-  const travel = Math.max(0, trackWidth - vw)
-
-  // Vertical section sized by OUTER height
-  const viewportHeightPx = clamp(cardOuterH + 120, 420, Math.min(780, Math.max(540, vh * 0.7)))
-  const sectionHeightPx = viewportHeightPx + travel + 120
-
-  const { scrollYProgress } = useScroll({ target: targetRef })
-  const x = useTransform(scrollYProgress, [0, 1], [0, -travel])
-
-  // Anchors
-  const getAnchors = useCallback(() => {
-    const node = targetRef.current
-    if (!node) return null
-    const rect = node.getBoundingClientRect()
-    const topAbs = window.scrollY + rect.top
-    const vhNow = Math.round((window as any).visualViewport?.height ?? window.innerHeight)
-    const start = topAbs - (vhNow - viewportHeightPx) / 2
-    const end = start + (sectionHeightPx - (vhNow - viewportHeightPx))
-    const length = Math.max(1, end - start)
-    return { start, end, length }
-  }, [sectionHeightPx, viewportHeightPx])
-
-  const isInView = useInView(targetRef, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' })
-
-  // *** MOBILE-ONLY: Do NOT lock body overscroll. Let scroll chain naturally. ***
-  useEffect(() => {
-    if (isMobile) return
-    const prev = document.body.style.overscrollBehaviorY
-    if (isInView) document.body.style.overscrollBehaviorY = 'none'
-    return () => {
-      document.body.style.overscrollBehaviorY = prev
-    }
-  }, [isInView, isMobile])
-
-  const cardCenterAt = useCallback(
-    (idx: number, currX = 0) => sidePad + idx * (cardW + cardGap) + cardW / 2 + currX,
-    [sidePad, cardW, cardGap],
-  )
-  const cardLeftAt = useCallback(
-    (idx: number, currX = 0) => sidePad + idx * (cardW + cardGap) + currX,
-    [sidePad, cardW, cardGap],
-  )
-
-  const progressForIndex = useCallback(
-    (idx: number) => {
-      const viewportCenter = vw / 2
-      if (isMobile) {
-        const desiredX = sidePad - (sidePad + idx * (cardW + cardGap))
-        return clamp(-desiredX / Math.max(1, travel), 0, 1)
-      } else {
-        const desiredX = viewportCenter - (sidePad + idx * (cardW + cardGap) + cardW / 2)
-        return clamp(-desiredX / Math.max(1, travel), 0, 1)
-      }
-    },
-    [vw, sidePad, cardW, cardGap, travel, isMobile],
-  )
-
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const computeIndexFromScroll = useCallback(() => {
-    const a = getAnchors()
-    if (!a) return 0
-    const p = clamp((window.scrollY - a.start) / a.length, 0, 1)
-    const currX = -travel * p
-    let nearest = 0
-    let best = Infinity
-    if (isMobile) {
-      const leftTarget = sidePad
-      for (let i = 0; i < cards.length; i++) {
-        const left = cardLeftAt(i, currX)
-        const d = Math.abs(left - leftTarget)
-        if (d < best) {
-          best = d
-          nearest = i
-        }
-      }
-    } else {
-      const centerTarget = vw / 2
-      for (let i = 0; i < cards.length; i++) {
-        const center = cardCenterAt(i, currX)
-        const d = Math.abs(center - centerTarget)
-        if (d < best) {
-          best = d
-          nearest = i
-        }
-      }
-    }
-    return nearest
-  }, [cards.length, cardLeftAt, cardCenterAt, travel, vw, getAnchors, isMobile])
-
-  // Normalize once after accurate measure (DISABLED on mobile for smoother entry)
-  const normalizedRef = useRef(false)
-  const { ready: vpReady } = useViewport()
-  useEffect(() => {
-    if (isMobile || !vpReady || normalizedRef.current) return
-    const a = getAnchors()
-    if (!a) return
-    const y = window.scrollY
-    const within = y > a.start - 40 && y < a.end + 40
-    if (!within) {
-      normalizedRef.current = true
-      return
-    }
-    const idx = computeIndexFromScroll()
-    const s = progressForIndex(idx)
-    const targetY = a.start + s * a.length
-    window.scrollTo(0, Math.round(targetY))
-    normalizedRef.current = true
-  }, [isMobile, vpReady, getAnchors, computeIndexFromScroll, progressForIndex])
-
-  // Snap logic (DISABLED on mobile to keep flicks fluid and allow easy exit)
-  useEffect(() => {
-    if (!isInView || isMobile) return
-    let quietTimer: number | null = null
-    const onScroll = () => {
-      const a = getAnchors()
-      if (!a) return
-      const currY = window.scrollY
-      const prevY = lastScrollYRef.current
-      scrollDirRef.current = currY < prevY ? 'up' : 'down'
-      lastScrollYRef.current = currY
-      if (currY < a.start - 40 || currY > a.end + 40) return
-
-      setCurrentIndex(computeIndexFromScroll())
-      if (quietTimer) window.clearTimeout(quietTimer)
-
-      quietTimer = window.setTimeout(() => {
-        const anchors = getAnchors()
-        if (!anchors) return
-        const idx = computeIndexFromScroll()
-        const p = clamp((window.scrollY - anchors.start) / anchors.length, 0, 1)
-        const currX = -travel * p
-        const centerTarget = vw / 2
-        const distPx: number = Math.abs(cardCenterAt(idx, currX) - centerTarget)
-        const snapThreshold = Math.max(48, cardW * 0.25)
-        const nearTop = p < 0.12
-        if (nearTop && scrollDirRef.current === 'up') return
-        const s = progressForIndex(idx)
-        const targetY = anchors.start + s * anchors.length
-        if (distPx <= snapThreshold) scrollToY(targetY, 520, easeOutQuint, { forceRAF: true })
-      }, 90)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => {
-      if (quietTimer) window.clearTimeout(quietTimer)
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-    }
-  }, [
-    isInView,
-    isMobile,
-    getAnchors,
-    computeIndexFromScroll,
-    vw,
-    travel,
-    cardCenterAt,
-    cardW,
-    progressForIndex,
-    scrollToY,
-  ])
-
-  const scrollToProgress = useCallback(
-    (p: number, forceAccurate = false) => {
-      const a = getAnchors()
-      if (!a) return
-      const targetY = a.start + clamp(p, 0, 1) * a.length
-      scrollToY(targetY, 520, easeInOutCubic, { forceRAF: forceAccurate })
-    },
-    [getAnchors, scrollToY],
-  )
-
-  const scrollToCard = useCallback(
-    (i: number) => {
-      if (travel <= 0) return
-      const idx = clamp(i, 0, cards.length - 1)
-      const s = progressForIndex(idx)
-      scrollToProgress(s, true)
-    },
-    [cards.length, travel, progressForIndex, scrollToProgress],
-  )
-
-  const onPrev = () => {
-    if (currentIndex <= 0) return scrollToProgress(0, true)
-    scrollToCard(currentIndex - 1)
-  }
-  const onNext = () => {
-    if (currentIndex >= cards.length - 1) return scrollToProgress(1, true)
-    scrollToCard(currentIndex + 1)
-  }
-
-  // Draggable scrollbar
-  const [dragging, setDragging] = useState(false)
-  const rafMove = useRef<number | null>(null)
-  const handleDragStart = (e: React.PointerEvent) => {
-    e.preventDefault()
-    setDragging(true)
-    document.body.style.cursor = 'grabbing'
-    document.body.style.userSelect = 'none'
-  }
-  const handleDragMove = useCallback(
-    (e: PointerEvent) => {
-      if (!dragging || !scrollbarRef.current) return
-      const rect = scrollbarRef.current.getBoundingClientRect()
-      const clickX = clamp(e.clientX - rect.left, 0, rect.width)
-      const p = rect.width > 0 ? clickX / rect.width : 0
-      const a = getAnchors()
-      if (!a) return
-      const run = () => {
-        const targetY = a.start + p * a.length
-        window.scrollTo(0, targetY)
-        rafMove.current = null
-      }
-      if (rafMove.current == null) rafMove.current = requestAnimationFrame(run)
-    },
-    [dragging, getAnchors],
-  )
-  const handleDragEnd = useCallback(() => {
-    setDragging(false)
-    document.body.style.cursor = ''
-    document.body.style.userSelect = ''
-    const a = getAnchors()
-    if (!a) return
-    if (!isInView) return
-    const idx = computeIndexFromScroll()
-    const s = progressForIndex(idx)
-    const targetY = a.start + s * a.length
-    scrollToY(targetY, 520, easeOutQuint, { forceRAF: true })
-  }, [getAnchors, isInView, computeIndexFromScroll, progressForIndex, scrollToY])
-  useEffect(() => {
-    if (!dragging) return
-    document.addEventListener('pointermove', handleDragMove)
-    document.addEventListener('pointerup', handleDragEnd)
-    return () => {
-      document.removeEventListener('pointermove', handleDragMove)
-      document.removeEventListener('pointerup', handleDragEnd)
-    }
-  }, [dragging, handleDragMove, handleDragEnd])
-
-  // Mobile horizontal swipe (MOBILE-ONLY tweaks: no pointer capture, higher intent threshold, rAF throttle)
-  const panRef = useRef({
-    active: false,
-    startX: 0,
-    startY: 0,
-    startScrollY: 0,
-    kind: 'none' as 'none' | 'h' | 'v',
-  })
-  const panRaf = useRef<number | null>(null)
-  const onPanPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isMobile || travel <= 0) return
-    panRef.current.active = true
-    panRef.current.startX = e.clientX
-    panRef.current.startY = e.clientY
-    panRef.current.startScrollY = window.scrollY
-    panRef.current.kind = 'none'
-  }
-  const onPanPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!panRef.current.active) return
-    const dx = e.clientX - panRef.current.startX
-    const dy = e.clientY - panRef.current.startY
-    if (panRef.current.kind === 'none') {
-      // Require clearer horizontal intent to avoid hijacking vertical scroll
-      if (Math.abs(dx) > 14 && Math.abs(dx) > Math.abs(dy) * 1.5) panRef.current.kind = 'h'
-      else if (Math.abs(dy) > 10) {
-        panRef.current.kind = 'v'
-        return
-      } else return
-    }
-    if (panRef.current.kind === 'h') {
-      // Only prevent default once we've committed to horizontal handling
-      e.preventDefault()
-      const a = getAnchors()
-      if (!a) return
-      const run = () => {
-        const dp = dx / Math.max(1, travel)
-        const targetY = clamp(panRef.current.startScrollY - dp * a.length, a.start, a.end)
-        window.scrollTo(0, targetY)
-        panRaf.current = null
-      }
-      if (panRaf.current == null) panRaf.current = requestAnimationFrame(run)
-    }
-  }
-  const onPanPointerUp = () => {
-    if (!panRef.current.active) return
-    panRef.current.active = false
-    if (panRaf.current != null) cancelAnimationFrame(panRaf.current)
-    panRaf.current = null
-    const a = getAnchors()
-    if (!a) return
-    if (!isInView) return
-    const idx = computeIndexFromScroll()
-    const s = progressForIndex(idx)
-    const targetY = a.start + s * a.length
-    // Softer snap on mobile
-    scrollToY(targetY, 420, easeOutQuint, { forceRAF: true })
-  }
-
-  const progress = useTransform(x, [0, -Math.max(1, travel)], [0, 1])
-  const thumbFrac = Math.max(0.08, Math.min(1, vw / Math.max(1, trackWidth)))
-  const thumbLeft = useTransform(progress, (p) => `${p * (1 - thumbFrac) * 100}%`)
-  const thumbWidth = `${thumbFrac * 100}%`
-  const canScroll = travel > 0
-
-  // Place controls closer to the very bottom
-  const controlsBottom = 'bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-0'
-  const stickyTop = `calc(50svh - ${viewportHeightPx / 2}px)`
-
-  return (
-    <section ref={targetRef} className="relative" style={{ height: sectionHeightPx }}>
-      <div
-        className="sticky overflow-hidden"
-        style={{
-          height: viewportHeightPx,
-          top: stickyTop,
-          // MOBILE-ONLY: allow scroll chaining and native gestures
-          overscrollBehaviorY: (isMobile ? 'auto' : 'none') as any,
-          touchAction: (isMobile ? 'auto' : 'pan-y') as any,
-          contain: 'layout paint' as any,
-        }}
-        onPointerDown={onPanPointerDown}
-        onPointerMove={onPanPointerMove}
-        onPointerUp={onPanPointerUp}
-      >
-        <div className="flex h-full items-center">
-          <motion.div
-            style={{ x, paddingLeft: sidePad, paddingRight: sidePad }}
-            className="flex items-center"
-          >
-            {cards.map((card, i) => (
-              <CardWithTransform
-                key={i}
-                card={card}
-                index={i}
-                width={cardW}
-                imageH={imageH}
-                outerH={cardOuterH}
-                gap={cardGap}
-                sidePad={sidePad}
-                vw={vw}
-                focusRadius={focusRadius}
-                minReveal={minReveal}
-                maxReveal={maxReveal}
-                x={x}
-                isLast={i === cards.length - 1}
-              />
-            ))}
-          </motion.div>
-        </div>
-
-        {canScroll && (
-          <div className={`absolute left-0 right-0 z-10 pointer-events-auto ${controlsBottom}`}>
-            <div
-              className="mx-auto px-4 sm:px-6 md:px-8"
-              style={{ width: isMobile ? 'calc(100vw - 32px)' : 'clamp(200px, 50vw, 640px)' }}
-            >
-              <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-                <div
-                  ref={scrollbarRef}
-                  className={`relative h-2 rounded-full bg-neutral-300 flex-1 overflow-hidden ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-                  onPointerDown={handleDragStart}
-                >
-                  <motion.div
-                    className="absolute top-0 bottom-0 rounded-full bg-black transition-colors hover:bg-gray-800"
-                    style={{ left: thumbLeft, width: thumbWidth }}
-                  />
-                </div>
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <button
-                    onClick={onPrev}
-                    aria-label="Previous"
-                    className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border border-neutral-400 grid text-black place-items-center hover:bg-neutral-100 active:scale-95 transition disabled:opacity-40"
-                    disabled={!canScroll}
-                  >
-                    ‹
-                  </button>
-                  <button
-                    onClick={onNext}
-                    aria-label="Next"
-                    className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border border-neutral-400 grid text-black place-items-center hover:bg-neutral-100 active:scale-95 transition disabled:opacity-40"
-                    disabled={!canScroll}
-                  >
-                    ›
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
-  )
-}
-
-// ------------------------------------------------------
-// Card with transforms
-// ------------------------------------------------------
-
-const CardWithTransform: React.FC<{
-  card: CardData
-  index: number
-  width: number
-  imageH: number
-  outerH: number
-  gap: number
-  sidePad: number
-  vw: number
-  focusRadius: number
-  minReveal: number
-  maxReveal: number
-  x: any
-  isLast: boolean
-}> = ({
-  card,
-  index,
-  width,
-  imageH,
-  outerH,
-  gap,
-  sidePad,
-  vw,
-  focusRadius,
-  minReveal,
-  maxReveal,
-  x,
-  isLast,
-}) => {
-  const influence = width * focusRadius
-  const focusFactor = useTransform(x, (currX: number) => {
-    const viewportCenter = vw / 2
-    const cardCenter = sidePad + index * (width + gap) + width / 2 + currX
-    const dist = Math.abs(cardCenter - viewportCenter)
-    const t = clamp(1 - dist / Math.max(1, influence), 0, 1)
-    return t * t * (3 - 2 * t) // smoothstep
-  })
-
-  const visiblePx = useTransform(
-    focusFactor,
-    (f) => minReveal * imageH + (maxReveal - minReveal) * f * imageH,
-  )
-  const imageScale = useTransform(focusFactor, (f) => 0.84 + 0.16 * f)
-
-  return (
-    <div className="shrink-0 mb-8 lg:mb-12" style={{ marginRight: isLast ? 0 : gap }}>
-      <Card
-        card={card}
-        width={width}
-        outerHeight={outerH}
-        imageHeight={imageH}
-        visiblePx={visiblePx}
-        imageScale={imageScale}
-      />
-    </div>
-  )
-}
-
-// ------------------------------------------------------
-// Public block
-// ------------------------------------------------------
-
-export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollScrollCardsBlockProps> = (
-  props,
+export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProps> = (
+  props: any,
 ) => {
-  const { cards, cardWidth = '450', cardHeight = '450' } = props
-  if (!cards || cards.length === 0) return null
+  const { title, cards = [], cardHeight = '450' } = props || {}
+  const spaceHolderRef = useRef<HTMLDivElement | null>(null)
+  const horizontalRef = useRef<HTMLDivElement | null>(null)
+  const stickyRef = useRef<HTMLDivElement | null>(null)
 
-  const width = parseInt(cardWidth || '450', 10)
-  const height = parseInt(cardHeight || '450', 10)
+  const RIGHT_PAD_PX = 150
+
+  const calcDynamicHeight = () => {
+    if (typeof window === 'undefined') return 0
+    const track = horizontalRef.current
+    const sticky = stickyRef.current
+    if (!track || !sticky) return 0
+
+    const vw = window.innerWidth
+    const vh = sticky.offsetHeight || window.innerHeight
+    const objectWidth = track.scrollWidth
+    return objectWidth - vw + vh + RIGHT_PAD_PX
+  }
+
+  useEffect(() => {
+    const sh = spaceHolderRef.current
+    const hr = horizontalRef.current
+    if (!sh || !hr) return
+
+    const setHeight = () => {
+      sh.style.height = `${calcDynamicHeight()}px`
+    }
+
+    const onScroll = () => {
+      const sticky = stickyRef.current
+      if (!sticky || !hr) return
+      const topPx = parseFloat(getComputedStyle(sticky).top || '0') || 0
+      // Normalize so horizontal translation starts at 0 even when sticky is offset from the top
+      const progress = Math.max(0, sticky.offsetTop - topPx)
+      hr.style.transform = `translateX(-${progress}px)`
+    }
+
+    setHeight()
+    onScroll()
+
+    const roSticky = stickyRef.current ? new ResizeObserver(setHeight) : null
+    const roTrack = horizontalRef.current ? new ResizeObserver(setHeight) : null
+    roSticky?.observe(stickyRef.current as Element)
+    roTrack?.observe(horizontalRef.current as Element)
+
+    window.addEventListener('resize', setHeight)
+    window.addEventListener('load', setHeight)
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('resize', setHeight)
+      window.removeEventListener('load', setHeight)
+      window.removeEventListener('scroll', onScroll as any)
+      roSticky?.disconnect()
+      roTrack?.disconnect()
+    }
+  }, [cards])
+
+  if (!cards?.length) return null
+
+  const titleText = String(title ?? '')
+  const hasFullStops = titleText.includes('.')
+  const sentences = hasFullStops
+    ? (titleText.match(/[^.]+(?:\.)?/g) || []).map((s) => s)
+    : [titleText]
 
   return (
     <div className="bg-white">
-      <HorizontalScrollCarousel
-        cards={cards as CardData[]}
-        width={width}
-        height={height}
-        gap={22}
-        minReveal={0.62}
-        maxReveal={1.0}
-        focusRadius={0.6}
-      />
+      {title ? (
+        <div className="py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mx-0 bg-white w-full">
+          <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-7/12">
+            <h2 className="text-3xl md:text-4xl text-black lg:text-7xl font-light md:font-normal !leading-[1.2]">
+              {hasFullStops
+                ? sentences.map((sentence, index) => (
+                    <React.Fragment key={`sentence-${index}`}>
+                      <span className="whitespace-nowrap">{sentence.trim()}</span>
+                      {index < sentences.length - 1 ? <> <wbr /> </> : null}
+                    </React.Fragment>
+                  ))
+                : title}
+            </h2>
+          </div>
+        </div>
+      ) : null}
+
+      {/* Sticky horizontal section */}
+      <section className="relative w-full">
+        <div ref={spaceHolderRef} className="relative w-full">
+          {/* ↓ Move sticky down a bit (tweak values as you like) */}
+          <div
+            ref={stickyRef}
+            className="sticky [--sticky-top:120px] sm:[--sticky-top:130px] md:[--sticky-top:140px] lg:[--sticky-top:150px] top-[var(--sticky-top)] h-[80vh] w-full overflow-x-hidden"
+          >
+            <div ref={horizontalRef} className="absolute h-full will-change-transform">
+              <section
+                role="feed"
+                className="relative h-full pl-[20px] sm:pl-[72px] md:pl-[120px] lg:pl-[150px] flex flex-row flex-nowrap justify-start items-start pt-2 pb-4"
+              >
+                {cards.map((card: CardData, i: number) => (
+                  <article
+                    key={i}
+                    className="relative w-[320px] sm:w-[380px] md:w-[420px] lg:w-[640px] mr-[20px] sm:mr-[36px] md:mr-[48px] lg:mr-[56px] flex-shrink-0 overflow-hidden bg-white flex flex-col"
+                    style={{ height: `${cardHeight}px` }}
+                  >
+                    <div className="h-[62%] bg-gray-100 relative">
+                      <Media
+                        resource={card.image}
+                        className="w-full h-full"
+                        imgClassName="w-full h-full object-cover object-center block"
+                      />
+                    </div>
+                    <div className="p-4 md:p-5 lg:p-6">
+                      <h3 className="text-2xl xl:text-2xl 2xl:text-3xl leading-tight mb-2 text-black">
+                        {card.title}
+                      </h3>
+                      {card.description ? (
+                        <p className="mb-2 text-black text-md md:text-base">{card.description}</p>
+                      ) : null}
+                      {card.enableLink && card.link ? (
+                        <div className="mt-auto">
+                          <CMSLink {...card.link} />
+                        </div>
+                      ) : null}
+                    </div>
+                  </article>
+                ))}
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
+
+export default HorizontalScrollCardsBlock

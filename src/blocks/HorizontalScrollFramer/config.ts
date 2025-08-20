@@ -102,6 +102,14 @@ export const HorizontalScrollCards: Block = {
   },
   fields: [
     {
+      name: 'title',
+      type: 'text',
+      label: 'Title',
+      admin: {
+        description: 'Optional title displayed above the carousel',
+      },
+    },
+    {
       name: 'cards',
       type: 'array',
       required: true,
@@ -131,26 +139,6 @@ export const HorizontalScrollCards: Block = {
         },
       ],
       label: 'Card Height',
-    },
-    {
-      name: 'cardWidth',
-      type: 'select',
-      defaultValue: '450',
-      options: [
-        {
-          label: 'Small (350px)',
-          value: '350',
-        },
-        {
-          label: 'Medium (450px)',
-          value: '450',
-        },
-        {
-          label: 'Large (550px)',
-          value: '550',
-        },
-      ],
-      label: 'Card Width',
     },
   ],
 }

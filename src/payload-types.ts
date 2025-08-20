@@ -927,6 +927,10 @@ export interface TwoColumnRowBlock {
  * via the `definition` "HorizontalScrollCardsBlock".
  */
 export interface HorizontalScrollCardsBlock {
+  /**
+   * Optional title displayed above the carousel
+   */
+  title?: string | null;
   cards: {
     title: string;
     description?: string | null;
@@ -950,7 +954,6 @@ export interface HorizontalScrollCardsBlock {
     id?: string | null;
   }[];
   cardHeight?: ('350' | '450' | '550') | null;
-  cardWidth?: ('350' | '450' | '550') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'horizontalScrollCards';
@@ -1792,6 +1795,7 @@ export interface TwoColumnRowBlockSelect<T extends boolean = true> {
  * via the `definition` "HorizontalScrollCardsBlock_select".
  */
 export interface HorizontalScrollCardsBlockSelect<T extends boolean = true> {
+  title?: T;
   cards?:
     | T
     | {
@@ -1811,7 +1815,6 @@ export interface HorizontalScrollCardsBlockSelect<T extends boolean = true> {
         id?: T;
       };
   cardHeight?: T;
-  cardWidth?: T;
   id?: T;
   blockName?: T;
 }
