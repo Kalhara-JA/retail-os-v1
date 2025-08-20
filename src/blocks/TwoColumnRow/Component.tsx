@@ -181,7 +181,7 @@ const StickyRow: React.FC<{
       if (window.innerWidth >= 768) return 96 // md to lg
       return 0 // mobile - no header gap
     }
-    return 120 // default for SSR
+    return 0 // default for SSR - no header gap
   }, [])
 
   const top = useMemo(() => baseTop + index * offsetStep, [baseTop, index, offsetStep])
