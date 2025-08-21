@@ -5,6 +5,8 @@ import type { HorizontalScrollCardsBlock as HorizontalScrollCardsBlockProps } fr
 import { CMSLink } from '../../components/Link'
 import { Media } from '../../components/Media'
 
+// Card shape used in this block
+
 type CardData = {
   title: string
   description?: string
@@ -42,6 +44,12 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
   const animFromRef = useRef<number>(0)
   const animToRef = useRef<number>(0)
   const EASE_MS = 200
+
+  // Boot gating so we can start focused on first card
+  const bootingRef = useRef(true)
+
+  // Focus calculation throttling
+  const focusRafRef = useRef<number | null>(null)
 
   const RIGHT_PAD_PX = 150
   const MIN_THUMB_PX = 28 // keep it grabbable
@@ -112,6 +120,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
     hr.style.transform = `translateX(-${clamped}px)`
     lastProgressRef.current = clamped
     positionThumbFromProgress(clamped)
+    scheduleFocusUpdate()
   }
 
   // ---- Smooth nudge helpers ----
@@ -182,6 +191,78 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
     }
   }
 
+  // ---- Focus / cropping logic ----
+  const focusFirstNow = () => {
+    const hr = horizontalRef.current
+    if (!hr) return
+    const articles = Array.from(hr.querySelectorAll('article')) as HTMLElement[]
+    if (!articles.length) return
+    articles.forEach((el, i) => {
+      if (i === 0) {
+        el.style.setProperty('--img-clip-top', '0%')
+        el.setAttribute('data-focused', 'true')
+      } else {
+        el.style.setProperty('--img-clip-top', '50%')
+        el.removeAttribute('data-focused')
+      }
+    })
+  }
+
+  
+  const scheduleFocusUpdate = () => {
+    if (focusRafRef.current != null) return
+    focusRafRef.current = requestAnimationFrame(() => {
+      focusRafRef.current = null
+      updateFocus()
+    })
+  }
+
+  const updateFocus = () => {
+    const hr = horizontalRef.current
+    if (!hr) return
+
+    const articles = Array.from(hr.querySelectorAll('article')) as HTMLElement[]
+    if (!articles.length) return
+
+    const maxX = calcMaxTranslateX()
+    const progress = lastProgressRef.current
+    const EDGE_EPS = 2 // px tolerance for start/end snapping
+
+    let bestIdx = 0
+
+    // Snap focus at the very start and very end
+    if (progress <= EDGE_EPS) {
+      bestIdx = 0
+    } else if (Math.abs(progress - maxX) <= EDGE_EPS) {
+      bestIdx = articles.length - 1
+    } else {
+      // Otherwise pick the card whose center is closest to viewport center
+      const viewportCenter = window.innerWidth / 2
+      let bestDist = Infinity
+      for (let i = 0; i < articles.length; i++) {
+        const r = articles[i].getBoundingClientRect()
+        const center = r.left + r.width / 2
+        const dist = Math.abs(center - viewportCenter)
+        if (dist < bestDist) {
+          bestDist = dist
+          bestIdx = i
+        }
+      }
+    }
+
+    // Apply CSS var to drive image crop and a helper attribute for future styling
+    for (let i = 0; i < articles.length; i++) {
+      const el = articles[i]
+      if (i === bestIdx) {
+        el.style.setProperty('--img-clip-top', '0%') // focused → full image
+        el.setAttribute('data-focused', 'true')
+      } else {
+        el.style.setProperty('--img-clip-top', '50%') // unfocused → crop top half
+        el.removeAttribute('data-focused')
+      }
+    }
+  }
+
   useEffect(() => {
     const sh = spaceHolderRef.current
     const hr = horizontalRef.current
@@ -190,19 +271,31 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
     const onScroll = () => {
       if (isDraggingRef.current) return // don't fight drag
       const sticky = stickyRef.current
-      if (!sticky) return
+      const sh = spaceHolderRef.current
+      if (!sticky || !sh) return
       const topPx = parseFloat(getComputedStyle(sticky).top || '0') || 0
-      const progress = Math.max(0, sticky.offsetTop - topPx)
+
+      // Use absolute Y for the spacer's top to match window.scrollY space
+      const pageY = window.scrollY || window.pageYOffset || 0
+      const shTopAbs = sh.getBoundingClientRect().top + pageY
+      const startY = shTopAbs - topPx
+
+      const raw = pageY - startY
+      const maxX = calcMaxTranslateX()
+      const progress = clamp(raw, 0, maxX)
+
       hr.style.transform = `translateX(-${progress}px)`
       lastProgressRef.current = progress
       positionThumbFromProgress(progress)
       cancelAnim() // user scrolled; kill button animation
+      scheduleFocusUpdate()
     }
 
     const setHeight = () => {
       sh.style.height = `${calcDynamicHeight()}px`
       updateThumbSize()
       onScroll()
+      scheduleFocusUpdate()
     }
 
     // Drag handlers
@@ -277,6 +370,10 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
     window.addEventListener('load', setHeight)
     window.addEventListener('scroll', onScroll, { passive: true })
 
+    // Set initial visual focus to the first card before enabling auto focus updates
+    focusFirstNow()
+    bootingRef.current = false
+
     return () => {
       window.removeEventListener('resize', setHeight)
       window.removeEventListener('load', setHeight)
@@ -289,6 +386,10 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
       window.removeEventListener('pointerup', onWindowPointerUp)
       stopHold()
       cancelAnim()
+      if (focusRafRef.current != null) {
+        cancelAnimationFrame(focusRafRef.current)
+        focusRafRef.current = null
+      }
     }
   }, [cards])
 
@@ -324,7 +425,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
         <div ref={spaceHolderRef} className="relative w-full">
           <div
             ref={stickyRef}
-            className="sticky [--sticky-top:120px] sm:[--sticky-top:130px] md:[--sticky-top:140px] lg:[--sticky-top:150px] top-[var(--sticky-top)] h-[80vh] w-full overflow-x-hidden"
+            className="sticky [--sticky-top:120px] sm:[--sticky-top:130px] md:[--sticky-top:140px] lg:[--sticky-top:170px] top-[var(--sticky-top)] h-[80vh] w-full overflow-x-hidden"
           >
             {/* Horizontally translated track */}
             <div ref={horizontalRef} className="absolute h-full will-change-transform">
@@ -338,13 +439,29 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                     className="relative w-[320px] sm:w-[380px] md:w-[420px] lg:w-[640px] mr-[20px] sm:mr-[36px] md:mr-[48px] lg:mr-[56px] flex-shrink-0 overflow-hidden bg-white flex flex-col"
                     style={{ height: `${cardHeight}px` }}
                   >
-                    <div className="h-[62%] bg-gray-100 relative">
-                      <Media
-                        resource={card.image}
+                    {/*
+                      Image wrapper keeps the original block height (62%).
+                      We crop the TOP of the image using clip-path driven by --img-clip-top.
+                      Focused card → 0% (no crop). Others → 50% (half height visible, from bottom).
+                    */}
+                    <div className="h-[62%] bg-white relative overflow-hidden">
+                      <div
                         className="w-full h-full"
-                        imgClassName="w-full h-full object-cover object-center block"
-                      />
+                        style={{
+                          clipPath: 'inset(var(--img-clip-top, 50%) 0 0 0)',
+                          WebkitClipPath: 'inset(var(--img-clip-top, 50%) 0 0 0)' as any,
+                          transition: 'clip-path 300ms cubic-bezier(0.2, 0.6, 0.2, 1)',
+                          willChange: 'clip-path',
+                        }}
+                      >
+                        <Media
+                          resource={card.image}
+                          className="w-full h-full"
+                          imgClassName="w-full h-full object-cover object-center block"
+                        />
+                      </div>
                     </div>
+
                     <div className="py-4 md:py-5 lg:py-6">
                       <h3 className="text-2xl xl:text-2xl 2xl:text-3xl leading-tight mb-2 text-black">
                         {card.title}
