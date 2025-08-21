@@ -4,7 +4,6 @@ import React from 'react'
 import type { RetailerShowcaseBlock as RetailerShowcaseBlockType } from '@/payload-types'
 import { Carousel } from '@/components/ui/apple-cards-carousel'
 import { Media } from '@/components/Media'
-import RichText from '@/components/RichText'
 
 /**
  * Retailer Card – sized and styled to match the screenshot:
@@ -25,14 +24,14 @@ const RetailerCard: React.FC<{
         // FIXED sizes per breakpoint (all cards identical)
         'relative flex flex-col overflow-hidden rounded-3xl bg-white',
         'shadow-[0_6px_24px_rgba(0,0,0,0.08)] transition-shadow duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.12)]',
-        'h-[420px] w-[300px]', // mobile
+        'h-[450px] w-[300px]', // mobile
         'md:h-[500px] md:w-[380px]', // tablet
-        'xl:h-[520px] xl:w-[420px]', // desktop
+        'xl:h-[500px] xl:w-[420px]', // desktop
       ].join(' ')}
     >
       {/* Logo (top) */}
-      <div className="p-6 pb-3">
-        <Media resource={logo} imgClassName="h-8 w-auto object-contain" />
+      <div className="p-6 pb-6">
+        <Media resource={logo} imgClassName="h-12 w-auto object-contain" />
       </div>
 
       {/* Cover image (fixed height) */}
@@ -43,15 +42,15 @@ const RetailerCard: React.FC<{
       {/* Points: occupies remaining space; scrolls if too long */}
       <div className="flex-1 overflow-hidden px-6 pb-6">
         <div className="h-full overflow-auto pr-1">
-          {points && (
-            <RichText
-              data={points}
-              className={[
-                'text-[15px] leading-6 text-neutral-900',
-                '[&>ul]:list-disc [&>ul]:space-y-2 [&>ul]:pl-5',
-                '[&>ul>li]::marker:text-sky-500',
-              ].join(' ')}
-            />
+          {points && points.length > 0 && (
+            <ul className="space-y-3">
+              {points.map((pointItem, index) => (
+                <li key={index} className="relative pl-6 text-[15px] leading-6 text-neutral-900">
+                  <div className="absolute left-0 top-2 h-2 w-2 rounded-full bg-sky-500"></div>
+                  {pointItem.point}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       </div>

@@ -49,7 +49,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[9997] text-white transition-all duration-300 ${
-          isScrolled ? 'bg-black/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+          isScrolled
+            ? 'bg-black/95 backdrop-blur-sm shadow-lg'
+            : 'bg-gradient-to-b from-black/80 via-black/50 to-transparent'
         }`}
         {...(theme ? { 'data-theme': theme } : {})}
       >

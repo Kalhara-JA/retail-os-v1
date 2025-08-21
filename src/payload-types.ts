@@ -204,7 +204,19 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
+    /**
+     * Configure background media for different device types
+     */
+    media?: {
+      /**
+       * Background image/video for desktop devices (recommended: 1920x1080 or larger)
+       */
+      desktop: number | Media;
+      /**
+       * Background image/video for mobile devices (recommended: 750x1334 or similar mobile aspect ratio). If not provided, desktop background will be used.
+       */
+      mobile?: (number | null) | Media;
+    };
   };
   layout: (
     | CallToActionBlock
@@ -996,23 +1008,17 @@ export interface RetailerShowcaseBlock {
      */
     subtitle?: string | null;
     /**
-     * List of services or features (use bullet points)
+     * Add individual points or features for this retailer
      */
-    points?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
+    points?:
+      | {
+          /**
+           * Enter a single point or feature
+           */
+          point: string;
+          id?: string | null;
+        }[]
+      | null;
     enableLink?: boolean | null;
     link?: {
       type?: ('reference' | 'custom') | null;
@@ -1569,7 +1575,12 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
+        media?:
+          | T
+          | {
+              desktop?: T;
+              mobile?: T;
+            };
       };
   layout?:
     | T
@@ -1837,7 +1848,12 @@ export interface RetailerShowcaseBlockSelect<T extends boolean = true> {
         coverImage?: T;
         title?: T;
         subtitle?: T;
-        points?: T;
+        points?:
+          | T
+          | {
+              point?: T;
+              id?: T;
+            };
         enableLink?: T;
         link?:
           | T

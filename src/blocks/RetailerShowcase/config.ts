@@ -95,10 +95,24 @@ const retailerCardFields: Field[] = [
   },
   {
     name: 'points',
-    type: 'richText',
+    type: 'array',
+    label: 'Points',
     admin: {
-      description: 'List of services or features (use bullet points)',
+      description: 'Add individual points or features for this retailer',
     },
+    fields: [
+      {
+        name: 'point',
+        type: 'text',
+        label: 'Point',
+        required: true,
+        admin: {
+          description: 'Enter a single point or feature',
+        },
+      },
+    ],
+    minRows: 1,
+    maxRows: 8,
   },
   {
     name: 'enableLink',

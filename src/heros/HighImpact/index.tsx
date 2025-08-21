@@ -1,6 +1,7 @@
 'use client'
+
 import { useHeaderTheme } from '@/providers/HeaderTheme'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import type { Page } from '@/payload-types'
 
@@ -18,22 +19,51 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
   ...rest
 }) => {
   const { setHeaderTheme } = useHeaderTheme()
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     setHeaderTheme('dark')
   })
 
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   const subtitlePhrases = (rest as any)?.subtitlePhrases as { phrase: string }[] | undefined
+
+  // Determine which background to use
+  const mediaObj = media as any
+  const backgroundMedia: any =
+    mediaObj && typeof mediaObj === 'object' && mediaObj.desktop
+      ? isMobile && mediaObj.mobile
+        ? mediaObj.mobile
+        : mediaObj.desktop
+      : media
 
   return (
     <div className="relative -mt-[10.4rem] flex text-white min-h-screen" data-theme="dark">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        {media && typeof media === 'object' && (
-          <Media fill videoClassName="w-full h-full object-cover" priority resource={media} />
+        {backgroundMedia && typeof backgroundMedia === 'object' && (
+          <Media
+            fill
+            videoClassName="w-full h-full object-cover"
+            imgClassName="object-cover object-center"
+            pictureClassName="w-full h-full"
+            priority
+            resource={backgroundMedia}
+          />
         )}
         {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/35"></div>
       </div>
 
       {/* Content Container */}

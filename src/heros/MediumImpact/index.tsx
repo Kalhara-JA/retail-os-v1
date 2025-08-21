@@ -1,4 +1,7 @@
-import React from 'react'
+'use client'
+
+import { useHeaderTheme } from '@/providers/HeaderTheme'
+import React, { useState, useEffect } from 'react'
 
 import type { Page } from '@/payload-types'
 
@@ -16,7 +19,29 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({
   description,
   ...rest
 }) => {
+  const [isMobile, setIsMobile] = useState(false)
   const subtitlePhrases = (rest as any)?.subtitlePhrases as { phrase: string }[] | undefined
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Determine which background to use
+  const mediaObj = media as any
+  const backgroundMedia: any =
+    mediaObj && typeof mediaObj === 'object' && mediaObj.desktop
+      ? isMobile && mediaObj.mobile
+        ? mediaObj.mobile
+        : mediaObj.desktop
+      : media
   return (
     <div className="">
       <div className="container mb-8 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-[65px]">
@@ -79,17 +104,17 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({
       </div>
 
       <div className="container px-4 sm:px-6 md:px-8 lg:px-16 xl:px-[65px]">
-        {media && typeof media === 'object' && (
+        {backgroundMedia && typeof backgroundMedia === 'object' && (
           <div>
             <Media
               className="-mx-4 md:-mx-8 2xl:-mx-16"
               imgClassName=""
               priority
-              resource={media}
+              resource={backgroundMedia}
             />
-            {media?.caption && (
+            {backgroundMedia?.caption && (
               <div className="mt-3">
-                <RichText data={media.caption} enableGutter={false} />
+                <RichText data={backgroundMedia.caption} enableGutter={false} />
               </div>
             )}
           </div>

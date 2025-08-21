@@ -82,12 +82,35 @@ export const hero: Field = {
     }),
     {
       name: 'media',
-      type: 'upload',
+      type: 'group',
+      label: 'Background Media',
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        description: 'Configure background media for different device types',
       },
-      relationTo: 'media',
-      required: true,
+      fields: [
+        {
+          name: 'desktop',
+          type: 'upload',
+          label: 'Desktop Background',
+          relationTo: 'media',
+          required: true,
+          admin: {
+            description:
+              'Background image/video for desktop devices (recommended: 1920x1080 or larger)',
+          },
+        },
+        {
+          name: 'mobile',
+          type: 'upload',
+          label: 'Mobile Background (optional)',
+          relationTo: 'media',
+          admin: {
+            description:
+              'Background image/video for mobile devices (recommended: 750x1334 or similar mobile aspect ratio). If not provided, desktop background will be used.',
+          },
+        },
+      ],
     },
   ],
   label: false,

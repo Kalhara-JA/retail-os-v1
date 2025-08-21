@@ -25,7 +25,9 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
           },
         },
       ],
-      media: heroImage.id,
+      media: {
+        desktop: heroImage.id,
+      },
       title: 'Be The Retail Brand',
       subtitle: 'With Full Control Across Every Sales Channel',
       description:
