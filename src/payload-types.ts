@@ -437,6 +437,10 @@ export interface User {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
+  /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
   richText?: {
     root: {
       type: string;
@@ -485,6 +489,10 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
+  /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
@@ -535,6 +543,10 @@ export interface ContentBlock {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
+  /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
   media: number | Media;
   variant?: ('default' | 'overlay') | null;
   overlayTitle?: string | null;
@@ -562,6 +574,10 @@ export interface MediaBlock {
  * via the `definition` "ArchiveBlock".
  */
 export interface ArchiveBlock {
+  /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
   introContent?: {
     root: {
       type: string;
@@ -596,6 +612,10 @@ export interface ArchiveBlock {
  * via the `definition` "FormBlock".
  */
 export interface FormBlock {
+  /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
   form: number | Form;
   enableIntro?: boolean | null;
   introContent?: {
@@ -797,6 +817,10 @@ export interface Form {
  */
 export interface TitleBlock {
   /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
+  /**
    * The main title to display
    */
   title: string;
@@ -809,6 +833,10 @@ export interface TitleBlock {
  * via the `definition` "TwoColumnRowBlock".
  */
 export interface TwoColumnRowBlock {
+  /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
   rows?:
     | {
         left: {
@@ -940,6 +968,10 @@ export interface TwoColumnRowBlock {
  */
 export interface HorizontalScrollCardsBlock {
   /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
+  /**
    * Optional title displayed above the carousel
    */
   title?: string | null;
@@ -975,6 +1007,10 @@ export interface HorizontalScrollCardsBlock {
  * via the `definition` "RetailerShowcaseBlock".
  */
 export interface RetailerShowcaseBlock {
+  /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
   /**
    * Main title for the showcase section
    */
@@ -1046,6 +1082,10 @@ export interface RetailerShowcaseBlock {
  * via the `definition` "NumberCountersBlock".
  */
 export interface NumberCountersBlock {
+  /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
   /**
    * Optional section title
    */
@@ -1130,6 +1170,10 @@ export interface NumberCountersBlock {
  */
 export interface FeatureShowcaseBlock {
   /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
+  /**
    * Optional section title
    */
   title?: string | null;
@@ -1203,6 +1247,10 @@ export interface FeatureShowcaseBlock {
  * via the `definition` "LogoMarqueeBlock".
  */
 export interface LogoMarqueeBlock {
+  /**
+   * Optional id attribute for anchoring / in-page links
+   */
+  htmlId?: string | null;
   /**
    * Description text explaining the integration capabilities
    */
@@ -1617,6 +1665,7 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   richText?: T;
   links?:
     | T
@@ -1641,6 +1690,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   columns?:
     | T
     | {
@@ -1667,6 +1717,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
  * via the `definition` "MediaBlock_select".
  */
 export interface MediaBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   media?: T;
   variant?: T;
   overlayTitle?: T;
@@ -1687,6 +1738,7 @@ export interface MediaBlockSelect<T extends boolean = true> {
  * via the `definition` "ArchiveBlock_select".
  */
 export interface ArchiveBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   introContent?: T;
   populateBy?: T;
   relationTo?: T;
@@ -1701,6 +1753,7 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
  * via the `definition` "FormBlock_select".
  */
 export interface FormBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   form?: T;
   enableIntro?: T;
   introContent?: T;
@@ -1712,6 +1765,7 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "TitleBlock_select".
  */
 export interface TitleBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   title?: T;
   id?: T;
   blockName?: T;
@@ -1721,6 +1775,7 @@ export interface TitleBlockSelect<T extends boolean = true> {
  * via the `definition` "TwoColumnRowBlock_select".
  */
 export interface TwoColumnRowBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   rows?:
     | T
     | {
@@ -1810,6 +1865,7 @@ export interface TwoColumnRowBlockSelect<T extends boolean = true> {
  * via the `definition` "HorizontalScrollCardsBlock_select".
  */
 export interface HorizontalScrollCardsBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   title?: T;
   cards?:
     | T
@@ -1838,6 +1894,7 @@ export interface HorizontalScrollCardsBlockSelect<T extends boolean = true> {
  * via the `definition` "RetailerShowcaseBlock_select".
  */
 export interface RetailerShowcaseBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   title?: T;
   description?: T;
   backgroundImage?: T;
@@ -1874,6 +1931,7 @@ export interface RetailerShowcaseBlockSelect<T extends boolean = true> {
  * via the `definition` "NumberCountersBlock_select".
  */
 export interface NumberCountersBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   title?: T;
   description?: T;
   counters?:
@@ -1904,6 +1962,7 @@ export interface NumberCountersBlockSelect<T extends boolean = true> {
  * via the `definition` "FeatureShowcaseBlock_select".
  */
 export interface FeatureShowcaseBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   title?: T;
   description?: T;
   cards?:
@@ -1939,6 +1998,7 @@ export interface FeatureShowcaseBlockSelect<T extends boolean = true> {
  * via the `definition` "LogoMarqueeBlock_select".
  */
 export interface LogoMarqueeBlockSelect<T extends boolean = true> {
+  htmlId?: T;
   description?: T;
   logos?:
     | T

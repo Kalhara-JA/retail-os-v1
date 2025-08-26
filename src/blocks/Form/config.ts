@@ -12,6 +12,14 @@ export const FormBlock: Block = {
   interfaceName: 'FormBlock',
   fields: [
     {
+      name: 'htmlId',
+      type: 'text',
+      label: 'HTML element ID',
+      admin: {
+        description: 'Optional id attribute for anchoring / in-page links',
+      },
+    },
+    {
       name: 'form',
       type: 'relationship',
       relationTo: 'forms',

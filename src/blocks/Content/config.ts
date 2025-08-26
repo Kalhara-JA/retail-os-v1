@@ -68,6 +68,14 @@ export const Content: Block = {
   interfaceName: 'ContentBlock',
   fields: [
     {
+      name: 'htmlId',
+      type: 'text',
+      label: 'HTML element ID',
+      admin: {
+        description: 'Optional id attribute for anchoring / in-page links',
+      },
+    },
+    {
       name: 'columns',
       type: 'array',
       admin: {

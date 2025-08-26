@@ -106,6 +106,14 @@ export const LogoMarquee: Block = {
   interfaceName: 'LogoMarqueeBlock',
   fields: [
     {
+      name: 'htmlId',
+      type: 'text',
+      label: 'HTML element ID',
+      admin: {
+        description: 'Optional id attribute for anchoring / in-page links',
+      },
+    },
+    {
       name: 'description',
       type: 'richText',
       required: true,

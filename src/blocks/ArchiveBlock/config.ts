@@ -12,6 +12,14 @@ export const Archive: Block = {
   interfaceName: 'ArchiveBlock',
   fields: [
     {
+      name: 'htmlId',
+      type: 'text',
+      label: 'HTML element ID',
+      admin: {
+        description: 'Optional id attribute for anchoring / in-page links',
+      },
+    },
+    {
       name: 'introContent',
       type: 'richText',
       editor: lexicalEditor({

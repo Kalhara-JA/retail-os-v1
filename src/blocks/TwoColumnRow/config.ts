@@ -179,6 +179,14 @@ export const TwoColumnRow: Block = {
   interfaceName: 'TwoColumnRowBlock',
   fields: [
     {
+      name: 'htmlId',
+      type: 'text',
+      label: 'HTML element ID',
+      admin: {
+        description: 'Optional id attribute for anchoring / in-page links',
+      },
+    },
+    {
       name: 'rows',
       type: 'array',
       admin: {

@@ -150,6 +150,14 @@ export const NumberCounters: Block = {
   interfaceName: 'NumberCountersBlock',
   fields: [
     {
+      name: 'htmlId',
+      type: 'text',
+      label: 'HTML element ID',
+      admin: {
+        description: 'Optional id attribute for anchoring / in-page links',
+      },
+    },
+    {
       name: 'title',
       type: 'text',
       admin: {

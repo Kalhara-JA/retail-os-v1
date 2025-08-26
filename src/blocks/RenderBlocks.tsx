@@ -47,8 +47,10 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const htmlId = (block as any)?.htmlId as string | undefined
               return (
-                <div className="border-0 outline-none" key={index}>
+                <div className="border-0 outline-none" id={htmlId || undefined} key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </div>
