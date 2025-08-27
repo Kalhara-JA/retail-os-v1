@@ -117,9 +117,9 @@ export const RetailerShowcaseBlock: React.FC<RetailerShowcaseBlockType> = ({
 
       <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 md:py-12 lg:py-16">
         {/* Header mirrors screenshot: big, bold, two-row capable */}
-        <div className="mb-8 text-left sm:mb-10 md:mb-12 lg:mb-14 w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-7/12">
+        <div className="mb-8 text-left sm:mb-10 md:mb-12 lg:mb-14 w-full  md:w-10/12 lg:w-9/12 ">
           <h2
-            className={`text-3xl md:text-4xl lg:text-7xl font-light md:font-normal !leading-[1.2] text-white`}
+            className={`text-white border-0 outline-none font-normal capitalize font-['Roboto'] text-[28px] leading-[38px] sm:text-[36px] sm:leading-[44px] md:text-[48px] md:leading-[58px] lg:text-[64px] lg:leading-[76px] xl:text-[72px] xl:leading-[86px] 2xl:text-[82px] 2xl:leading-[96px]`}
           >
             {hasFullStops
               ? sentences.map((sentence, index) => (

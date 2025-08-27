@@ -66,14 +66,14 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
   return (
     <NavigationMenu className="max-w-none">
-      <NavigationMenuList className="gap-6">
+      <NavigationMenuList className="gap-6 xl:gap-[38px]">
         {navItems.map((navItem, i) => {
           const { link, hasDropdown, dropdownItems } = navItem
 
           if (hasDropdown && dropdownItems && dropdownItems.length > 0) {
             return (
               <NavigationMenuItem key={i}>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:text-primary-hover hover:bg-white/10 border-none data-[state=open]:bg-white/10 data-[state=open]:text-primary-hover text-sm md:text-base lg:text-lg font-light">
+                <NavigationMenuTrigger className="bg-transparent text-white hover:text-primary-hover hover:bg-white/10 border-none data-[state=open]:bg-white/10 data-[state=open]:text-primary-hover text-sm md:text-base lg:text-lg font-light xl:font-normal xl:text-white xl:text-[20px] xl:leading-[15.717px] xl:text-center xl:font-['Roboto']">
                   {link.label}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -132,7 +132,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="text-white hover:text-primary-hover transition-colors text-sm md:text-base lg:text-lg font-light"
+                  className="text-white hover:text-primary-hover transition-colors text-sm md:text-base lg:text-lg font-light xl:font-normal xl:text-white xl:text-[20px] xl:leading-[15.717px] xl:text-center xl:font-['Roboto']"
                 />
               </NavigationMenuLink>
             </NavigationMenuItem>

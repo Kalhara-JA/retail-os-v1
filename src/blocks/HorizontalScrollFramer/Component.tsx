@@ -53,6 +53,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
 
   const RIGHT_PAD_PX = 150
   const MIN_THUMB_PX = 28 // keep it grabbable
+  const MOBILE_SLOWDOWN_FACTOR = 1.1 // make vertical travel ~10% longer on mobile
 
   const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v))
 
@@ -66,7 +67,12 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
     const vh = sticky.offsetHeight || window.innerHeight
     const objectWidth = track.scrollWidth
     // Vertical travel needed so the sticky can translate fully horizontally
-    return objectWidth - vw + vh + RIGHT_PAD_PX
+    let baseHeight = objectWidth - vw + vh + RIGHT_PAD_PX
+    // Slow down horizontal scroll a bit on mobile by increasing vertical travel
+    if (vw < 768) {
+      baseHeight = baseHeight * MOBILE_SLOWDOWN_FACTOR
+    }
+    return baseHeight
   }
 
   // How far the content can translate horizontally in px
@@ -208,7 +214,6 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
     })
   }
 
-  
   const scheduleFocusUpdate = () => {
     if (focusRafRef.current != null) return
     focusRafRef.current = requestAnimationFrame(() => {
@@ -404,7 +409,6 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
   return (
     <div className="bg-white">
       {title ? (
-
         <div className="py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mx-0 bg-white w-full">
           <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-7/12">
             <h2 className="text-3xl md:text-4xl text-black lg:text-7xl font-light md:font-normal !leading-[1.2]">
@@ -412,7 +416,12 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                 ? sentences.map((sentence, index) => (
                     <React.Fragment key={`sentence-${index}`}>
                       <span className="whitespace-nowrap">{sentence.trim()}</span>
-                      {index < sentences.length - 1 ? <> <wbr /> </> : null}
+                      {index < sentences.length - 1 ? (
+                        <>
+                          {' '}
+                          <wbr />{' '}
+                        </>
+                      ) : null}
                     </React.Fragment>
                   ))
                 : title}
@@ -432,12 +441,12 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
             <div ref={horizontalRef} className="absolute h-full will-change-transform">
               <section
                 role="feed"
-                className="relative h-full pl-[20px] sm:pl-[72px] md:pl-[120px] lg:pl-[150px] flex flex-row flex-nowrap justify-start items-start pt-2 pb-14"
+                className="relative h-full pl-[20px] sm:pl-[72px] md:pl-[120px] lg:pl-[150px] flex flex-row flex-nowrap justify-start items-start pt-2 pb-20 md:pb-24 lg:pb-28"
               >
                 {cards.map((card: CardData, i: number) => (
                   <article
                     key={i}
-                    className="relative w-[320px] sm:w-[380px] md:w-[420px] lg:w-[640px] mr-[20px] sm:mr-[36px] md:mr-[48px] lg:mr-[56px] flex-shrink-0 overflow-hidden bg-white flex flex-col"
+                    className="relative w-[387px] md:w-[420px] lg:w-[640px] mr-[20px] sm:mr-[36px] md:mr-[48px] lg:mr-[56px] flex-shrink-0 overflow-hidden bg-white flex flex-col"
                     style={{ height: `${cardHeight}px` }}
                   >
                     {/*
@@ -445,7 +454,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                       We crop the TOP of the image using clip-path driven by --img-clip-top.
                       Focused card → 0% (no crop). Others → 50% (half height visible, from bottom).
                     */}
-                    <div className="h-[62%] bg-white relative overflow-hidden">
+                    <div className="h-[62%] max-h-[240px] md:max-h-none bg-white relative overflow-hidden">
                       <div
                         className="w-full h-full"
                         style={{
@@ -464,11 +473,13 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                     </div>
 
                     <div className="py-4 md:py-5 lg:py-6">
-                      <h3 className="text-2xl xl:text-2xl 2xl:text-3xl leading-tight mb-2 text-black">
+                      <h3 className="text-2xl xl:text-2xl 2xl:text-3xl leading-tight mb-2 text-black w-full max-w-[320px] md:max-w-[360px] lg:max-w-[560px]">
                         {card.title}
                       </h3>
                       {card.description ? (
-                        <p className="mb-2 text-black text-md md:text-xl font-normal">{card.description}</p>
+                        <p className="mb-2 text-black text-md md:text-xl font-normal w-full max-w-[320px] md:max-w-[360px] lg:max-w-[560px]">
+                          {card.description}
+                        </p>
                       ) : null}
                       {card.enableLink && card.link ? (
                         <div className="mt-auto">
@@ -482,8 +493,11 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
             </div>
 
             {/* Draggable scrollbar (reduced width) + arrow-head buttons on the right */}
-            <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-center pointer-events-none" aria-hidden="true">
-              <div className="relative w-[60%] sm:w-[55%] md:w-[50%] max-w-[840px] pointer-events-none">
+            <div
+              className="absolute bottom-10 md:bottom-10 lg:bottom-12 left-0 right-0 z-20 flex justify-center pointer-events-none"
+              aria-hidden="true"
+            >
+              <div className="relative w-[70%] md:w-[50%] max-w-[840px] pointer-events-none">
                 <div
                   ref={progressTrackRef}
                   role="scrollbar"
@@ -506,13 +520,28 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                     aria-label="Scroll left"
                     className="w-7 h-7 rounded-full bg-white/0 hover:bg-black/5 active:bg-black/10 flex items-center justify-center"
                     onClick={() => nudgeProgress(-computeStepPx())}
-                    onPointerDown={(e) => { e.preventDefault(); startHold(-1) }}
+                    onPointerDown={(e) => {
+                      e.preventDefault()
+                      startHold(-1)
+                    }}
                     onPointerUp={stopHold}
                     onPointerCancel={stopHold}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); nudgeProgress(-computeStepPx()) } }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        nudgeProgress(-computeStepPx())
+                      }
+                    }}
                   >
                     <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                      <polyline points="14 6 8 12 14 18" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <polyline
+                        points="14 6 8 12 14 18"
+                        fill="none"
+                        stroke="black"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </button>
 
@@ -522,13 +551,28 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                     aria-label="Scroll right"
                     className="w-7 h-7 rounded-full bg-white/0 hover:bg-black/5 active:bg-black/10 flex items-center justify-center"
                     onClick={() => nudgeProgress(computeStepPx())}
-                    onPointerDown={(e) => { e.preventDefault(); startHold(1) }}
+                    onPointerDown={(e) => {
+                      e.preventDefault()
+                      startHold(1)
+                    }}
                     onPointerUp={stopHold}
                     onPointerCancel={stopHold}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); nudgeProgress(computeStepPx()) } }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        nudgeProgress(computeStepPx())
+                      }
+                    }}
                   >
                     <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                      <polyline points="10 6 16 12 10 18" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <polyline
+                        points="10 6 16 12 10 18"
+                        fill="none"
+                        stroke="black"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </button>
                 </div>

@@ -68,15 +68,15 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 
       {/* Content Container */}
       <div className="relative z-10 flex items-center justify-start px-4 sm:px-6 md:px-8 lg:px-16">
-        <Card className="bg-transparent border-none shadow-none max-w-6xl">
+        <Card className="bg-transparent border-none shadow-none">
           <CardContent className="p-0">
             {/* Hero Content */}
-            <div className="space-y-3 lg:space-y-1">
+            <div className="space-y-[20px] lg:space-y-[34px]">
               {/* Title Container */}
               {title && (
                 <div className="w-full lg:w-auto">
-                  <h1 className="text-6xl md:text-5xl lg:text-6xl xl:text-8xl font-normal text-white leading-[1.2] md:leading-[0.9] lg:leading-[0.8]">
-                    {title?.split(' ').map((word, index) => (
+                  <h1 className="font-['Roboto'] text-[58px] leading-[63px] md:text-[72px] lg:text-[88px] xl:text-[100px] 2xl:text-[110px] 2xl:leading-[0.8] font-normal text-white capitalize">
+                    {title?.split(' ').map((word: string, index: number) => (
                       <span key={index}>
                         {word}
                         {index === 1 && <br className="md:hidden" />}
@@ -89,12 +89,12 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
 
               {/* Subtitle (rotating phrases preferred) */}
               {(subtitlePhrases && subtitlePhrases.length > 0) || subtitle ? (
-                <div className="w-full sm:w-8/12 md:w-9/12 lg:w-8/12 xl:w-9/12">
+                <div className="w-11/12 md:w-9/12 lg:w-8/12 xl:w-8/12 min-h-[130px] md:min-h-0">
                   {subtitlePhrases && subtitlePhrases.length > 0 ? (
                     <WordRotate
                       words={subtitlePhrases.map((item) => item.phrase)}
-                      duration={3000}
-                      className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl font-normal text-white !leading-[1.4] "
+                      duration={5000}
+                      className="font-['Roboto'] text-[28px] md:text-[40px] lg:text-[56px] xl:text-[64px] 2xl:text-[72px] !leading-[38px] !lg:leading-[96px] font-normal text-white capitalize"
                       motionProps={{
                         initial: { opacity: 0, y: -20 },
                         animate: { opacity: 1, y: 0 },
@@ -103,7 +103,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                       }}
                     />
                   ) : (
-                    <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-6xl font-normal text-white !leading-[1.4]">
+                    <h2 className="font-['Roboto'] text-[28px] md:text-[40px] lg:text-[56px] xl:text-[64px] 2xl:text-[72px] !leading-[38px] !lg:leading-[96px] font-normal text-white capitalize">
                       {subtitle}
                     </h2>
                   )}
