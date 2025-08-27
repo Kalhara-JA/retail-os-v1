@@ -139,7 +139,9 @@ const Counter: React.FC<{
       </div>
 
       {/* Label */}
-      <p className="text-md md:text-3xl max-w-sm text-white font-light ">{label}</p>
+      <p className="text-sm md:text-lg lg:text-xl xl:text-3xl max-w-sm text-white font-normal text-center capitalize leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[39px] font-roboto">
+        {label}
+      </p>
     </div>
   )
 }
@@ -208,7 +210,9 @@ const RangeCounter: React.FC<{
       </div>
 
       {/* Label */}
-      <p className="text-md md:text-3xl text-white font-light max-w-sm">{label}</p>
+      <p className="text-sm md:text-lg lg:text-xl xl:text-3xl text-white font-normal text-center capitalize leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[39px] font-roboto max-w-sm">
+        {label}
+      </p>
     </div>
   )
 }
@@ -273,7 +277,9 @@ const PercentageRangeCounter: React.FC<{
       </div>
 
       {/* Label */}
-      <p className="text-md md:text-3xl text-white font-light max-w-sm">{label}</p>
+      <p className="text-sm md:text-lg lg:text-xl xl:text-3xl text-white font-normal text-center capitalize leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[39px] font-roboto max-w-sm">
+        {label}
+      </p>
     </div>
   )
 }

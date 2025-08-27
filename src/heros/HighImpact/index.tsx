@@ -94,7 +94,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                     <WordRotate
                       words={subtitlePhrases.map((item) => item.phrase)}
                       duration={5000}
-                      className="font-['Roboto'] text-[28px] md:text-[40px] lg:text-[56px] xl:text-[64px] 2xl:text-[72px] !leading-[38px] !lg:leading-[96px] font-normal text-white capitalize"
+                      className="font-['Roboto'] text-[28px] md:text-[40px] lg:text-[56px] xl:text-[64px] 2xl:text-[72px] leading-[38px] lg:leading-[96px] font-normal text-white capitalize"
                       motionProps={{
                         initial: { opacity: 0, y: -20 },
                         animate: { opacity: 1, y: 0 },
@@ -103,7 +103,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                       }}
                     />
                   ) : (
-                    <h2 className="font-['Roboto'] text-[28px] md:text-[40px] lg:text-[56px] xl:text-[64px] 2xl:text-[72px] !leading-[38px] !lg:leading-[96px] font-normal text-white capitalize">
+                    <h2 className="font-['Roboto'] text-[28px] md:text-[40px] lg:text-[56px] xl:text-[64px] 2xl:text-[72px] leading-[38px] lg:leading-[96px] font-normal text-white capitalize">
                       {subtitle}
                     </h2>
                   )}
