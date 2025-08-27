@@ -49,13 +49,13 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
       : media
 
   return (
-    <div className="relative -mt-[10.4rem] flex text-white min-h-screen" data-theme="dark">
+    <div className="relative -mt-[10.4rem] flex text-white min-h-[100dvh]" data-theme="dark">
       {/* Video Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         {backgroundMedia && typeof backgroundMedia === 'object' && (
           <Media
             fill
-            videoClassName="w-full h-full object-cover"
+            videoClassName="absolute inset-0 w-full h-full object-cover"
             imgClassName="object-cover object-center"
             pictureClassName="w-full h-full"
             priority
