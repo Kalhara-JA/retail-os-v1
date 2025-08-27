@@ -48,20 +48,20 @@ export async function Footer() {
 
       {/* CONTENT */}
       <div className="relative z-10">
-        <div className="sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-8xl px-6 pt-16 pb-2 md:pt-24">
+        <div className="sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-8xl px-6 pt-12 pb-2 md:pt-24">
           <div className="grid grid-cols-1 lg:grid-cols-1 gap-16 lg:gap-20 items-center">
             {/* Left Side - Content */}
             <div className="text-left space-y-8 sm:space-y-10 w-full  md:w-11/12 lg:w-12/12">
               {/* Headline */}
               <div className="space-y-4 sm:space-y-6">
-                <h2 className="font-normal tracking-tight text-balance !leading-[1.3] md:!leading-[1.2] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+                <h2 className="font-normal tracking-tight text-balance capitalize text-[28px] leading-[38px] sm:text-[36px] sm:leading-[48px] md:text-[48px] md:leading-[56px] lg:text-[64px] lg:leading-[74px] xl:text-[82px] xl:leading-[96px]">
                   <span className="block text-white">{stopManaging}</span>
-                  <span className="block">
+                  <span className="block whitespace-normal">
                     <span className="text-primary">{headlineHighlight}</span>
                     <span className="text-white "> {headlineEnd}</span>
                   </span>
                 </h2>
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/85 leading-relaxed max-w-3xl">
+                <p className="font-roboto font-normal capitalize text-[18px] leading-[28px] sm:text-[20px] sm:leading-[30px] md:text-[24px] md:leading-[36px] lg:text-[27px] lg:leading-[40px] xl:text-[30px] xl:leading-[39px] text-white/85 max-w-prose sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl ">
                   {subheadline}
                 </p>
               </div>

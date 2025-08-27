@@ -120,7 +120,7 @@ export const FeatureShowcaseBlock: React.FC<FeatureShowcaseBlockType> = ({
 
   return (
     // removed section background; no extra vertical padding
-    <section className="py-0 bg-white">
+    <section className="py-0 bg-white overflow-x-hidden">
       {/* Optional header (kept centered). Remove if you want *zero* space above cards */}
       {(title || description) && (
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 text-center">
