@@ -31,6 +31,8 @@ const nextConfig = {
   },
   reactStrictMode: true,
   redirects,
+  // Configure server external packages for sharp
+  serverExternalPackages: ['sharp'],
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })

@@ -1,8 +1,14 @@
 {
-    "crons": [
-      {
-        "path": "/api/payload-jobs/run",
-        "schedule": "0 0 * * *"
-      }
-    ]
-  }
+  "functions": {
+    "src/app/(payload)/api/**/*.ts": {
+      "maxDuration": 60,
+      "memory": 3008
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/payload-jobs/run",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}

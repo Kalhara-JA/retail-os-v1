@@ -30,27 +30,16 @@ export default buildConfig({
   email:
     process.env.SMTP_USER && process.env.SMTP_PASS
       ? nodemailerAdapter({
-          defaultFromAddress: process.env.EMAIL_FROM || 'noreply@retail-os.com',
           defaultFromName: 'Retail OS',
+          defaultFromAddress: process.env.SMTP_USER,
           transportOptions: {
             host: process.env.SMTP_HOST || 'smtp.gmail.com',
-            port: parseInt(process.env.SMTP_PORT || '587'),
             auth: {
               user: process.env.SMTP_USER,
               pass: process.env.SMTP_PASS,
             },
-            secure: process.env.SMTP_SECURE === 'true',
-            // Add connection timeout and retry settings
-            connectionTimeout: 60000, // 60 seconds
-            greetingTimeout: 30000, // 30 seconds
-            socketTimeout: 60000, // 60 seconds
-            // Add TLS options for better connection stability
-            tls: {
-              rejectUnauthorized: false,
-            },
-            // Add debug option for troubleshooting
-            debug: process.env.NODE_ENV === 'development',
-            logger: process.env.NODE_ENV === 'development',
+            port: 587,
+            secure: false,
           },
         })
       : undefined,
@@ -102,7 +91,7 @@ export default buildConfig({
   globals: [Header, Footer, WhatsApp, Phone, CookieConsent],
   plugins: [
     ...plugins,
-    // Temporarily disabled until UploadHandlersProvider is properly configured
+    // Vercel Blob Storage for file uploads
     vercelBlobStorage({
       enabled: true, // Optional, defaults to true
       // Specify which collections should use Vercel Blob
@@ -133,4 +122,11 @@ export default buildConfig({
     },
     tasks: [],
   },
+  // Configure upload limits for better file handling
+  upload: {
+    limits: {
+      fileSize: 50 * 1024 * 1024, // 50MB in bytes
+    },
+  },
 })
+

@@ -821,9 +821,17 @@ export interface TitleBlock {
    */
   htmlId?: string | null;
   /**
-   * The main title to display
+   * The first title to display
    */
-  title: string;
+  title1: string;
+  /**
+   * The second title to display (optional)
+   */
+  title2?: string | null;
+  /**
+   * The third title to display (optional)
+   */
+  title3?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'titleBlock';
@@ -1766,7 +1774,9 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface TitleBlockSelect<T extends boolean = true> {
   htmlId?: T;
-  title?: T;
+  title1?: T;
+  title2?: T;
+  title3?: T;
   id?: T;
   blockName?: T;
 }

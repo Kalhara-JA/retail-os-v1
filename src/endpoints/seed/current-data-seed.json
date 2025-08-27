@@ -401,7 +401,9 @@
         "layout": [
           {
             "id": "689e6eeff8eaac3b904f13b3",
-            "title": "What If Running Retail Felt Simple Again?",
+            "title1": "What If Running Retail Felt Simple Again?",
+            "title2": null,
+            "title3": null,
             "blockName": "Title 1",
             "blockType": "titleBlock"
           },
@@ -754,7 +756,9 @@
           },
           {
             "id": "689e7173f8eaac3b904f13c6",
-            "title": "What You Actually Get. 3 Critical Outcomes",
+            "title1": "What You Actually Get. 3 Critical Outcomes",
+            "title2": null,
+            "title3": null,
             "blockName": "Title 2",
             "blockType": "titleBlock"
           },
@@ -1356,7 +1360,9 @@
           },
           {
             "id": "689ee45d782dfc45ba9316d1",
-            "title": "Grow Sales. Cut Costs. Launch Faster.",
+            "title1": "Grow Sales. Cut Costs. Launch Faster.",
+            "title2": null,
+            "title3": null,
             "blockName": "Title 3",
             "blockType": "titleBlock"
           },
@@ -1437,7 +1443,9 @@
           },
           {
             "id": "689ee625782dfc45ba9316dc",
-            "title": "This is What Retail Freedom Looks Like",
+            "title1": "This is What Retail Freedom Looks Like",
+            "title2": null,
+            "title3": null,
             "blockName": "Title 4",
             "blockType": "titleBlock"
           },

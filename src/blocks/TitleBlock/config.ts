@@ -13,11 +13,27 @@ export const TitleBlock: Block = {
       },
     },
     {
-      name: 'title',
+      name: 'title1',
       type: 'text',
       required: true,
       admin: {
-        description: 'The main title to display',
+        description: 'The first title to display',
+      },
+    },
+    {
+      name: 'title2',
+      type: 'text',
+      required: false,
+      admin: {
+        description: 'The second title to display (optional)',
+      },
+    },
+    {
+      name: 'title3',
+      type: 'text',
+      required: false,
+      admin: {
+        description: 'The third title to display (optional)',
       },
     },
   ],

@@ -1,3 +1,100 @@
+# Retail OS v1
+
+A modern retail operating system built with Next.js, Payload CMS, and TypeScript.
+
+## Features
+
+- **Modern Tech Stack**: Next.js 15, Payload CMS 3.50, TypeScript
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Content Management**: Full-featured CMS with rich text editing
+- **SEO Optimized**: Built-in SEO features and sitemap generation
+- **Performance**: Optimized images and fast loading times
+- **File Uploads**: Support for large file uploads (up to 50MB)
+
+## File Upload Configuration
+
+This project is configured to handle large file uploads (up to 50MB) with the following optimizations:
+
+### Vercel Configuration
+- Increased serverless function timeout to 60 seconds
+- Increased memory allocation to 3008MB
+- Configured body size limits for API routes
+
+### Environment Variables
+Make sure to set the following environment variables for production:
+
+```env
+# Vercel Blob Storage (for file uploads)
+BLOB_READ_WRITE_TOKEN=your_vercel_blob_token
+
+# Database
+DATABASE_URI=your_database_connection_string
+
+# Payload
+PAYLOAD_SECRET=your_payload_secret
+```
+
+### Troubleshooting File Upload Issues
+
+If you encounter "content too large" errors:
+
+1. **Check Vercel Blob Storage**: Ensure `BLOB_READ_WRITE_TOKEN` is properly configured
+2. **File Size Limits**: The system supports files up to 50MB
+3. **Supported Formats**: Images (JPEG, PNG, WebP, GIF, SVG), Videos (MP4, WebM, OGG), Documents (PDF, DOC, DOCX)
+4. **Network Issues**: Large files may take longer to upload - ensure stable connection
+5. **Vercel Limits**: In production, Vercel has a 4.5MB default limit, but this is configured to 50MB in this project
+
+### Development vs Production
+
+- **Development**: File uploads work with local storage
+- **Production**: File uploads use Vercel Blob Storage for better performance and scalability
+
+## Getting Started
+
+1. **Install dependencies**:
+   ```bash
+   pnpm install
+   ```
+
+2. **Set up environment variables**:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+3. **Run the development server**:
+   ```bash
+   pnpm dev
+   ```
+
+4. **Access the admin panel**:
+   - URL: `http://localhost:3000/admin`
+   - Create your first user account
+
+## Deployment
+
+This project is optimized for deployment on Vercel with the following features:
+
+- **Automatic deployments** from Git
+- **Vercel Blob Storage** for file uploads
+- **PostgreSQL database** support
+- **Edge functions** for better performance
+
+## File Upload Best Practices
+
+1. **Image Optimization**: Use WebP format when possible for better compression
+2. **File Sizes**: Keep images under 500KB for optimal performance
+3. **Dimensions**: Use appropriate image dimensions for your use case
+4. **Alt Text**: Always provide alt text for accessibility
+
+## Support
+
+For issues related to file uploads or any other features, please check:
+
+1. **Vercel Blob Storage** configuration
+2. **Environment variables** are properly set
+3. **File format** is supported
+4. **File size** is within limits (50MB max)
+
 # Payload Website Template
 
 This is the official [Payload Website Template](https://github.com/payloadcms/payload/blob/main/templates/website). Use it to power websites, blogs, or portfolios from small to enterprise. This repo includes a fully-working backend, enterprise-grade admin panel, and a beautifully designed, production-ready website.
