@@ -81,7 +81,7 @@ export const formatFileSize = (bytes: number): string => {
  */
 export const getUploadErrorMessage = (error: Error | { message?: string }): string => {
   if (error.message?.includes('content too large')) {
-    return 'File size is too large. Please try a smaller file or contact support if you need to upload larger files.'
+    return 'File size is too large. Please try a smaller file (max 10MB) or contact support if you need to upload larger files.'
   }
 
   if (error.message?.includes('network')) {
@@ -90,6 +90,10 @@ export const getUploadErrorMessage = (error: Error | { message?: string }): stri
 
   if (error.message?.includes('timeout')) {
     return 'Upload timed out. Please try again or use a smaller file.'
+  }
+
+  if (error.message?.includes('memory')) {
+    return 'Upload failed due to memory constraints. Please try a smaller file or contact support.'
   }
 
   return error.message || 'An unexpected error occurred during upload. Please try again.'

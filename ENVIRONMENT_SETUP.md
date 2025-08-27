@@ -45,34 +45,46 @@ NODE_OPTIONS="--no-deprecation"
 
 ## File Upload Configuration
 
-The project is configured to handle file uploads up to 50MB with the following setup:
+The project is configured to handle file uploads with the following setup optimized for Vercel Hobby plan:
 
-### Vercel Configuration
+### Vercel Configuration (Hobby Plan)
 - **Function Timeout**: 60 seconds
-- **Memory Allocation**: 3008MB
-- **Body Size Limit**: 50MB
+- **Memory Allocation**: 2048MB (Hobby plan limit)
+- **Body Size Limit**: 10MB (conservative for Hobby plan)
+- **File Size Limit**: 10MB maximum
 
 ### Supported File Types
 - **Images**: JPEG, PNG, WebP, GIF, SVG
 - **Videos**: MP4, WebM, OGG
 - **Documents**: PDF, DOC, DOCX, TXT
 
+### Hobby Plan Limitations
+- **Memory**: Maximum 2048MB per function
+- **Function Timeout**: Maximum 60 seconds
+- **File Uploads**: Recommended under 10MB for reliable uploads
+- **Concurrent Functions**: Limited to 12
+
 ### Troubleshooting Upload Issues
 
 1. **"Content too large" errors**:
    - Ensure `BLOB_READ_WRITE_TOKEN` is set
-   - Check file size is under 50MB
+   - Check file size is under 10MB
    - Verify file type is supported
 
-2. **Upload timeouts**:
-   - Large files may take longer to upload
-   - Ensure stable network connection
-   - Consider optimizing file size
+2. **Memory limit errors**:
+   - Reduce file size (try under 5MB)
+   - Optimize images before upload
+   - Use compressed formats (WebP for images)
 
-3. **Vercel deployment issues**:
+3. **Upload timeouts**:
+   - Large files may timeout on Hobby plan
+   - Ensure stable network connection
+   - Consider upgrading to Pro plan for larger files
+
+4. **Vercel deployment issues**:
    - Verify all environment variables are set in Vercel dashboard
    - Check Vercel Blob storage is enabled
-   - Ensure function timeout and memory limits are configured
+   - Ensure function timeout and memory limits are configured correctly
 
 ## Development vs Production
 
@@ -81,10 +93,17 @@ The project is configured to handle file uploads up to 50MB with the following s
 - No Vercel Blob storage required
 - All environment variables optional except `DATABASE_URI` and `PAYLOAD_SECRET`
 
-### Production
+### Production (Hobby Plan)
 - File uploads use Vercel Blob storage
 - All environment variables required
-- Vercel configuration applied automatically
+- Conservative file size limits (10MB max)
+- Memory-optimized configuration
+
+### Production (Pro Plan)
+- Higher memory limits (up to 3008MB)
+- Longer function timeouts
+- Support for larger file uploads (up to 50MB)
+- More concurrent functions
 
 ## Setup Instructions
 
@@ -103,9 +122,26 @@ The project is configured to handle file uploads up to 50MB with the following s
    - Enable Vercel Blob storage
    - Deploy the application
 
+## Upgrading to Pro Plan
+
+If you need to handle larger files or have higher performance requirements:
+
+1. **Upgrade Vercel Plan**: Change from Hobby to Pro plan
+2. **Update Configuration**: 
+   - Increase memory limit to 3008MB in `vercel.json`
+   - Increase file size limit to 50MB
+   - Extend function timeout if needed
+
 ## Security Notes
 
 - Never commit `.env.local` to version control
 - Use strong, unique secrets for `PAYLOAD_SECRET`
 - Keep `BLOB_READ_WRITE_TOKEN` secure
 - Use app passwords for SMTP authentication
+
+## Performance Tips for Hobby Plan
+
+1. **Optimize Images**: Use WebP format and compress before upload
+2. **Limit File Sizes**: Keep files under 5MB for best reliability
+3. **Use CDN**: Vercel Blob storage provides CDN benefits
+4. **Monitor Usage**: Keep track of function execution times and memory usage

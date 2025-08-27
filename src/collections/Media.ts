@@ -43,7 +43,7 @@ export const Media: CollectionConfig = {
     staticDir: path.resolve(dirname, '../../public/media'),
     adminThumbnail: 'thumbnail',
     focalPoint: true,
-    // Add file type validation
+    // Add file type validation for better control
     mimeTypes: [
       'image/jpeg',
       'image/png',
