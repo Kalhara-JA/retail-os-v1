@@ -66,7 +66,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ placeholder, buttonText })
         <button
           type="submit"
           disabled={isSubmitting}
-          className="relative rounded-xl sm:rounded-xl px-3 sm:px-6 py-2 sm:py-4 text-sm sm:text-base font-medium text-white transition-transform active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed bg-primary hover:bg-primary-hover ring-1 ring-white/30"
+          className="relative rounded-xl sm:rounded-xl px-3 sm:px-6 py-2 sm:py-4 text-sm sm:text-base font-medium text-white transition-transform active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed bg-primary hover:bg-primary-hover shadow-[0_4px_12px_rgba(16,133,175,0.4)] sm:shadow-[0_6px_20px_rgba(16,133,175,0.45)] ring-1 ring-white/30"
         >
           {isSubmitting ? 'Sending...' : buttonText}
           <span className="pointer-events-none absolute inset-0 rounded-2xl sm:rounded-2xl ring-1 ring-white/30" />
