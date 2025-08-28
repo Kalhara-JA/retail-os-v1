@@ -9,6 +9,7 @@ import { Media } from '../../components/Media'
 
 type CardData = {
   title: string
+  titleLines?: { line?: string }[]
   description?: string
   image: any
   enableLink?: boolean
@@ -463,8 +464,14 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                     </div>
 
                     <div className="py-4 md:py-5 lg:py-6">
-                      <h3 className="text-2xl xl:text-2xl 2xl:text-3xl leading-tight mb-2 text-black w-full max-w-[320px] md:max-w-[360px] lg:max-w-[560px]">
-                        {card.title}
+                      <h3 className="text-2xl xl:text-2xl 2xl:text-3xl leading-tight mb-2 text-black w-full">
+                        {Array.isArray(card.titleLines) && card.titleLines.length > 0
+                          ? card.titleLines.slice(0, 2).map((t, idx) => (
+                              <span key={idx} className="block">
+                                {t?.line}
+                              </span>
+                            ))
+                          : card.title}
                       </h3>
                       {card.description ? (
                         <p className="mb-2 text-black text-md md:text-xl font-normal w-full max-w-[320px] md:max-w-[360px] lg:max-w-[560px]">
@@ -484,7 +491,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
 
             {/* Draggable scrollbar (reduced width) + arrow-head buttons on the right */}
             <div
-              className="absolute bottom-28 md:bottom-32 lg:bottom-40 left-0 right-0 z-20 flex justify-center pointer-events-none"
+              className="absolute bottom-28 md:bottom-20 lg:bottom-20 xl:bottom-20 2xl:bottom-28 left-0 right-0 z-20 flex justify-center pointer-events-none"
               aria-hidden="true"
             >
               <div className="relative w-[70%] md:w-[50%] max-w-[840px] pointer-events-none">

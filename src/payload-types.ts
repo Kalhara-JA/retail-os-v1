@@ -1021,6 +1021,15 @@ export interface HorizontalScrollCardsBlock {
   title3?: string | null;
   cards: {
     title: string;
+    /**
+     * Add up to two lines. If provided, they will be used instead of the single Card Title.
+     */
+    titleLines?:
+      | {
+          line: string;
+          id?: string | null;
+        }[]
+      | null;
     description?: string | null;
     image: number | Media;
     enableLink?: boolean | null;
@@ -1951,6 +1960,12 @@ export interface HorizontalScrollCardsBlockSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+        titleLines?:
+          | T
+          | {
+              line?: T;
+              id?: T;
+            };
         description?: T;
         image?: T;
         enableLink?: T;

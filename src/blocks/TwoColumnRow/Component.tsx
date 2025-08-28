@@ -69,7 +69,7 @@ const MediaColumn: React.FC<{ content: any }> = ({ content }) => {
               className={`absolute inset-0 flex items-center justify-start px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 md:py-12 lg:py-16 ${hideOverlayOnDesktop ? 'lg:hidden' : ''}`}
             >
               <div className="text-left text-white w-full">
-                <div className="text-3xl md:text-4xl lg:text-7xl 2xl:text-8xl font-light md:font-normal !leading-[1.1] md:!leading-[1.1] lg:!leading-[1.2] mb-6 md:mb-8">
+                <div className="text-3xl md:text-4xl lg:text-6xl 2xl:text-7xl font-light md:font-normal !leading-[1.1] md:!leading-[1.1] lg:!leading-[1.2] mb-6 md:mb-8">
                   {Array.isArray(overlayLines) && overlayLines.length > 0
                     ? overlayLines
                         .slice(0, 4)

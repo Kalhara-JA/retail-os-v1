@@ -63,7 +63,28 @@ const cardFields: Field[] = [
     name: 'title',
     type: 'text',
     required: true,
-    label: 'Card Title',
+    label: 'Card Title (single, optional if using Title Lines)',
+  },
+  {
+    name: 'titleLines',
+    type: 'array',
+    label: 'Title Lines (up to 2)',
+    labels: { singular: 'Line', plural: 'Lines' },
+    admin: {
+      initCollapsed: true,
+      description:
+        'Add up to two lines. If provided, they will be used instead of the single Card Title.',
+    },
+    minRows: 0,
+    maxRows: 2,
+    fields: [
+      {
+        name: 'line',
+        type: 'text',
+        required: true,
+        label: 'Text',
+      },
+    ],
   },
   {
     name: 'description',
