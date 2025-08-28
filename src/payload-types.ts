@@ -895,6 +895,16 @@ export interface TwoColumnRowBlock {
           media?: {
             media: number | Media;
             overlayText?: string | null;
+            /**
+             * Add up to 4 lines of overlay text. If provided, these will be used instead of the single Overlay Text.
+             */
+            overlayLines?:
+              | {
+                  line: string;
+                  id?: string | null;
+                }[]
+              | null;
+            hideOverlayOnDesktop?: boolean | null;
             enableLink?: boolean | null;
             link?: {
               type?: ('reference' | 'custom') | null;
@@ -953,6 +963,16 @@ export interface TwoColumnRowBlock {
           media?: {
             media: number | Media;
             overlayText?: string | null;
+            /**
+             * Add up to 4 lines of overlay text. If provided, these will be used instead of the single Overlay Text.
+             */
+            overlayLines?:
+              | {
+                  line: string;
+                  id?: string | null;
+                }[]
+              | null;
+            hideOverlayOnDesktop?: boolean | null;
             enableLink?: boolean | null;
             link?: {
               type?: ('reference' | 'custom') | null;
@@ -1849,6 +1869,13 @@ export interface TwoColumnRowBlockSelect<T extends boolean = true> {
                 | {
                     media?: T;
                     overlayText?: T;
+                    overlayLines?:
+                      | T
+                      | {
+                          line?: T;
+                          id?: T;
+                        };
+                    hideOverlayOnDesktop?: T;
                     enableLink?: T;
                     link?:
                       | T
@@ -1887,6 +1914,13 @@ export interface TwoColumnRowBlockSelect<T extends boolean = true> {
                 | {
                     media?: T;
                     overlayText?: T;
+                    overlayLines?:
+                      | T
+                      | {
+                          line?: T;
+                          id?: T;
+                        };
+                    hideOverlayOnDesktop?: T;
                     enableLink?: T;
                     link?:
                       | T

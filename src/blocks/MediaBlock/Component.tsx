@@ -53,6 +53,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
           <div className="absolute inset-0">
             <Media
               imgClassName="w-full h-full object-cover"
+              videoClassName="absolute inset-0 w-full h-full object-cover"
               resource={media}
               src={staticImage}
               fill

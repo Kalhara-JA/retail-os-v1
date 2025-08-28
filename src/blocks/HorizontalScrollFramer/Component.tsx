@@ -484,7 +484,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
 
             {/* Draggable scrollbar (reduced width) + arrow-head buttons on the right */}
             <div
-              className="absolute bottom-14 md:bottom-10 lg:bottom-40 left-0 right-0 z-20 flex justify-center pointer-events-none"
+              className="absolute bottom-28 md:bottom-32 lg:bottom-40 left-0 right-0 z-20 flex justify-center pointer-events-none"
               aria-hidden="true"
             >
               <div className="relative w-[70%] md:w-[50%] max-w-[840px] pointer-events-none">

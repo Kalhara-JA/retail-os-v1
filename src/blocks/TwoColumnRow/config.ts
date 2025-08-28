@@ -118,7 +118,36 @@ const mediaContentFields: Field[] = [
   {
     name: 'overlayText',
     type: 'text',
-    label: 'Overlay Text (optional)',
+    label: 'Overlay Text (single, deprecated - use Overlay Lines)',
+  },
+  {
+    name: 'overlayLines',
+    type: 'array',
+    label: 'Overlay Lines (up to 4)',
+    labels: {
+      singular: 'Line',
+      plural: 'Lines',
+    },
+    admin: {
+      initCollapsed: true,
+      description:
+        'Add up to 4 lines of overlay text. If provided, these will be used instead of the single Overlay Text.',
+    },
+    minRows: 0,
+    maxRows: 4,
+    fields: [
+      {
+        name: 'line',
+        type: 'text',
+        required: true,
+        label: 'Text',
+      },
+    ],
+  },
+  {
+    name: 'hideOverlayOnDesktop',
+    type: 'checkbox',
+    label: 'Hide overlay text on desktop (lg+)',
   },
   {
     name: 'enableLink',
