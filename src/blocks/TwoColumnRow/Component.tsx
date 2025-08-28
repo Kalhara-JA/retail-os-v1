@@ -58,12 +58,12 @@ const MediaColumn: React.FC<{ content: any }> = ({ content }) => {
         <div className="relative h-full w-full">
           <Media
             resource={media}
-            imgClassName="w-full h-full object-cover"
-            videoClassName="absolute inset-0 w-full h-full object-cover"
+            imgClassName="w-full h-full object-cover bg-white"
+            videoClassName="absolute inset-0 w-full bg-white h-full object-contain object-center bg-black"
             fill
           />
           {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/40 lg:hidden" />
           {(Array.isArray(overlayLines) && overlayLines.length > 0) || overlayText ? (
             <div
               className={`absolute inset-0 flex items-center justify-start px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 md:py-12 lg:py-16 ${hideOverlayOnDesktop ? 'lg:hidden' : ''}`}

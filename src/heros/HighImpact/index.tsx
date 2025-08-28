@@ -72,6 +72,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
             imgClassName="object-cover object-center"
             pictureClassName="w-full h-full"
             priority
+            controls={false}
             resource={backgroundMedia}
           />
         )}

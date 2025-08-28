@@ -19,4 +19,6 @@ export interface Props {
   size?: string // for NextImage only
   src?: StaticImageData // for static media
   videoClassName?: string
+  /** whether to show native video controls (default: true) */
+  controls?: boolean
 }
