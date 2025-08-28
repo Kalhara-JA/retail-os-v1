@@ -377,7 +377,7 @@ export const NumberCountersBlock: React.FC<NumberCountersBlockType> = ({
       ref={sectionRef}
       className={`py-12 sm:py-16 md:py-12 px-4 sm:px-6 md:px-16 ${getBackgroundClasses()}`}
     >
-      <div className="px-4 sm:px-6 md:px-16">
+      <div className="px-4 md:px-1 lg:px-16">
         {/* Header */}
         {(title || description) && (
           <div className="mb-8 sm:mb-10 md:mb-12 text-center">
