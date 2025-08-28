@@ -104,6 +104,7 @@ const MobileMediaColumn: React.FC<{
   isFirst?: boolean
 }> = ({ content, headline, isFirst = false }) => {
   const { media, overlayText, overlayLines, enableLink, link } = content || {}
+  const isVideo = !!media?.mimeType?.startsWith?.('video/')
 
   return (
     <div className={`relative w-full lg:hidden ${isFirst ? '' : 'mt-0'}`}>
@@ -126,8 +127,13 @@ const MobileMediaColumn: React.FC<{
         </div>
       )}
       {media && (
-        <div className="relative w-full aspect-square">
-          <Media resource={media} imgClassName="w-full h-full object-cover" fill />
+        <div className={`relative w-full ${isVideo ? 'aspect-video' : 'aspect-square'}`}>
+          <Media
+            resource={media}
+            imgClassName="w-full h-full object-cover"
+            videoClassName="w-full h-full object-cover"
+            fill
+          />
           {headline && (
             <div className="absolute bottom-4 left-0">
               <div className="bg-white px-4 py-1 rounded-r-full">

@@ -5,6 +5,2349 @@
       {
         "alt": null,
         "caption": null,
+        "url": "/api/media/file/90-sec.mp4",
+        "thumbnailURL": null,
+        "filename": "90-sec.mp4",
+        "mimeType": "video/mp4",
+        "filesize": 4652688,
+        "width": null,
+        "height": null,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": "footer-desktop",
+        "caption": null,
+        "url": "/api/media/file/footer.jpg",
+        "thumbnailURL": "/api/media/file/footer-300x117.jpg",
+        "filename": "footer.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 81318,
+        "width": 1920,
+        "height": 746,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "/api/media/file/footer-300x117.jpg",
+            "width": 300,
+            "height": 117,
+            "mimeType": "image/jpeg",
+            "filesize": 4657,
+            "filename": "footer-300x117.jpg"
+          },
+          "square": {
+            "url": "/api/media/file/footer-500x500.jpg",
+            "width": 500,
+            "height": 500,
+            "mimeType": "image/jpeg",
+            "filesize": 16381,
+            "filename": "footer-500x500.jpg"
+          },
+          "small": {
+            "url": "/api/media/file/footer-600x233.jpg",
+            "width": 600,
+            "height": 233,
+            "mimeType": "image/jpeg",
+            "filesize": 16941,
+            "filename": "footer-600x233.jpg"
+          },
+          "medium": {
+            "url": "/api/media/file/footer-900x350.jpg",
+            "width": 900,
+            "height": 350,
+            "mimeType": "image/jpeg",
+            "filesize": 30227,
+            "filename": "footer-900x350.jpg"
+          },
+          "large": {
+            "url": "/api/media/file/footer-1400x544.jpg",
+            "width": 1400,
+            "height": 544,
+            "mimeType": "image/jpeg",
+            "filesize": 53821,
+            "filename": "footer-1400x544.jpg"
+          },
+          "xlarge": {
+            "url": "/api/media/file/footer-1920x746.jpg",
+            "width": 1920,
+            "height": 746,
+            "mimeType": "image/jpeg",
+            "filesize": 81318,
+            "filename": "footer-1920x746.jpg"
+          },
+          "og": {
+            "url": "/api/media/file/footer-1200x630.jpg",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/jpeg",
+            "filesize": 43744,
+            "filename": "footer-1200x630.jpg"
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/asd.mp4",
+        "thumbnailURL": null,
+        "filename": "asd.mp4",
+        "mimeType": "video/mp4",
+        "filesize": 8935330,
+        "width": null,
+        "height": null,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/bg-video.mp4",
+        "thumbnailURL": null,
+        "filename": "bg-video.mp4",
+        "mimeType": "video/mp4",
+        "filesize": 11469042,
+        "width": null,
+        "height": null,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/retailos.mp4",
+        "thumbnailURL": null,
+        "filename": "retailos.mp4",
+        "mimeType": "video/mp4",
+        "filesize": 13339934,
+        "width": null,
+        "height": null,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2028.svg",
+        "thumbnailURL": null,
+        "filename": "image 28.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 50512,
+        "width": 210,
+        "height": 104,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/logo-1.svg",
+        "thumbnailURL": null,
+        "filename": "logo-1.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 9097,
+        "width": 198,
+        "height": 44,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": "RETAILOS",
+        "caption": null,
+        "url": "/api/media/file/logo.svg",
+        "thumbnailURL": null,
+        "filename": "logo.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 9097,
+        "width": 198,
+        "height": 44,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2046.svg",
+        "thumbnailURL": null,
+        "filename": "image 46.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 79943,
+        "width": 82,
+        "height": 97,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2048.svg",
+        "thumbnailURL": null,
+        "filename": "image 48.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 128957,
+        "width": 386,
+        "height": 98,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2049.svg",
+        "thumbnailURL": null,
+        "filename": "image 49.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 19322,
+        "width": 212,
+        "height": 109,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2050.svg",
+        "thumbnailURL": null,
+        "filename": "image 50.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 32224,
+        "width": 369,
+        "height": 61,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2051.svg",
+        "thumbnailURL": null,
+        "filename": "image 51.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 44201,
+        "width": 203,
+        "height": 136,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2052.svg",
+        "thumbnailURL": null,
+        "filename": "image 52.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 76155,
+        "width": 263,
+        "height": 62,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2053.svg",
+        "thumbnailURL": null,
+        "filename": "image 53.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 65628,
+        "width": 392,
+        "height": 113,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2054.svg",
+        "thumbnailURL": null,
+        "filename": "image 54.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 31550,
+        "width": 478,
+        "height": 105,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2056.svg",
+        "thumbnailURL": null,
+        "filename": "image 56.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 23570,
+        "width": 360,
+        "height": 120,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2057.svg",
+        "thumbnailURL": null,
+        "filename": "image 57.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 62398,
+        "width": 309,
+        "height": 90,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": "התממשקות עם אייס ACE",
+        "caption": null,
+        "url": "/api/media/file/image%2058.svg",
+        "thumbnailURL": null,
+        "filename": "image 58.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 66133,
+        "width": 226,
+        "height": 97,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2032.svg",
+        "thumbnailURL": null,
+        "filename": "image 32.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 85929,
+        "width": 197,
+        "height": 54,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": "התממשקות עם וריפון",
+        "caption": null,
+        "url": "/api/media/file/image%2033.svg",
+        "thumbnailURL": null,
+        "filename": "image 33.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 175563,
+        "width": 225,
+        "height": 47,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/image%2034.svg",
+        "thumbnailURL": null,
+        "filename": "image 34.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 126262,
+        "width": 89,
+        "height": 98,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": "התממשקות עם hyp",
+        "caption": null,
+        "url": "/api/media/file/image%2035.svg",
+        "thumbnailURL": null,
+        "filename": "image 35.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 37416,
+        "width": 204,
+        "height": 92,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/WhatsApp%20Video%202025-06-24%20at%2014.51.29%20(1)%202.png",
+        "thumbnailURL": "/api/media/file/WhatsApp%20Video%202025-06-24%20at%2014.51.29%20(1)%202-300x665.png",
+        "filename": "WhatsApp Video 2025-06-24 at 14.51.29 (1) 2.png",
+        "mimeType": "image/png",
+        "filesize": 680847,
+        "width": 440,
+        "height": 975,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "/api/media/file/WhatsApp Video 2025-06-24 at 14.51.29 (1) 2-300x665.png",
+            "width": 300,
+            "height": 665,
+            "mimeType": "image/png",
+            "filesize": 379559,
+            "filename": "WhatsApp Video 2025-06-24 at 14.51.29 (1) 2-300x665.png"
+          },
+          "square": {
+            "url": "/api/media/file/WhatsApp Video 2025-06-24 at 14.51.29 (1) 2-500x500.png",
+            "width": 500,
+            "height": 500,
+            "mimeType": "image/png",
+            "filesize": 432407,
+            "filename": "WhatsApp Video 2025-06-24 at 14.51.29 (1) 2-500x500.png"
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": "/api/media/file/WhatsApp Video 2025-06-24 at 14.51.29 (1) 2-1200x630.png",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/png",
+            "filesize": 737777,
+            "filename": "WhatsApp Video 2025-06-24 at 14.51.29 (1) 2-1200x630.png"
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/%D7%90%D7%A6%D7%9C%D7%A0%D7%95%20%D7%94%D7%A9%D7%99%D7%A8%D7%95%D7%AA%20%D7%A0%D7%9E%D7%93%D7%93%20%D7%90%D7%97%D7%A8%D7%99%20%D7%94%D7%A7%D7%A0%D7%99%D7%94%201.png",
+        "thumbnailURL": null,
+        "filename": "אצלנו השירות נמדד אחרי הקניה 1.png",
+        "mimeType": "image/png",
+        "filesize": 6863,
+        "width": 174,
+        "height": 51,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/Video.png",
+        "thumbnailURL": "/api/media/file/Video-300x155.png",
+        "filename": "Video.png",
+        "mimeType": "image/png",
+        "filesize": 2811014,
+        "width": 1920,
+        "height": 994,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "/api/media/file/Video-300x155.png",
+            "width": 300,
+            "height": 155,
+            "mimeType": "image/png",
+            "filesize": 121349,
+            "filename": "Video-300x155.png"
+          },
+          "square": {
+            "url": "/api/media/file/Video-500x500.png",
+            "width": 500,
+            "height": 500,
+            "mimeType": "image/png",
+            "filesize": 423012,
+            "filename": "Video-500x500.png"
+          },
+          "small": {
+            "url": "/api/media/file/Video-600x311.png",
+            "width": 600,
+            "height": 311,
+            "mimeType": "image/png",
+            "filesize": 414853,
+            "filename": "Video-600x311.png"
+          },
+          "medium": {
+            "url": "/api/media/file/Video-900x466.png",
+            "width": 900,
+            "height": 466,
+            "mimeType": "image/png",
+            "filesize": 829329,
+            "filename": "Video-900x466.png"
+          },
+          "large": {
+            "url": "/api/media/file/Video-1400x725.png",
+            "width": 1400,
+            "height": 725,
+            "mimeType": "image/png",
+            "filesize": 1778410,
+            "filename": "Video-1400x725.png"
+          },
+          "xlarge": {
+            "url": "/api/media/file/Video-1920x994.png",
+            "width": 1920,
+            "height": 994,
+            "mimeType": "image/png",
+            "filesize": 2811014,
+            "filename": "Video-1920x994.png"
+          },
+          "og": {
+            "url": "/api/media/file/Video-1200x630.png",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/png",
+            "filesize": 1378855,
+            "filename": "Video-1200x630.png"
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/Screen%20Recording%202025-08-04%20at%2010.25.23%201.png",
+        "thumbnailURL": "/api/media/file/Screen%20Recording%202025-08-04%20at%2010.25.23%201-300x128.png",
+        "filename": "Screen Recording 2025-08-04 at 10.25.23 1.png",
+        "mimeType": "image/png",
+        "filesize": 114581,
+        "width": 379,
+        "height": 162,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "/api/media/file/Screen Recording 2025-08-04 at 10.25.23 1-300x128.png",
+            "width": 300,
+            "height": 128,
+            "mimeType": "image/png",
+            "filesize": 81435,
+            "filename": "Screen Recording 2025-08-04 at 10.25.23 1-300x128.png"
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%9C%D7%9C%D7%90%20%D7%A9%D7%9D%20(18).mp4",
+        "thumbnailURL": null,
+        "filename": "עיצוב ללא שם (18).mp4",
+        "mimeType": "video/mp4",
+        "filesize": 21138113,
+        "width": null,
+        "height": null,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/Screen%20Recording%202025-08-04%20at%2010.25.23.mp4",
+        "thumbnailURL": null,
+        "filename": "Screen Recording 2025-08-04 at 10.25.23.mp4",
+        "mimeType": "video/mp4",
+        "filesize": 41886623,
+        "width": null,
+        "height": null,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/AdobeStock_626257937_Video_HD_Preview.mp4",
+        "thumbnailURL": null,
+        "filename": "AdobeStock_626257937_Video_HD_Preview.mp4",
+        "mimeType": "video/mp4",
+        "filesize": 8830219,
+        "width": null,
+        "height": null,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/One%20place.svg",
+        "thumbnailURL": null,
+        "filename": "One place.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 2580,
+        "width": 57,
+        "height": 57,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/drag-and-drop.svg",
+        "thumbnailURL": null,
+        "filename": "drag-and-drop.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 8948,
+        "width": 58,
+        "height": 58,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
+        "url": "/api/media/file/B2B.svg",
+        "thumbnailURL": null,
+        "filename": "B2B.svg",
+        "mimeType": "image/svg+xml",
+        "filesize": 8250,
+        "width": 60,
+        "height": 60,
+        "focalX": null,
+        "focalY": null,
+        "sizes": {
+          "thumbnail": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
+      {
+        "alt": null,
+        "caption": null,
         "url": "/api/media/file/globe%201.png",
         "thumbnailURL": null,
         "filename": "globe 1.png",
@@ -74,15 +2417,15 @@
         }
       },
       {
-        "alt": null,
+        "alt": "התממשקות מלאה עם קומקס",
         "caption": null,
-        "url": "/api/media/file/logo.svg",
+        "url": "/api/media/file/image%2036.svg",
         "thumbnailURL": "/api/media/file/image-post3-2-300x169.webp",
-        "filename": "logo.svg",
+        "filename": "image 36.svg",
         "mimeType": "image/svg+xml",
-        "filesize": 9097,
-        "width": 198,
-        "height": 44,
+        "filesize": 0,
+        "width": 342,
+        "height": 98,
         "focalX": 50,
         "focalY": 50,
         "sizes": {
@@ -368,15 +2711,33 @@
           "subtitlePhrases": [
             {
               "id": "68a36539219acaa2b28b51f0",
-              "phrase": "With Full Control Across Every Sales Channel"
+              "line1": null,
+              "line2": null,
+              "phrase": "That Runs Every Channel From One RMS"
             },
             {
               "id": "68a3658449d1ee05f8c044c9",
-              "phrase": "Second Phrase Testing Word Rotation 123"
+              "line1": null,
+              "line2": null,
+              "phrase": "That Keeps Your Entire Retail Connected And In Sync"
             },
             {
               "id": "68a365a149d1ee05f8c044cb",
-              "phrase": "Third Phrase Testing Word Rotation 456"
+              "line1": null,
+              "line2": null,
+              "phrase": "That Loads Fast, Ranks Higher, Converts Better"
+            },
+            {
+              "id": "68a6adbde39ba06ca8e83f11",
+              "line1": null,
+              "line2": null,
+              "phrase": "That Frees Your Team To Move Fast No IT, No Bottlenecks"
+            },
+            {
+              "id": "68ab289a30fa051d8ccd3e40",
+              "line1": null,
+              "line2": null,
+              "phrase": "That Delivers A Seamless Customer Journey"
             }
           ],
           "description": null,
@@ -396,17 +2757,24 @@
               }
             }
           ],
-          "media": 5
+          "media": {
+            "desktop": 39,
+            "mobile": 40
+          }
         },
         "layout": [
           {
             "id": "689e6eeff8eaac3b904f13b3",
-            "title": "What If Running Retail Felt Simple Again?",
+            "htmlId": "why-retailos",
+            "title1": "What if running retail felt",
+            "title2": "simple again?",
+            "title3": null,
             "blockName": "Title 1",
             "blockType": "titleBlock"
           },
           {
             "id": "689e6fb6f8eaac3b904f13b5",
+            "htmlId": null,
             "blockName": "Two Columns",
             "rows": [
               {
@@ -415,7 +2783,7 @@
                   "type": "text",
                   "text": {
                     "headline": "The Problem",
-                    "title": "You’re trying to grow but your tech is slowing you down.",
+                    "title": "You’re patching platforms, forcing integrations, and praying nothing breaks",
                     "bodyText": {
                       "root": {
                         "type": "root",
@@ -471,6 +2839,8 @@
                   "media": {
                     "media": null,
                     "overlayText": null,
+                    "overlayLines": [],
+                    "hideOverlayOnDesktop": null,
                     "enableLink": null,
                     "link": {
                       "type": "reference",
@@ -497,6 +2867,8 @@
                   "media": {
                     "media": 6,
                     "overlayText": null,
+                    "overlayLines": [],
+                    "hideOverlayOnDesktop": null,
                     "enableLink": null,
                     "link": {
                       "type": "reference",
@@ -526,6 +2898,8 @@
                   "media": {
                     "media": 7,
                     "overlayText": null,
+                    "overlayLines": [],
+                    "hideOverlayOnDesktop": null,
                     "enableLink": null,
                     "link": {
                       "type": "reference",
@@ -595,6 +2969,8 @@
                   "media": {
                     "media": null,
                     "overlayText": null,
+                    "overlayLines": [],
+                    "hideOverlayOnDesktop": null,
                     "enableLink": null,
                     "link": {
                       "type": "reference",
@@ -651,13 +3027,15 @@
                         "value": 1
                       },
                       "url": null,
-                      "label": "Book a Demo >",
+                      "label": "Book a Demo",
                       "newTab": null
                     }
                   },
                   "media": {
                     "media": null,
                     "overlayText": null,
+                    "overlayLines": [],
+                    "hideOverlayOnDesktop": null,
                     "enableLink": null,
                     "link": {
                       "type": "reference",
@@ -682,8 +3060,10 @@
                     }
                   },
                   "media": {
-                    "media": 8,
+                    "media": 6,
                     "overlayText": null,
+                    "overlayLines": [],
+                    "hideOverlayOnDesktop": null,
                     "enableLink": null,
                     "link": {
                       "type": "reference",
@@ -711,8 +3091,19 @@
                     }
                   },
                   "media": {
-                    "media": 6,
+                    "media": 42,
                     "overlayText": null,
+                    "overlayLines": [
+                      {
+                        "id": "68b02fcf8cf860738ed5fc1a",
+                        "line": "Watch RetailOs"
+                      },
+                      {
+                        "id": "68b02fd98cf860738ed5fc1f",
+                        "line": "in Action in 90 Seconds"
+                      }
+                    ],
+                    "hideOverlayOnDesktop": true,
                     "enableLink": null,
                     "link": {
                       "type": "reference",
@@ -738,12 +3129,35 @@
                   },
                   "media": {
                     "media": 7,
-                    "overlayText": null,
-                    "enableLink": null,
+                    "overlayText": "",
+                    "overlayLines": [
+                      {
+                        "id": "68b030028cf860738ed5fc2e",
+                        "line": "Watch"
+                      },
+                      {
+                        "id": "68b0300c8cf860738ed5fc33",
+                        "line": "RetailOs"
+                      },
+                      {
+                        "id": "68b0300e8cf860738ed5fc39",
+                        "line": "in Action"
+                      },
+                      {
+                        "id": "68b030118cf860738ed5fc3f",
+                        "line": "in 90 Seconds"
+                      }
+                    ],
+                    "hideOverlayOnDesktop": null,
+                    "enableLink": true,
                     "link": {
                       "type": "reference",
+                      "reference": {
+                        "relationTo": "pages",
+                        "value": 1
+                      },
                       "url": null,
-                      "label": null,
+                      "label": "Book a Demo",
                       "newTab": null
                     }
                   }
@@ -753,15 +3167,12 @@
             "blockType": "twoColumnRow"
           },
           {
-            "id": "689e7173f8eaac3b904f13c6",
-            "title": "What You Actually Get. 3 Critical Outcomes",
-            "blockName": "Title 2",
-            "blockType": "titleBlock"
-          },
-          {
             "id": "689e718ff8eaac3b904f13c9",
+            "htmlId": "what-you-get",
+            "title1": "what you actually get.",
+            "title2": " 3 critical outcomes.",
+            "title3": null,
             "cardHeight": "550",
-            "cardWidth": "550",
             "blockName": "Horizontal Cards",
             "cards": [
               {
@@ -770,6 +3181,16 @@
                 "description": "Give them the freedom to create, launch, and update everything from landing pages to prices to promotions using simple no-code tools.\nNo bottlenecks. No dependencies. Just go.",
                 "image": 7,
                 "enableLink": null,
+                "titleLines": [
+                  {
+                    "id": "68b039b39b5d9d09d38ba7f8",
+                    "line": "Let your marketing team move"
+                  },
+                  {
+                    "id": "68b039bd9b5d9d09d38ba7fa",
+                    "line": " at the speed of retail "
+                  }
+                ],
                 "link": {
                   "type": "reference",
                   "url": null,
@@ -783,6 +3204,7 @@
                 "description": "Give them the freedom to create, launch, and update everything from landing pages to prices to promotions using simple no-code tools.\nNo bottlenecks. No dependencies. Just go.",
                 "image": 7,
                 "enableLink": null,
+                "titleLines": [],
                 "link": {
                   "type": "reference",
                   "url": null,
@@ -796,6 +3218,7 @@
                 "description": "Give them the freedom to create, launch, and update everything from landing pages to prices to promotions using simple no-code tools.\nNo bottlenecks. No dependencies. Just go.",
                 "image": 7,
                 "enableLink": null,
+                "titleLines": [],
                 "link": {
                   "type": "reference",
                   "url": null,
@@ -809,6 +3232,7 @@
                 "description": "Give them the freedom to create, launch, and update everything from landing pages to prices to promotions using simple no-code tools.\nNo bottlenecks. No dependencies. Just go.",
                 "image": 7,
                 "enableLink": null,
+                "titleLines": [],
                 "link": {
                   "type": "reference",
                   "url": null,
@@ -821,109 +3245,39 @@
           },
           {
             "id": "689e71d5f8eaac3b904f13df",
-            "title": "Retailers who stopped patching and started growing",
+            "htmlId": "success-stories",
+            "title1": "Retailers who stopped patching",
+            "title2": "and started growing",
+            "title3": null,
             "description": null,
             "backgroundImage": 5,
             "blockName": "R",
             "retailers": [
               {
                 "id": "689e71edf8eaac3b904f13e1",
-                "logo": 6,
-                "coverImage": 7,
+                "logo": 18,
+                "coverImage": 39,
                 "title": null,
                 "subtitle": null,
-                "points": {
-                  "root": {
-                    "type": "root",
-                    "format": "",
-                    "indent": 0,
-                    "version": 1,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      }
-                    ],
-                    "direction": "ltr"
-                  }
-                },
                 "enableLink": false,
+                "points": [
+                  {
+                    "id": "68a6b8c5dab0187321a9e1a0",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8dddab0187321a9e1ab",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8e1dab0187321a9e1b1",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8dbdab0187321a9e1a5",
+                    "point": "A dedicated supplier portal with personalized access"
+                  }
+                ],
                 "link": {
                   "type": "reference",
                   "url": null,
@@ -932,103 +3286,30 @@
                 }
               },
               {
-                "id": "689e838f782dfc45ba9316c1",
-                "logo": 6,
-                "coverImage": 7,
+                "id": "68a6b8f8dab0187321a9e1eb",
+                "logo": 18,
+                "coverImage": 16,
                 "title": null,
                 "subtitle": null,
-                "points": {
-                  "root": {
-                    "type": "root",
-                    "format": "",
-                    "indent": 0,
-                    "version": 1,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      }
-                    ],
-                    "direction": "ltr"
-                  }
-                },
                 "enableLink": false,
+                "points": [
+                  {
+                    "id": "68a6b8f8dab0187321a9e1ed",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8f8dab0187321a9e1ef",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8f8dab0187321a9e1f1",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8f8dab0187321a9e1f3",
+                    "point": "A dedicated supplier portal with personalized access"
+                  }
+                ],
                 "link": {
                   "type": "reference",
                   "url": null,
@@ -1037,103 +3318,30 @@
                 }
               },
               {
-                "id": "689e8391782dfc45ba9316c4",
-                "logo": 6,
-                "coverImage": 7,
+                "id": "68a6b8fadab0187321a9e201",
+                "logo": 18,
+                "coverImage": 16,
                 "title": null,
                 "subtitle": null,
-                "points": {
-                  "root": {
-                    "type": "root",
-                    "format": "",
-                    "indent": 0,
-                    "version": 1,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      }
-                    ],
-                    "direction": "ltr"
-                  }
-                },
                 "enableLink": false,
+                "points": [
+                  {
+                    "id": "68a6b8fadab0187321a9e203",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8fadab0187321a9e205",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8fadab0187321a9e207",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8fadab0187321a9e209",
+                    "point": "A dedicated supplier portal with personalized access"
+                  }
+                ],
                 "link": {
                   "type": "reference",
                   "url": null,
@@ -1142,103 +3350,30 @@
                 }
               },
               {
-                "id": "689e8393782dfc45ba9316c7",
-                "logo": 6,
-                "coverImage": 7,
+                "id": "68a6b8f6dab0187321a9e1d5",
+                "logo": 18,
+                "coverImage": 16,
                 "title": null,
                 "subtitle": null,
-                "points": {
-                  "root": {
-                    "type": "root",
-                    "format": "",
-                    "indent": 0,
-                    "version": 1,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      }
-                    ],
-                    "direction": "ltr"
-                  }
-                },
                 "enableLink": false,
+                "points": [
+                  {
+                    "id": "68a6b8f6dab0187321a9e1d7",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8f6dab0187321a9e1d9",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8f6dab0187321a9e1db",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8f6dab0187321a9e1dd",
+                    "point": "A dedicated supplier portal with personalized access"
+                  }
+                ],
                 "link": {
                   "type": "reference",
                   "url": null,
@@ -1247,103 +3382,30 @@
                 }
               },
               {
-                "id": "689e8396782dfc45ba9316ca",
-                "logo": 6,
-                "coverImage": 7,
+                "id": "68a6b8f5dab0187321a9e1bf",
+                "logo": 18,
+                "coverImage": 16,
                 "title": null,
                 "subtitle": null,
-                "points": {
-                  "root": {
-                    "type": "root",
-                    "format": "",
-                    "indent": 0,
-                    "version": 1,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      },
-                      {
-                        "type": "paragraph",
-                        "format": "",
-                        "indent": 0,
-                        "version": 1,
-                        "children": [
-                          {
-                            "mode": "normal",
-                            "text": "A B2C eCommerce website",
-                            "type": "text",
-                            "style": "",
-                            "detail": 0,
-                            "format": 0,
-                            "version": 1
-                          }
-                        ],
-                        "direction": "ltr",
-                        "textStyle": "",
-                        "textFormat": 0
-                      }
-                    ],
-                    "direction": "ltr"
-                  }
-                },
                 "enableLink": false,
+                "points": [
+                  {
+                    "id": "68a6b8f5dab0187321a9e1c1",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8f5dab0187321a9e1c3",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8f5dab0187321a9e1c5",
+                    "point": "A B2B eCommerce website"
+                  },
+                  {
+                    "id": "68a6b8f5dab0187321a9e1c7",
+                    "point": "A dedicated supplier portal with personalized access"
+                  }
+                ],
                 "link": {
                   "type": "reference",
                   "url": null,
@@ -1356,12 +3418,16 @@
           },
           {
             "id": "689ee45d782dfc45ba9316d1",
-            "title": "Grow Sales. Cut Costs. Launch Faster.",
+            "htmlId": null,
+            "title1": "Grow sales. Cut costs.",
+            "title2": "Launch faster.",
+            "title3": null,
             "blockName": "Title 3",
             "blockType": "titleBlock"
           },
           {
             "id": "689ee491782dfc45ba9316d3",
+            "htmlId": null,
             "title": null,
             "description": null,
             "layout": "row",
@@ -1378,10 +3444,12 @@
                 "percentageRangeStart": null,
                 "percentageRangeEnd": null,
                 "isPercentage": true,
-                "label": " Savings on Design  and Development Costs",
+                "labelLine1": " Savings on Design  and",
+                "labelLine2": "Development Costs",
+                "label": "",
                 "animationStartValue": 0,
                 "direction": "up",
-                "delay": 1,
+                "delay": 0,
                 "decimalPlaces": 0
               },
               {
@@ -1394,10 +3462,12 @@
                 "percentageRangeStart": null,
                 "percentageRangeEnd": null,
                 "isPercentage": true,
-                "label": "Increase in  Total Sales",
+                "labelLine1": "Increase in",
+                "labelLine2": "Total Sales",
+                "label": "",
                 "animationStartValue": 0,
                 "direction": "up",
-                "delay": 1,
+                "delay": 0,
                 "decimalPlaces": 0
               },
               {
@@ -1410,10 +3480,12 @@
                 "percentageRangeStart": 25,
                 "percentageRangeEnd": 40,
                 "isPercentage": true,
-                "label": "Savings on  Operational Costs",
+                "labelLine1": "Savings on",
+                "labelLine2": "Operational Costs",
+                "label": "",
                 "animationStartValue": 0,
                 "direction": "up",
-                "delay": 1,
+                "delay": 0,
                 "decimalPlaces": 0
               },
               {
@@ -1426,10 +3498,12 @@
                 "percentageRangeStart": null,
                 "percentageRangeEnd": null,
                 "isPercentage": false,
-                "label": "Months  Average ROI Payback",
+                "labelLine1": "Months",
+                "labelLine2": "Average ROI Payback",
+                "label": "",
                 "animationStartValue": 0,
                 "direction": "up",
-                "delay": 1,
+                "delay": 0,
                 "decimalPlaces": 0
               }
             ],
@@ -1437,12 +3511,16 @@
           },
           {
             "id": "689ee625782dfc45ba9316dc",
-            "title": "This is What Retail Freedom Looks Like",
+            "htmlId": "how-it-works",
+            "title1": "This is what retail freedom",
+            "title2": "looks like.",
+            "title3": null,
             "blockName": "Title 4",
             "blockType": "titleBlock"
           },
           {
             "id": "689ee741de58df66b6b89b2f",
+            "htmlId": null,
             "title": null,
             "description": null,
             "layout": "threeColumn",
@@ -1450,10 +3528,11 @@
             "cards": [
               {
                 "id": "689ee761de58df66b6b89b30",
-                "icon": 6,
+                "icon": 11,
                 "title": "Your marketing team controls the site. no dev. no delays.",
                 "description": "Drag. Drop. Done. Move content, update pages, and launch campaigns without waiting on anyone",
                 "backgroundColor": "teal",
+                "backgroundVideo": 39,
                 "button": {
                   "text": "Book a Demo",
                   "link": {
@@ -1470,10 +3549,11 @@
               },
               {
                 "id": "689ee7bcde58df66b6b89b32",
-                "icon": 6,
+                "icon": 12,
                 "title": "One place to manage every sales channel.",
                 "description": "Update prices, inventory, and catalogs across POS, marketplaces, and your site in real time, from one screen.",
                 "backgroundColor": "mustard",
+                "backgroundVideo": null,
                 "button": {
                   "text": "Book a Demo",
                   "link": {
@@ -1490,10 +3570,11 @@
               },
               {
                 "id": "689ee7bede58df66b6b89b35",
-                "icon": 6,
+                "icon": 10,
                 "title": "Let your B2B buyers serve themselves.",
                 "description": "Quotes, orders, returns, inventory alerts, invoices, and more everything in one place, fully synced with your system",
                 "backgroundColor": "darkGray",
+                "backgroundVideo": null,
                 "button": {
                   "text": "Book a Demo",
                   "link": {
@@ -1513,12 +3594,16 @@
           },
           {
             "id": "689ee7f9de58df66b6b89b38",
-            "title": " Works with what you have. Powers what’s next.",
+            "htmlId": "partners",
+            "title1": " Works with what you have.",
+            "title2": "Powers what’s next.",
+            "title3": null,
             "blockName": "Title 5",
             "blockType": "titleBlock"
           },
           {
             "id": "689ee811de58df66b6b89b3a",
+            "htmlId": null,
             "description": {
               "root": {
                 "type": "root",
@@ -1607,7 +3692,7 @@
             "logos": [
               {
                 "id": "689ee83fde58df66b6b89b3b",
-                "logo": 8,
+                "logo": 37,
                 "companyName": null,
                 "highlighted": false,
                 "enableLink": false,
@@ -1620,7 +3705,7 @@
               },
               {
                 "id": "689ee876de58df66b6b89b3d",
-                "logo": 8,
+                "logo": 20,
                 "companyName": null,
                 "highlighted": false,
                 "enableLink": false,
@@ -1633,7 +3718,7 @@
               },
               {
                 "id": "689ee879de58df66b6b89b40",
-                "logo": 8,
+                "logo": 21,
                 "companyName": null,
                 "highlighted": false,
                 "enableLink": false,
@@ -1646,7 +3731,7 @@
               },
               {
                 "id": "689ee87bde58df66b6b89b43",
-                "logo": 8,
+                "logo": 22,
                 "companyName": null,
                 "highlighted": false,
                 "enableLink": false,
@@ -1659,7 +3744,7 @@
               },
               {
                 "id": "689ee87cde58df66b6b89b46",
-                "logo": 8,
+                "logo": 23,
                 "companyName": null,
                 "highlighted": false,
                 "enableLink": false,
@@ -1672,7 +3757,124 @@
               },
               {
                 "id": "689ee87ede58df66b6b89b49",
-                "logo": 8,
+                "logo": 24,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "68ab213d30fa051d8ccd3e37",
+                "logo": 25,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "68ab215030fa051d8ccd3e38",
+                "logo": 26,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "68ab215f30fa051d8ccd3e39",
+                "logo": 27,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "68ab216d30fa051d8ccd3e3a",
+                "logo": 28,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "68ab217a30fa051d8ccd3e3b",
+                "logo": 30,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "68ab219630fa051d8ccd3e3c",
+                "logo": 31,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "68ab21ae30fa051d8ccd3e3d",
+                "logo": 32,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "68ab21bd30fa051d8ccd3e3e",
+                "logo": 33,
+                "companyName": null,
+                "highlighted": false,
+                "enableLink": false,
+                "link": {
+                  "type": "reference",
+                  "url": null,
+                  "label": null,
+                  "newTab": null
+                }
+              },
+              {
+                "id": "68ab21d830fa051d8ccd3e3f",
+                "logo": 34,
                 "companyName": null,
                 "highlighted": false,
                 "enableLink": false,
@@ -1694,7 +3896,7 @@
         ],
         "meta": {
           "title": "Home",
-          "image": null,
+          "image": 8,
           "description": "RetailOs.ai"
         },
         "publishedAt": "2025-08-14T23:13:42.058Z",
@@ -1713,9 +3915,19 @@
         "email": "kalhara.ja@gmail.com",
         "sessions": [
           {
-            "id": "5ef77642-bc2f-477d-ac37-7fa39b647222",
-            "createdAt": "2025-08-18T18:20:58.319Z",
-            "expiresAt": "2025-08-18T20:20:58.319Z"
+            "id": "d9029a99-3793-4285-8b5e-8c0aa825a2f6",
+            "createdAt": "2025-08-28T09:24:01.359Z",
+            "expiresAt": "2025-08-28T11:24:01.359Z"
+          },
+          {
+            "id": "a671d5fc-03b8-44d2-a511-8afbba4ab67b",
+            "createdAt": "2025-08-28T09:52:25.649Z",
+            "expiresAt": "2025-08-28T11:52:25.649Z"
+          },
+          {
+            "id": "6e69018b-3eaa-4d78-8ae3-dbb30012d692",
+            "createdAt": "2025-08-28T09:56:19.082Z",
+            "expiresAt": "2025-08-28T11:56:19.082Z"
           }
         ]
       }
@@ -1726,7 +3938,7 @@
       "id": 1,
       "logo": {
         "type": "customImage",
-        "customImage": 8,
+        "customImage": 36,
         "companyName": "RetailOs",
         "logoColor": "default",
         "textColor": "white"
@@ -1737,13 +3949,13 @@
           "hasDropdown": null,
           "dropdownItems": [],
           "link": {
-            "type": "reference",
+            "type": "custom",
             "newTab": null,
             "reference": {
               "relationTo": "pages",
               "value": 1
             },
-            "url": null,
+            "url": "/#why-retailos",
             "label": "Why RetailOs"
           }
         },
@@ -1752,13 +3964,13 @@
           "hasDropdown": null,
           "dropdownItems": [],
           "link": {
-            "type": "reference",
+            "type": "custom",
             "newTab": null,
             "reference": {
               "relationTo": "pages",
               "value": 1
             },
-            "url": null,
+            "url": "/#what-you-get",
             "label": "What You Get"
           }
         },
@@ -1767,13 +3979,13 @@
           "hasDropdown": null,
           "dropdownItems": [],
           "link": {
-            "type": "reference",
+            "type": "custom",
             "newTab": null,
             "reference": {
               "relationTo": "pages",
               "value": 1
             },
-            "url": null,
+            "url": "/#success-stories",
             "label": "Success Stories"
           }
         },
@@ -1782,13 +3994,13 @@
           "hasDropdown": null,
           "dropdownItems": [],
           "link": {
-            "type": "reference",
+            "type": "custom",
             "newTab": null,
             "reference": {
               "relationTo": "pages",
               "value": 1
             },
-            "url": null,
+            "url": "/#how-it-works",
             "label": "How It Works"
           }
         }
@@ -1807,7 +4019,7 @@
         "icon": 9,
         "size": "large"
       },
-      "updatedAt": "2025-08-18T18:34:07.789Z",
+      "updatedAt": "2025-08-26T13:14:41.484Z",
       "createdAt": "2025-08-15T07:39:28.035Z",
       "globalType": "header"
     },
@@ -1817,9 +4029,9 @@
       "headline": "Stop Managing Tech.",
       "headlineHighlight": "Start Growing",
       "headlineEnd": "Your Retail Business.",
-      "subheadline": "We'll Show You How RetailOs Helps You Move Faster, Simplify Operations, And Sell Smarter Starting Today",
+      "subheadline": "We’ll show you how RetailOs helps you move faster, simplify operations, and sell smarter starting today.",
       "emailPlaceholder": "Enter your email...",
-      "buttonText": "Book a demo >",
+      "buttonText": "Book a demo",
       "contactInfo": "Prefer To Talk Now? Call Us +972-54-586-3718",
       "socialMedia": [
         {
@@ -2947,7 +5159,7 @@
           }
         }
       },
-      "updatedAt": "2025-08-16T08:20:13.118Z",
+      "updatedAt": "2025-08-27T07:18:26.092Z",
       "createdAt": "2025-08-15T07:59:26.989Z",
       "globalType": "footer"
     },
@@ -2986,7 +5198,7 @@
       "theme": "light"
     }
   },
-  "generatedAt": "2025-08-18T19:54:08.821Z",
+  "generatedAt": "2025-08-28T11:29:24.620Z",
   "version": "1.0.0",
-  "description": "seed_1"
+  "description": "Seed file generated from current database data"
 }
