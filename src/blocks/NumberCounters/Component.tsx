@@ -86,11 +86,26 @@ const getCounterDisplay = (counter: NumberCountersBlockType['counters'][0]) => {
 }
 
 // Individual Counter Component
+const formatLabelTwoLines = (label?: string | null, l1?: string | null, l2?: string | null) => {
+  const line1 = (l1 || '').trim()
+  const line2 = (l2 || '').trim()
+  if (line1 || line2) return `${line1}\n${line2}`.trim()
+  const text = String(label ?? '').trim()
+  if (!text) return ''
+  const words = text.split(/\s+/)
+  if (words.length <= 1) return text
+  const mid = Math.floor(words.length / 2)
+  return `${words.slice(0, mid).join(' ')}\n${words.slice(mid).join(' ')}`
+}
 const Counter: React.FC<{
   counter: NumberCountersBlockType['counters'][0]
   isVisible: boolean
 }> = ({ counter, isVisible }) => {
-  const { label } = counter
+  const labelText = formatLabelTwoLines(
+    (counter as any).label,
+    (counter as any).labelLine1,
+    (counter as any).labelLine2,
+  )
   const {
     displayValue,
     numericValue,
@@ -115,10 +130,10 @@ const Counter: React.FC<{
               direction={direction}
               delay={delay}
               decimalPlaces={decimalPlaces}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
+              className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]"
             />
             {isPercentage && (
-              <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
+              <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white ml-1 lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
                 %
               </span>
             )}
@@ -126,11 +141,11 @@ const Counter: React.FC<{
         ) : (
           // For ranges and percentages, show the full text without animation
           <div className="flex items-center">
-            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
+            <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
               {displayValue}
             </span>
             {isPercentage && (
-              <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
+              <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white ml-1 lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
                 %
               </span>
             )}
@@ -139,8 +154,8 @@ const Counter: React.FC<{
       </div>
 
       {/* Label */}
-      <p className="text-sm md:text-lg lg:text-xl xl:text-3xl max-w-sm text-white font-normal text-center capitalize leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[39px] font-roboto">
-        {label}
+      <p className="whitespace-pre-line text-sm md:text-lg lg:text-xl xl:text-3xl max-w-sm text-white font-normal text-center capitalize leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[39px] font-roboto">
+        {labelText}
       </p>
     </div>
   )
@@ -151,7 +166,12 @@ const RangeCounter: React.FC<{
   counter: NumberCountersBlockType['counters'][0]
   isVisible: boolean
 }> = ({ counter, isVisible }) => {
-  const { label, rangeStart, rangeEnd, isPercentage, delay = 0 } = counter
+  const { rangeStart, rangeEnd, isPercentage, delay = 0 } = counter
+  const labelText = formatLabelTwoLines(
+    (counter as any).label,
+    (counter as any).labelLine1,
+    (counter as any).labelLine2,
+  )
 
   return (
     <div className="flex flex-col items-center text-center">
@@ -166,22 +186,22 @@ const RangeCounter: React.FC<{
               direction="up"
               delay={delay || 0}
               decimalPlaces={0}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
+              className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]"
             />
           ) : (
-            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
+            <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
               0
             </span>
           )}
           {isPercentage && (
-            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
+            <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white ml-1 lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
               %
             </span>
           )}
         </div>
 
         {/* Separator */}
-        <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
+        <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
           -
         </span>
 
@@ -194,15 +214,15 @@ const RangeCounter: React.FC<{
               direction="up"
               delay={(delay || 0) + 0.5}
               decimalPlaces={0}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
+              className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]"
             />
           ) : (
-            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
+            <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
               0
             </span>
           )}
           {isPercentage && (
-            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
+            <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white ml-1 lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
               %
             </span>
           )}
@@ -210,8 +230,8 @@ const RangeCounter: React.FC<{
       </div>
 
       {/* Label */}
-      <p className="text-sm md:text-lg lg:text-xl xl:text-3xl text-white font-normal text-center capitalize leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[39px] font-roboto max-w-sm">
-        {label}
+      <p className="whitespace-pre-line text-sm md:text-lg lg:text-xl xl:text-3xl text-white font-normal text-center capitalize leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[39px] font-roboto max-w-sm">
+        {labelText}
       </p>
     </div>
   )
@@ -222,7 +242,12 @@ const PercentageRangeCounter: React.FC<{
   counter: NumberCountersBlockType['counters'][0]
   isVisible: boolean
 }> = ({ counter, isVisible }) => {
-  const { label, percentageRangeStart, percentageRangeEnd, delay = 0 } = counter
+  const { percentageRangeStart, percentageRangeEnd, delay = 0 } = counter
+  const labelText = formatLabelTwoLines(
+    (counter as any).label,
+    (counter as any).labelLine1,
+    (counter as any).labelLine2,
+  )
 
   return (
     <div className="flex flex-col items-center text-center">
@@ -237,20 +262,20 @@ const PercentageRangeCounter: React.FC<{
               direction="up"
               delay={delay || 0}
               decimalPlaces={0}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
+              className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]"
             />
           ) : (
-            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
+            <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
               0
             </span>
           )}
-          <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
+          <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white ml-1 lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
             %
           </span>
         </div>
 
         {/* Separator */}
-        <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
+        <span className="font-almoni text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-normal text-white">
           -
         </span>
 
@@ -263,22 +288,22 @@ const PercentageRangeCounter: React.FC<{
               direction="up"
               delay={(delay || 0) + 0.5}
               decimalPlaces={0}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white"
+              className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]"
             />
           ) : (
-            <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white">
+            <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
               0
             </span>
           )}
-          <span className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-white ml-1">
+          <span className="font-almoni text-5xl md:text-5xl lg:text-[80px] xl:text-[80px] 2xl:text-[80px] font-normal text-white ml-1 lg:leading-[67.551px] xl:leading-[67.551px] 2xl:leading-[67.551px]">
             %
           </span>
         </div>
       </div>
 
       {/* Label */}
-      <p className="text-sm md:text-lg lg:text-xl xl:text-3xl text-white font-normal text-center capitalize leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[39px] font-roboto max-w-sm">
-        {label}
+      <p className="whitespace-pre-line text-sm md:text-lg lg:text-xl xl:text-3xl text-white font-normal text-center capitalize leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[39px] font-roboto max-w-sm">
+        {labelText}
       </p>
     </div>
   )

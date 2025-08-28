@@ -4,6 +4,7 @@
 
 export const MAX_FILE_SIZE = 50 * 1024 * 1024 // 50MB in bytes
 export const RECOMMENDED_IMAGE_SIZE = 500 * 1024 // 500KB in bytes
+export const VERCEL_PAYLOAD_LIMIT = 4.5 * 1024 * 1024 // 4.5MB Vercel default limit
 
 export const SUPPORTED_IMAGE_TYPES = [
   'image/jpeg',
@@ -36,6 +37,14 @@ export const validateFileSize = (file: File): { valid: boolean; message?: string
     return {
       valid: false,
       message: `File size (${formatFileSize(file.size)}) exceeds the maximum limit of ${formatFileSize(MAX_FILE_SIZE)}`,
+    }
+  }
+
+  // Check against Vercel payload limit
+  if (file.size > VERCEL_PAYLOAD_LIMIT) {
+    return {
+      valid: false,
+      message: `File size (${formatFileSize(file.size)}) exceeds Vercel's payload limit of ${formatFileSize(VERCEL_PAYLOAD_LIMIT)}. Please use a smaller file or contact support.`,
     }
   }
 
@@ -80,8 +89,11 @@ export const formatFileSize = (bytes: number): string => {
  * Get upload error message for common issues
  */
 export const getUploadErrorMessage = (error: Error | { message?: string }): string => {
-  if (error.message?.includes('content too large')) {
-    return 'File size is too large. Please try a smaller file (max 10MB) or contact support if you need to upload larger files.'
+  if (
+    error.message?.includes('content too large') ||
+    error.message?.includes('payload too large')
+  ) {
+    return "File size is too large for Vercel's payload limit. Please try a smaller file (under 4.5MB) or contact support if you need to upload larger files."
   }
 
   if (error.message?.includes('network')) {
@@ -94,6 +106,10 @@ export const getUploadErrorMessage = (error: Error | { message?: string }): stri
 
   if (error.message?.includes('memory')) {
     return 'Upload failed due to memory constraints. Please try a smaller file or contact support.'
+  }
+
+  if (error.message?.includes('FUNCTION_PAYLOAD_TOO_LARGE')) {
+    return "File size exceeds Vercel's function payload limit. Please use a file smaller than 4.5MB or contact support for larger file uploads."
   }
 
   return error.message || 'An unexpected error occurred during upload. Please try again.'
@@ -112,8 +128,16 @@ export const isProduction = (): boolean => {
 export const getUploadConfig = () => {
   return {
     maxFileSize: MAX_FILE_SIZE,
+    vercelPayloadLimit: VERCEL_PAYLOAD_LIMIT,
     supportedTypes: ALL_SUPPORTED_TYPES,
     isProduction: isProduction(),
     useVercelBlob: isProduction() && !!process.env.BLOB_READ_WRITE_TOKEN,
   }
+}
+
+/**
+ * Get recommended file size based on environment
+ */
+export const getRecommendedFileSize = (): number => {
+  return isProduction() ? VERCEL_PAYLOAD_LIMIT : MAX_FILE_SIZE
 }

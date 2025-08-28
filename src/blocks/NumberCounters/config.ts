@@ -87,11 +87,28 @@ const counterFields: Field[] = [
     },
   },
   {
+    name: 'labelLine1',
+    type: 'text',
+    required: false,
+    admin: {
+      description: 'First line of label below the number',
+    },
+  },
+  {
+    name: 'labelLine2',
+    type: 'text',
+    required: false,
+    admin: {
+      description: 'Second line of label below the number',
+    },
+  },
+  // Legacy single-line label for backward compatibility
+  {
     name: 'label',
     type: 'text',
-    required: true,
+    required: false,
     admin: {
-      description: 'Description text below the number',
+      description: 'Legacy single-line label (will be split into two lines if used)',
     },
   },
   {

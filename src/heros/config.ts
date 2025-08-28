@@ -56,11 +56,29 @@ export const hero: Field = {
       },
       fields: [
         {
+          name: 'line1',
+          type: 'text',
+          required: false,
+          admin: {
+            description: 'First line for the rotating subtitle phrase',
+          },
+        },
+        {
+          name: 'line2',
+          type: 'text',
+          required: false,
+          admin: {
+            description: 'Second line for the rotating subtitle phrase',
+          },
+        },
+        // Backward compatibility: keep legacy single-line field optional
+        {
           name: 'phrase',
           type: 'text',
-          required: true,
+          required: false,
           admin: {
-            description: 'A phrase for the rotating subtitle',
+            description:
+              'Legacy single-line phrase (will be split into two lines automatically if used)',
           },
         },
       ],

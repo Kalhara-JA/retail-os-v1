@@ -170,9 +170,17 @@ export interface Page {
     subtitlePhrases?:
       | {
           /**
-           * A phrase for the rotating subtitle
+           * First line for the rotating subtitle phrase
            */
-          phrase: string;
+          line1?: string | null;
+          /**
+           * Second line for the rotating subtitle phrase
+           */
+          line2?: string | null;
+          /**
+           * Legacy single-line phrase (will be split into two lines automatically if used)
+           */
+          phrase?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -980,9 +988,17 @@ export interface HorizontalScrollCardsBlock {
    */
   htmlId?: string | null;
   /**
-   * Optional title displayed above the carousel
+   * The first title to display above the carousel
    */
-  title?: string | null;
+  title1?: string | null;
+  /**
+   * The second title to display (optional)
+   */
+  title2?: string | null;
+  /**
+   * The third title to display (optional)
+   */
+  title3?: string | null;
   cards: {
     title: string;
     description?: string | null;
@@ -1020,9 +1036,17 @@ export interface RetailerShowcaseBlock {
    */
   htmlId?: string | null;
   /**
-   * Main title for the showcase section
+   * The first title to display
    */
-  title: string;
+  title1: string;
+  /**
+   * The second title to display (optional)
+   */
+  title2?: string | null;
+  /**
+   * The third title to display (optional)
+   */
+  title3?: string | null;
   /**
    * Optional description text
    */
@@ -1139,9 +1163,17 @@ export interface NumberCountersBlock {
      */
     isPercentage?: boolean | null;
     /**
-     * Description text below the number
+     * First line of label below the number
      */
-    label: string;
+    labelLine1?: string | null;
+    /**
+     * Second line of label below the number
+     */
+    labelLine2?: string | null;
+    /**
+     * Legacy single-line label (will be split into two lines if used)
+     */
+    label?: string | null;
     /**
      * Starting value for animation (default: 0)
      */
@@ -1612,6 +1644,8 @@ export interface PagesSelect<T extends boolean = true> {
         subtitlePhrases?:
           | T
           | {
+              line1?: T;
+              line2?: T;
               phrase?: T;
               id?: T;
             };
@@ -1876,7 +1910,9 @@ export interface TwoColumnRowBlockSelect<T extends boolean = true> {
  */
 export interface HorizontalScrollCardsBlockSelect<T extends boolean = true> {
   htmlId?: T;
-  title?: T;
+  title1?: T;
+  title2?: T;
+  title3?: T;
   cards?:
     | T
     | {
@@ -1905,7 +1941,9 @@ export interface HorizontalScrollCardsBlockSelect<T extends boolean = true> {
  */
 export interface RetailerShowcaseBlockSelect<T extends boolean = true> {
   htmlId?: T;
-  title?: T;
+  title1?: T;
+  title2?: T;
+  title3?: T;
   description?: T;
   backgroundImage?: T;
   retailers?:
@@ -1955,6 +1993,8 @@ export interface NumberCountersBlockSelect<T extends boolean = true> {
         percentageRangeStart?: T;
         percentageRangeEnd?: T;
         isPercentage?: T;
+        labelLine1?: T;
+        labelLine2?: T;
         label?: T;
         animationStartValue?: T;
         direction?: T;

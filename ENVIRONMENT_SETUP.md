@@ -50,8 +50,8 @@ The project is configured to handle file uploads with the following setup optimi
 ### Vercel Configuration (Hobby Plan)
 - **Function Timeout**: 60 seconds
 - **Memory Allocation**: 2048MB (Hobby plan limit)
-- **Body Size Limit**: 10MB (conservative for Hobby plan)
-- **File Size Limit**: 10MB maximum
+- **Payload Size Limit**: 4.5MB (Vercel default limit)
+- **File Size Limit**: 4.5MB maximum for reliable uploads
 
 ### Supported File Types
 - **Images**: JPEG, PNG, WebP, GIF, SVG
@@ -61,27 +61,33 @@ The project is configured to handle file uploads with the following setup optimi
 ### Hobby Plan Limitations
 - **Memory**: Maximum 2048MB per function
 - **Function Timeout**: Maximum 60 seconds
-- **File Uploads**: Recommended under 10MB for reliable uploads
+- **File Uploads**: Maximum 4.5MB for reliable uploads
 - **Concurrent Functions**: Limited to 12
+- **Payload Size**: 4.5MB limit for function payloads
 
 ### Troubleshooting Upload Issues
 
-1. **"Content too large" errors**:
+1. **"Request Entity Too Large" / "FUNCTION_PAYLOAD_TOO_LARGE" errors**:
+   - **Root Cause**: File size exceeds Vercel's 4.5MB payload limit
+   - **Solution**: Use files smaller than 4.5MB
+   - **Workaround**: Compress images or use smaller files
+
+2. **"Content too large" errors**:
    - Ensure `BLOB_READ_WRITE_TOKEN` is set
-   - Check file size is under 10MB
+   - Check file size is under 4.5MB
    - Verify file type is supported
 
-2. **Memory limit errors**:
-   - Reduce file size (try under 5MB)
+3. **Memory limit errors**:
+   - Reduce file size (try under 2MB)
    - Optimize images before upload
    - Use compressed formats (WebP for images)
 
-3. **Upload timeouts**:
+4. **Upload timeouts**:
    - Large files may timeout on Hobby plan
    - Ensure stable network connection
    - Consider upgrading to Pro plan for larger files
 
-4. **Vercel deployment issues**:
+5. **Vercel deployment issues**:
    - Verify all environment variables are set in Vercel dashboard
    - Check Vercel Blob storage is enabled
    - Ensure function timeout and memory limits are configured correctly
@@ -92,18 +98,33 @@ The project is configured to handle file uploads with the following setup optimi
 - File uploads use local storage
 - No Vercel Blob storage required
 - All environment variables optional except `DATABASE_URI` and `PAYLOAD_SECRET`
+- No payload size limits
 
 ### Production (Hobby Plan)
 - File uploads use Vercel Blob storage
 - All environment variables required
-- Conservative file size limits (10MB max)
+- Conservative file size limits (4.5MB max)
 - Memory-optimized configuration
+- Payload size limits enforced
 
 ### Production (Pro Plan)
 - Higher memory limits (up to 3008MB)
 - Longer function timeouts
 - Support for larger file uploads (up to 50MB)
 - More concurrent functions
+- Higher payload limits
+
+## File Upload Endpoints
+
+### Standard Payload Upload
+- **Endpoint**: `/api/media` (Payload's default)
+- **Limit**: 4.5MB (Vercel payload limit)
+- **Use Case**: Small files, standard uploads
+
+### Custom Upload Endpoint
+- **Endpoint**: `/api/upload-media`
+- **Limit**: 4.5MB (with better error handling)
+- **Use Case**: When you need custom upload logic
 
 ## Setup Instructions
 
@@ -131,6 +152,7 @@ If you need to handle larger files or have higher performance requirements:
    - Increase memory limit to 3008MB in `vercel.json`
    - Increase file size limit to 50MB
    - Extend function timeout if needed
+   - Higher payload limits
 
 ## Security Notes
 
@@ -142,6 +164,26 @@ If you need to handle larger files or have higher performance requirements:
 ## Performance Tips for Hobby Plan
 
 1. **Optimize Images**: Use WebP format and compress before upload
-2. **Limit File Sizes**: Keep files under 5MB for best reliability
+2. **Limit File Sizes**: Keep files under 4.5MB for best reliability
 3. **Use CDN**: Vercel Blob storage provides CDN benefits
 4. **Monitor Usage**: Keep track of function execution times and memory usage
+5. **Batch Uploads**: Upload multiple small files instead of one large file
+
+## Error Resolution
+
+### Common Error Messages and Solutions
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| `FUNCTION_PAYLOAD_TOO_LARGE` | File > 4.5MB | Use smaller file or compress |
+| `Request Entity Too Large` | File > 4.5MB | Use smaller file or compress |
+| `Memory limit exceeded` | File too large for memory | Use smaller file |
+| `Upload timeout` | Large file taking too long | Use smaller file or better connection |
+| `Content too large` | File exceeds limits | Use smaller file |
+
+### File Size Recommendations
+
+- **Images**: Under 2MB (WebP format recommended)
+- **Videos**: Under 4MB (compressed)
+- **Documents**: Under 1MB
+- **Total upload**: Under 4.5MB per file

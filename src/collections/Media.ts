@@ -39,8 +39,11 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
-    staticDir: path.resolve(dirname, '../../public/media'),
+    // Use Vercel Blob storage in production, local storage in development
+    staticDir:
+      process.env.NODE_ENV === 'production'
+        ? undefined // Let Vercel Blob handle storage
+        : path.resolve(dirname, '../../public/media'),
     adminThumbnail: 'thumbnail',
     focalPoint: true,
     // Add file type validation for better control

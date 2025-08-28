@@ -110,12 +110,31 @@ export const HorizontalScrollCards: Block = {
       },
     },
     {
-      name: 'title',
+      name: 'title1',
       type: 'text',
-      label: 'Title',
+      label: 'Title 1',
       admin: {
-        description: 'Optional title displayed above the carousel',
+        description: 'The first title to display above the carousel',
       },
+      required: false,
+    },
+    {
+      name: 'title2',
+      type: 'text',
+      label: 'Title 2',
+      admin: {
+        description: 'The second title to display (optional)',
+      },
+      required: false,
+    },
+    {
+      name: 'title3',
+      type: 'text',
+      label: 'Title 3',
+      admin: {
+        description: 'The third title to display (optional)',
+      },
+      required: false,
     },
     {
       name: 'cards',

@@ -56,7 +56,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         {...(theme ? { 'data-theme': theme } : {})}
       >
         <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-          <div className="flex items-center justify-between py-6 md:py-8 lg:py-10">
+          <div
+            className={`flex items-center justify-between transition-[padding] duration-300 ${
+              isScrolled ? 'py-3 md:py-4 lg:py-5' : 'py-6 md:py-8 lg:py-10'
+            }`}
+          >
             {/* Left side: Logo + Navigation */}
             <div className="flex items-center gap-8 md:gap-12 lg:gap-16">
               {/* Logo */}
@@ -66,7 +70,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                     loading="eager"
                     priority="high"
                     logoConfig={data?.logo}
-                    responsiveWidth="w-[120px] md:w-[160px] lg:w-[200px]"
+                    responsiveWidth={
+                      isScrolled
+                        ? 'w-[110px] md:w-[140px] lg:w-[180px]'
+                        : 'w-[120px] md:w-[160px] lg:w-[200px]'
+                    }
                   />
                 </Link>
               </div>

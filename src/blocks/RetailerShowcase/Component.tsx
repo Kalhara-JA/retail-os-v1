@@ -82,18 +82,16 @@ const RetailerCard: React.FC<{
 }
 
 export const RetailerShowcaseBlock: React.FC<RetailerShowcaseBlockType> = ({
-  title,
+  title1,
+  title2,
+  title3,
   description,
   retailers,
   backgroundImage,
 }) => {
   if (!retailers?.length) return null
 
-  const titleText = String(title ?? '')
-  const hasFullStops = titleText.includes('.')
-  const sentences = hasFullStops
-    ? (titleText.match(/[^.]+(?:\.)?/g) || []).map((s) => s)
-    : [titleText]
+  const titles = [title1, title2, title3].filter(Boolean)
 
   const items = retailers.map((retailer, i) => (
     <RetailerCard key={i} retailer={retailer} index={i} />
@@ -117,24 +115,15 @@ export const RetailerShowcaseBlock: React.FC<RetailerShowcaseBlockType> = ({
 
       <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 md:py-12 lg:py-16">
         {/* Header mirrors screenshot: big, bold, two-row capable */}
-        <div className="mb-8 text-left sm:mb-10 md:mb-12 lg:mb-14 w-full  md:w-10/12 lg:w-9/12 ">
-          <h2
-            className={`text-white border-0 outline-none font-normal capitalize font-['Roboto'] text-[28px] leading-[38px] sm:text-[36px] sm:leading-[44px] md:text-[48px] md:leading-[58px] lg:text-[64px] lg:leading-[76px] xl:text-[72px] xl:leading-[86px] 2xl:text-[82px] 2xl:leading-[96px]`}
-          >
-            {hasFullStops
-              ? sentences.map((sentence, index) => (
-                  <React.Fragment key={`sentence-${index}`}>
-                    <span className="whitespace-nowrap">{sentence.trim()}</span>
-                    {index < sentences.length - 1 ? (
-                      <>
-                        {' '}
-                        <wbr />
-                      </>
-                    ) : null}
-                  </React.Fragment>
-                ))
-              : title}
-          </h2>
+        <div className="mb-8 text-left sm:mb-10 md:mb-12 lg:mb-14 w-full">
+          {titles.map((t, idx) => (
+            <h2
+              key={`rs-title-${idx}`}
+              className={`text-white border-0 outline-none font-normal capitalize font-['Roboto'] text-[28px] leading-[38px] sm:text-[36px] sm:leading-[44px] md:text-[48px] md:leading-[58px] lg:text-[64px] lg:leading-[76px] xl:text-[72px] xl:leading-[86px] 2xl:text-[82px] 2xl:leading-[96px]`}
+            >
+              {String(t ?? '')}
+            </h2>
+          ))}
           {description && (
             <p className="mt-3 max-w-2xl text-sm text-neutral-300 sm:mt-4 sm:text-base md:text-lg lg:text-xl xl:max-w-3xl">
               {description}

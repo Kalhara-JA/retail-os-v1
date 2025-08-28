@@ -1,3 +1,34 @@
+## Custom Fonts
+
+Place your font files under `public/fonts/` and ensure a corresponding `@font-face` is declared in `src/app/(frontend)/globals.css`.
+
+Example expected files:
+
+```
+public/fonts/AlmoniNeueDL4AAA-Regular.woff2
+public/fonts/AlmoniNeueDL4AAA-Bold.woff2
+```
+
+globals.css snippet:
+
+```css
+@font-face {
+  font-family: 'Almoni Neue DL 4.0 AAA';
+  src: url('/fonts/almoni-dl-aaa-400.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Almoni Neue DL 4.0 AAA';
+  src: url('/fonts/AlmoniNeueDL4AAA-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+```
+
 # Retail OS v1
 
 A modern retail operating system built with Next.js, Payload CMS, and TypeScript.

@@ -18,7 +18,7 @@ type CardData = {
 export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProps> = (
   props: any,
 ) => {
-  const { title, cards = [], cardHeight = '450' } = props || {}
+  const { title1, title2, title3, cards = [], cardHeight = '450' } = props || {}
   const spaceHolderRef = useRef<HTMLDivElement | null>(null)
   const horizontalRef = useRef<HTMLDivElement | null>(null)
   const stickyRef = useRef<HTMLDivElement | null>(null)
@@ -400,32 +400,22 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
 
   if (!cards?.length) return null
 
-  const titleText = String(title ?? '')
-  const hasFullStops = titleText.includes('.')
-  const sentences = hasFullStops
-    ? (titleText.match(/[^.]+(?:\.)?/g) || []).map((s) => s)
-    : [titleText]
+  const titles = [title1, title2, title3].filter(Boolean)
 
   return (
     <div className="bg-white">
-      {title ? (
-        <div className="py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mx-0 bg-white w-full">
-          <div className="w-full sm:w-11/12 md:w-10/12 lg:w-9/12 xl:w-7/12">
-            <h2 className="text-3xl md:text-4xl text-black lg:text-7xl font-light md:font-normal !leading-[1.2]">
-              {hasFullStops
-                ? sentences.map((sentence, index) => (
-                    <React.Fragment key={`sentence-${index}`}>
-                      <span className="whitespace-nowrap">{sentence.trim()}</span>
-                      {index < sentences.length - 1 ? (
-                        <>
-                          {' '}
-                          <wbr />{' '}
-                        </>
-                      ) : null}
-                    </React.Fragment>
-                  ))
-                : title}
-            </h2>
+      {titles.length > 0 ? (
+        <div className="py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mx-0 bg-white  w-full border-0 outline-none">
+          <div className="w-full">
+            {titles.map((t, index) => (
+              <div key={`hsc-title-container-${index}`} className={''}>
+                <h2
+                  className={`text-black border-0 outline-none font-normal capitalize font-['Roboto'] text-[28px] leading-[38px] sm:text-[36px] sm:leading-[44px] md:text-[48px] md:leading-[58px] lg:text-[64px] lg:leading-[76px] xl:text-[72px] xl:leading-[86px] 2xl:text-[82px] 2xl:leading-[96px]`}
+                >
+                  {String(t ?? '')}
+                </h2>
+              </div>
+            ))}
           </div>
         </div>
       ) : null}
@@ -494,7 +484,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
 
             {/* Draggable scrollbar (reduced width) + arrow-head buttons on the right */}
             <div
-              className="absolute bottom-14 md:bottom-10 lg:bottom-12 left-0 right-0 z-20 flex justify-center pointer-events-none"
+              className="absolute bottom-14 md:bottom-10 lg:bottom-40 left-0 right-0 z-20 flex justify-center pointer-events-none"
               aria-hidden="true"
             >
               <div className="relative w-[70%] md:w-[50%] max-w-[840px] pointer-events-none">
