@@ -61,6 +61,7 @@ const MediaColumn: React.FC<{ content: any }> = ({ content }) => {
             imgClassName="w-full h-full object-cover bg-white"
             videoClassName="absolute inset-0 w-full bg-white h-full object-contain object-center bg-black"
             fill
+            autoPlay={false}
           />
           {/* Overlay for better text readability */}
           <div className="absolute inset-0 bg-black/40 lg:hidden" />
@@ -133,6 +134,7 @@ const MobileMediaColumn: React.FC<{
             imgClassName="w-full h-full object-cover"
             videoClassName="w-full h-full object-cover"
             fill
+            autoPlay={false}
           />
           {headline && (
             <div className="absolute bottom-4 left-0">

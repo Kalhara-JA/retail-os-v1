@@ -21,4 +21,12 @@ export interface Props {
   videoClassName?: string
   /** whether to show native video controls (default: true) */
   controls?: boolean
+  /** whether the video should auto play (default: true) */
+  autoPlay?: boolean
+  /** whether the video should be muted (default: true for autoplay compatibility) */
+  muted?: boolean
+  /** whether the video should loop (default: true) */
+  loop?: boolean
+  /** pause or toggle play/pause when clicking on the video (default: false) */
+  pauseOnClick?: boolean
 }
