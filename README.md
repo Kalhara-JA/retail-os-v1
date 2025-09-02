@@ -1,33 +1,3 @@
-## Custom Fonts
-
-Place your font files under `public/fonts/` and ensure a corresponding `@font-face` is declared in `src/app/(frontend)/globals.css`.
-
-Example expected files:
-
-```
-public/fonts/AlmoniNeueDL4AAA-Regular.woff2
-public/fonts/AlmoniNeueDL4AAA-Bold.woff2
-```
-
-globals.css snippet:
-
-```css
-@font-face {
-  font-family: 'Almoni Neue DL 4.0 AAA';
-  src: url('/fonts/almoni-dl-aaa-400.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Almoni Neue DL 4.0 AAA';
-  src: url('/fonts/AlmoniNeueDL4AAA-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-```
 
 # Retail OS v1
 
@@ -40,16 +10,23 @@ A modern retail operating system built with Next.js, Payload CMS, and TypeScript
 - **Content Management**: Full-featured CMS with rich text editing
 - **SEO Optimized**: Built-in SEO features and sitemap generation
 - **Performance**: Optimized images and fast loading times
-- **File Uploads**: Support for large file uploads (up to 50MB)
+- **File Uploads**: Support for file uploads (4MB on Vercel, unlimited locally)
 
 ## File Upload Configuration
 
-This project is configured to handle large file uploads (up to 50MB) with the following optimizations:
+This project is configured to handle file uploads with the following considerations:
 
-### Vercel Configuration
-- Increased serverless function timeout to 60 seconds
-- Increased memory allocation to 3008MB
-- Configured body size limits for API routes
+### Vercel Upload Limits
+- **Maximum file size on Vercel**: 4MB (due to Vercel's payload size limits)
+- **Workaround for larger files**: Upload files locally and use them in your website
+- **Local development**: No file size restrictions when running locally
+
+> **Note**: If you need to upload files larger than 4MB, you can:
+> 1. Run the project locally (`pnpm dev`)
+> 2. Upload your large files through the local admin panel
+> 3. The files will be stored locally and can be used in your website
+> 4. When you deploy to Vercel, the files will be available
+
 
 ### Environment Variables
 Make sure to set the following environment variables for production:
@@ -70,10 +47,10 @@ PAYLOAD_SECRET=your_payload_secret
 If you encounter "content too large" errors:
 
 1. **Check Vercel Blob Storage**: Ensure `BLOB_READ_WRITE_TOKEN` is properly configured
-2. **File Size Limits**: The system supports files up to 50MB
+2. **File Size Limits**: Maximum 4MB on Vercel due to payload size limits
 3. **Supported Formats**: Images (JPEG, PNG, WebP, GIF, SVG), Videos (MP4, WebM, OGG), Documents (PDF, DOC, DOCX)
 4. **Network Issues**: Large files may take longer to upload - ensure stable connection
-5. **Vercel Limits**: In production, Vercel has a 4.5MB default limit, but this is configured to 50MB in this project
+5. **Vercel Limits**: In production, Vercel has a 4MB payload limit - use local upload for larger files
 
 ### Development vs Production
 
@@ -109,6 +86,86 @@ This project is optimized for deployment on Vercel with the following features:
 - **Vercel Blob Storage** for file uploads
 - **PostgreSQL database** support
 - **Edge functions** for better performance
+
+### Quick Deployment Guide
+
+#### 1. Clone and Setup
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/retail-os-v1.git
+cd retail-os-v1
+
+# Install dependencies
+pnpm install
+```
+
+#### 2. Deploy to Vercel
+1. Go to [vercel.com](https://vercel.com) and sign up/login
+2. Click "New Project"
+3. Import your GitHub repository
+4. Vercel will automatically detect it's a Next.js project
+5. Click "Deploy"
+
+#### 3. Environment Setup
+After deployment, go to your Vercel project dashboard and add these environment variables:
+
+**Required Variables:**
+```env
+DATABASE_URI=your_postgres_connection_string
+PAYLOAD_SECRET=your_secure_random_string
+BLOB_READ_WRITE_TOKEN=your_vercel_blob_token
+```
+
+**Optional Variables:**
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+SMTP_PORT=587
+CRON_SECRET=your_cron_secret
+NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+NODE_OPTIONS="--no-deprecation"
+```
+
+**Complete .env.example:**
+```env
+# Database Configuration
+DATABASE_URI=postgresql://username:password@localhost:5432/retail_os
+
+# Payload CMS Configuration
+PAYLOAD_SECRET=your-super-secret-payload-key-here
+
+# Vercel Blob Storage (for file uploads)
+BLOB_READ_WRITE_TOKEN=your_vercel_blob_token_here
+
+# Email Configuration (SMTP)
+SMTP_HOST=smtp.gmail.com
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+SMTP_PORT=587
+SMTP_SECURE=false
+
+# Vercel Cron Jobs
+CRON_SECRET=your-cron-secret-here
+
+# Next.js Configuration
+NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+
+# Node Options (for development)
+NODE_OPTIONS="--no-deprecation"
+
+#### 4. Database & Storage Setup
+1. **Database**: In Vercel dashboard → Storage → Create Database → Choose Postgres
+2. **Blob Storage**: In Vercel dashboard → Storage → Create Blob Store
+3. Copy the connection strings to your environment variables
+4. Redeploy your project
+
+#### 5. First Run
+1. Visit your deployed site: `https://your-project.vercel.app`
+2. Go to `/admin` to create your first admin user
+3. Use the seed functionality to populate initial content
+4. **Follow the demo website**: Visit the current demo site to see how content is structured and replicate the layout
+5. Your site is ready! 🎉
 
 ## File Upload Best Practices
 
