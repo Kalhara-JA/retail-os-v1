@@ -83,13 +83,13 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
       {/* Content Container */}
       <div className="relative z-10 flex items-center justify-start px-4 sm:px-6 md:px-8 lg:px-16">
         <Card className="bg-transparent border-none shadow-none">
-          <CardContent className="p-0">
+          <CardContent className="p-0 md:pt-16 lg:pt-20 xl:pt-24">
             {/* Hero Content */}
-            <div className="space-y-[20px] lg:space-y-[34px]">
+            <div className="space-y-[20px]">
               {/* Title Container */}
               {title && (
                 <div className="w-full lg:w-auto">
-                  <h1 className="font-['Roboto'] text-[58px] leading-[63px] md:text-[72px] lg:text-[88px] xl:text-[100px] 2xl:text-[110px] 2xl:leading-[0.8] font-normal text-white capitalize">
+                  <h1 className="font-['Roboto'] text-[58px] leading-[63px] md:text-[50px] lg:text-[62px] xl:text-[70px] 2xl:text-[77px] 2xl:leading-[0.8] font-normal text-white capitalize">
                     {title?.split(' ').map((word: string, index: number) => (
                       <span key={index}>
                         {word}
@@ -113,7 +113,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                         return splitPhraseIntoTwoLines(item.phrase || '')
                       })}
                       duration={5000}
-                      className="whitespace-pre-line font-['Roboto'] text-[28px] md:text-[40px] lg:text-[56px] xl:text-[64px] 2xl:text-[72px] leading-[34px] lg:leading-[84px] font-normal text-white capitalize"
+                      className="whitespace-pre-line font-['Roboto'] text-[28px] md:text-[28px] lg:text-[39px] xl:text-[45px] 2xl:text-[50px] leading-[34px] lg:leading-[60px] font-normal text-white capitalize"
                       motionProps={{
                         initial: { opacity: 0, y: -20 },
                         animate: { opacity: 1, y: 0 },
@@ -122,7 +122,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                       }}
                     />
                   ) : (
-                    <h2 className="font-['Roboto'] text-[28px] md:text-[40px] lg:text-[56px] xl:text-[64px] 2xl:text-[72px] leading-[34px] lg:leading-[84px] font-normal text-white capitalize">
+                    <h2 className="font-['Roboto'] text-[28px] md:text-[28px] lg:text-[39px] xl:text-[45px] 2xl:text-[50px] leading-[34px] lg:leading-[60px] font-normal text-white capitalize">
                       {subtitle}
                     </h2>
                   )}

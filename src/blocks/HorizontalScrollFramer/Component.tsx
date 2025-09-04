@@ -20,6 +20,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
   props: any,
 ) => {
   const { title1, title2, title3, cards = [], cardHeight = '450' } = props || {}
+  const cardHeightPx = Math.max(200, parseInt(String(cardHeight), 10) || 450)
   const spaceHolderRef = useRef<HTMLDivElement | null>(null)
   const horizontalRef = useRef<HTMLDivElement | null>(null)
   const stickyRef = useRef<HTMLDivElement | null>(null)
@@ -99,6 +100,25 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
     const proportional = barW * Math.min(1, vw / Math.max(1, contentWidth))
     const thumbW = Math.max(MIN_THUMB_PX, proportional)
     thumb.style.width = `${thumbW}px`
+  }
+
+  // Ensure images are square on mobile (height matches width), fixed height on md+
+  const updateCardHeights = () => {
+    const hr = horizontalRef.current
+    if (!hr) return
+    const vw = typeof window !== 'undefined' ? window.innerWidth : 1024
+    const useSquare = vw < 768
+    const containers = Array.from(
+      hr.querySelectorAll('[data-img-container="true"]'),
+    ) as HTMLElement[]
+    containers.forEach((el) => {
+      if (useSquare) {
+        const widthPx = el.getBoundingClientRect().width
+        el.style.height = `${Math.round(widthPx)}px`
+      } else {
+        el.style.height = `${cardHeightPx}px`
+      }
+    })
   }
 
   // Position thumb from current horizontal progress
@@ -300,6 +320,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
     const setHeight = () => {
       sh.style.height = `${calcDynamicHeight()}px`
       updateThumbSize()
+      updateCardHeights()
       onScroll()
       scheduleFocusUpdate()
     }
@@ -426,26 +447,29 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
         <div ref={spaceHolderRef} className="relative w-full">
           <div
             ref={stickyRef}
-            className="sticky [--sticky-top:120px] sm:[--sticky-top:130px] md:[--sticky-top:140px] lg:[--sticky-top:170px] top-[var(--sticky-top)] h-[80vh] w-full overflow-x-hidden"
+            className="sticky [--sticky-top:120px] sm:[--sticky-top:130px] md:[--sticky-top:140px] lg:[--sticky-top:80px] top-[var(--sticky-top)] min-h-[90vh] w-full overflow-x-hidden overflow-y-clip"
           >
             {/* Horizontally translated track */}
-            <div ref={horizontalRef} className="absolute h-full will-change-transform">
+            <div ref={horizontalRef} className="absolute will-change-transform">
               <section
                 role="feed"
-                className="relative h-full pl-[20px] sm:pl-[72px] md:pl-[120px] lg:pl-[150px] flex flex-row flex-nowrap justify-start items-start pt-2 pb-20 md:pb-24 lg:pb-28"
+                className="relative min-h-full pl-[20px] sm:pl-[72px] md:pl-[120px] lg:pl-[150px] flex flex-row flex-nowrap justify-start items-start pt-2 pb-20 md:pb-24 lg:pb-28 overflow-x-visible h-full"
               >
                 {cards.map((card: CardData, i: number) => (
                   <article
                     key={i}
-                    className="relative w-[387px] md:w-[420px] lg:w-[640px] mr-[20px] sm:mr-[36px] md:mr-[48px] lg:mr-[56px] flex-shrink-0 overflow-hidden bg-white flex flex-col"
-                    style={{ height: `${cardHeight}px` }}
+                    className="relative w-[387px] md:w-[50vw] lg:w-[50vw] mr-[20px] sm:mr-[36px] md:mr-[48px] lg:mr-[56px] flex-shrink-0 overflow-hidden bg-white flex flex-col"
                   >
                     {/*
                       Image wrapper keeps the original block height (62%).
                       We crop the TOP of the image using clip-path driven by --img-clip-top.
                       Focused card → 0% (no crop). Others → 50% (half height visible, from bottom).
                     */}
-                    <div className="h-[62%] max-h-[240px] md:max-h-none bg-white relative overflow-hidden">
+                    <div
+                      className="w-full md:w-[50vw] bg-white relative overflow-hidden"
+                      data-img-container="true"
+                      style={{ height: `${cardHeightPx}px` }}
+                    >
                       <div
                         className="w-full h-full"
                         style={{
@@ -458,7 +482,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                         <Media
                           resource={card.image}
                           className="w-full h-full"
-                          imgClassName="w-full h-full object-cover object-center block"
+                          imgClassName="w-full h-full object-cover object-bottom block"
                         />
                       </div>
                     </div>
@@ -474,7 +498,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                           : card.title}
                       </h3>
                       {card.description ? (
-                        <p className="mb-2 text-black text-md md:text-xl font-normal w-full max-w-[320px] md:max-w-[360px] lg:max-w-[560px]">
+                        <p className="mb-2 text-black text-md md:text-xl font-normal w-full max-w-[320px] md:max-w-[500px] lg:max-w-[700px]">
                           {card.description}
                         </p>
                       ) : null}
@@ -491,7 +515,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
 
             {/* Draggable scrollbar (reduced width) + arrow-head buttons on the right */}
             <div
-              className="absolute bottom-28 md:bottom-20 lg:bottom-20 xl:bottom-20 2xl:bottom-28 left-0 right-0 z-20 flex justify-center pointer-events-none"
+              className="absolute bottom-28 md:bottom-4 lg:bottom-4 xl:bottom-4 2xl:bottom-4 left-0 right-0 z-20 flex justify-center pointer-events-none"
               aria-hidden="true"
             >
               <div className="relative w-[70%] md:w-[50%] max-w-[840px] pointer-events-none">

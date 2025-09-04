@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { CMSLink } from '@/components/Link'
 import { Button } from '@/components/ui/button'
-import { Globe2 } from 'lucide-react'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetOverlay } from '@/components/ui/sheet'
+import { LanguageSelector } from '@/components/LanguageSelector'
 
 import type { Header as HeaderType } from '@/payload-types'
 
@@ -114,16 +114,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ data, isOpen, onClose })
           </div>
 
           <div className="px-6 py-4 border-t border-gray-700 space-y-4">
-            {showLanguageSelector && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:text-gray-300 hover:bg-white/10"
-              >
-                <Globe2 className="h-5 w-5" />
-                <span className="sr-only">Language Selector</span>
-              </Button>
-            )}
+            <LanguageSelector show={showLanguageSelector} size="medium" className="w-full" />
 
             {demoButton && (
               <Button

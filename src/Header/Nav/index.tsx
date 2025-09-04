@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Globe2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CMSLink } from '@/components/Link'
-import { Media } from '@/components/Media'
+import { LanguageSelector } from '@/components/LanguageSelector'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -73,7 +72,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           if (hasDropdown && dropdownItems && dropdownItems.length > 0) {
             return (
               <NavigationMenuItem key={i}>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:text-primary-hover hover:bg-white/10 border-none data-[state=open]:bg-white/10 data-[state=open]:text-primary-hover text-sm md:text-base lg:text-lg font-light xl:font-normal xl:text-white xl:text-[20px] xl:leading-[15.717px] xl:text-center xl:font-['Roboto']">
+                <NavigationMenuTrigger className="bg-transparent text-white hover:text-gray-200 border-none no-underline hover:no-underline text-sm md:text-base lg:text-lg font-light xl:font-normal xl:text-white xl:text-[20px] xl:leading-[15.717px] xl:text-center xl:font-['Roboto'] relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-current after:w-full after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:ease-out">
                   {link.label}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -132,7 +131,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="text-white hover:text-primary-hover transition-colors text-sm md:text-base lg:text-lg font-light xl:font-normal xl:text-white xl:text-[20px] xl:leading-[15.717px] xl:text-center xl:font-['Roboto']"
+                  className="text-white hover:text-gray-200 no-underline hover:no-underline transition-colors text-sm md:text-base lg:text-lg font-light xl:font-normal xl:text-white xl:text-[20px] xl:leading-[15.717px] xl:text-center xl:font-['Roboto'] relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-current after:w-full after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:ease-out"
                 />
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -147,40 +146,14 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 export const HeaderActions: React.FC<{ data: HeaderType }> = ({ data }) => {
   const demoButton = data?.demoButton
   const languageSelector = data?.languageSelector
-  const showLanguageSelector = languageSelector?.show ?? true
-  const customIcon = languageSelector?.icon
-  const buttonSize = languageSelector?.size || 'medium'
-
-  const getButtonSizeClasses = () => {
-    switch (buttonSize) {
-      case 'small':
-        return 'h-7 w-7 md:h-8 md:w-8 lg:h-9 lg:w-9 p-1.5 md:p-2'
-      case 'large':
-        return 'h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12 p-2.5 md:p-3'
-      default:
-        return 'h-8 w-8 md:h-9 md:w-9 lg:h-10 lg:w-10 p-2 md:p-2.5'
-    }
-  }
 
   return (
     <div className="flex items-center gap-4">
-      {showLanguageSelector && (
-        <Button
-          variant="ghost"
-          size="icon"
-          className={`text-white hover:text-primary-hover hover:bg-white/10 ${getButtonSizeClasses()}`}
-        >
-          {customIcon ? (
-            <Media
-              resource={customIcon}
-              className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 object-contain"
-            />
-          ) : (
-            <Globe2 className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7" />
-          )}
-          <span className="sr-only">Language Selector</span>
-        </Button>
-      )}
+      <LanguageSelector
+        show={languageSelector?.show ?? true}
+        icon={languageSelector?.icon}
+        size={languageSelector?.size || 'medium'}
+      />
 
       {demoButton && (
         <Button
