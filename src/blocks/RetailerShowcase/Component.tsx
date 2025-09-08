@@ -41,7 +41,7 @@ const RetailerCard: React.FC<{
 
       {/* Points: occupies remaining space; scrolls if too long */}
       <div className="flex-1 overflow-hidden px-6 pb-6">
-        <div className="h-full overflow-auto pr-1">
+        <div className="h-full overflow-y-scroll pr-1 [scrollbar-gutter:stable]">
           {points && points.length > 0 && (
             <ul className="space-y-3">
               {points.map((pointItem, index) => (

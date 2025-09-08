@@ -151,11 +151,11 @@ const MobileMediaColumn: React.FC<{
   )
 }
 
-const MobileTextColumn: React.FC<{ content: any }> = ({ content }) => {
+const MobileTextColumn: React.FC<{ content: any; isLast?: boolean }> = ({ content, isLast }) => {
   const { title, bodyText, enableLink, link } = content || {}
 
   return (
-    <div className="bg-white px-4 py-8 pb-24 lg:hidden">
+    <div className={`bg-white px-4 py-8 ${isLast ? 'pb-6' : 'pb-16'} lg:hidden`}>
       <div className="flex flex-col space-y-4">
         {title && (
           <h2 className="pr-2 text-2xl md:text-3xl font-normal capitalize text-black leading-tight">
@@ -163,7 +163,7 @@ const MobileTextColumn: React.FC<{ content: any }> = ({ content }) => {
           </h2>
         )}
         {bodyText && (
-          <div className="pr-2 text-base text-black leading-relaxed pb-8">
+          <div className="pr-2 text-base text-black leading-relaxed ">
             <RichText data={bodyText} className="text-black" enableGutter={false} />
           </div>
         )}
@@ -219,7 +219,7 @@ const StickyRow: React.FC<{
   return (
     <article className="sticky " style={{ top, zIndex, position: 'sticky' }}>
       <div
-        className={`relative bg-white ${left?.type === 'media' && right?.type === 'media' ? 'lg:min-h-[80vh]' : 'min-h-[80vh]'}`}
+        className={`relative bg-white ${left?.type === 'media' && right?.type === 'media' ? 'lg:min-h-[80vh]' : 'lg:min-h-[80vh]'}`}
       >
         {/* Desktop */}
         <div className="hidden lg:grid grid-cols-2 items-stretch lg:min-h-[80vh] min-h-[100vh] relative z-10">
@@ -236,12 +236,12 @@ const StickyRow: React.FC<{
           {left?.type === 'media' && right?.type === 'text' ? (
             <>
               <MobileMediaColumn content={left.media} headline={right.text?.headline} isFirst />
-              <MobileTextColumn content={right.text} />
+              <MobileTextColumn content={right.text} isLast={index === totalRows - 1} />
             </>
           ) : right?.type === 'media' && left?.type === 'text' ? (
             <>
               <MobileMediaColumn content={right.media} headline={left.text?.headline} isFirst />
-              <MobileTextColumn content={left.text} />
+              <MobileTextColumn content={left.text} isLast={index === totalRows - 1} />
             </>
           ) : left?.type === 'media' && right?.type === 'media' ? (
             <>

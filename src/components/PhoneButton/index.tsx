@@ -31,9 +31,9 @@ export const PhoneButton: React.FC<PhoneButtonProps> = ({
   }
 
   const sizeClasses = {
-    small: 'w-12 h-12',
-    medium: 'w-14 h-14',
-    large: 'w-16 h-16',
+    small: 'w-10 h-10 sm:w-11 sm:h-11',
+    medium: 'w-11 h-11 sm:w-13 sm:h-13',
+    large: 'w-13 h-13 sm:w-15 sm:h-15',
   }
 
   // Position classes are not used since we have custom positioning to avoid overlap
@@ -43,13 +43,14 @@ export const PhoneButton: React.FC<PhoneButtonProps> = ({
   // }
 
   const iconSizes = {
-    small: 'w-6 h-6',
-    medium: 'w-7 h-7',
-    large: 'w-8 h-8',
+    small: 'w-4 h-4 sm:w-5 sm:h-5',
+    medium: 'w-5 h-5 sm:w-6 sm:h-6',
+    large: 'w-6 h-6 sm:w-7 sm:h-7',
   }
 
   // Adjust position for phone button to not overlap with WhatsApp button
-  const adjustedPosition = position === 'bottom-right' ? 'bottom-24 right-6' : 'bottom-24 left-6'
+  const adjustedPosition =
+    position === 'bottom-right' ? 'bottom-20 right-2 sm:right-6' : 'bottom-20 left-2 sm:left-6'
 
   return (
     <motion.a

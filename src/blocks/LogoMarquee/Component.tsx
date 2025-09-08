@@ -13,6 +13,10 @@ const LogoItem: React.FC<{
 }> = ({ logo, onHover }) => {
   const { logo: logoMedia, companyName, highlighted, enableLink, link } = logo
 
+  // inside LogoItem
+  const CARD_W = 224 // w-56 => 14rem
+  const CONTENT_W = CARD_W - 32 // minus p-4 left+right
+
   // Get button link
   const getLogoLink = () => {
     if (!enableLink || !link) return null
@@ -36,7 +40,18 @@ const LogoItem: React.FC<{
     >
       <Media
         resource={logoMedia}
-        imgClassName="h-12 w-auto max-w-full object-contain"
+        // 1) Correct responsive hint so Next serves crisp srcsets
+        size={`${CONTENT_W}px`}
+        // 2) Skip lazy IO in a marquee so blur doesn't linger
+        loading="eager"
+        // Keep the no-stretch overrides you added earlier
+        pictureClassName="
+    inline-grid place-items-center
+    [&>span]:!w-auto [&>span]:!h-auto
+    [&>span]:!max-w-full [&>span]:!max-h-12
+    [&>span>span]:!w-auto [&>span>span]:!h-auto
+  "
+        imgClassName="!w-auto !h-auto !max-h-12 !max-w-full object-contain"
         alt={companyName || 'Company logo'}
       />
     </div>

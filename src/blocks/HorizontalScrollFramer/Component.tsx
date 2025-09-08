@@ -458,7 +458,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                 {cards.map((card: CardData, i: number) => (
                   <article
                     key={i}
-                    className="relative w-[387px] md:w-[50vw] lg:w-[50vw] mr-[20px] sm:mr-[36px] md:mr-[48px] lg:mr-[56px] flex-shrink-0 overflow-hidden bg-white flex flex-col"
+                    className="relative w-[340px] md:w-[50vw] lg:w-[50vw] mr-[16px] sm:mr-[28px] md:mr-[48px] lg:mr-[56px] flex-shrink-0 overflow-hidden bg-white flex flex-col"
                   >
                     {/*
                       Image wrapper keeps the original block height (62%).
@@ -488,7 +488,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                     </div>
 
                     <div className="py-4 md:py-5 lg:py-6">
-                      <h3 className="text-2xl xl:text-2xl 2xl:text-3xl leading-tight mb-2 text-black w-full">
+                      <h3 className="text-xl md:text-2xl xl:text-2xl 2xl:text-3xl leading-tight mb-2 text-black w-full">
                         {Array.isArray(card.titleLines) && card.titleLines.length > 0
                           ? card.titleLines.slice(0, 2).map((t, idx) => (
                               <span key={idx} className="block">
@@ -498,7 +498,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                           : card.title}
                       </h3>
                       {card.description ? (
-                        <p className="mb-2 text-black text-md md:text-xl font-normal w-full max-w-[320px] md:max-w-[500px] lg:max-w-[700px]">
+                        <p className="mb-2 text-black text-sm md:text-xl font-normal w-full max-w-[320px] md:max-w-[500px] lg:max-w-[700px]">
                           {card.description}
                         </p>
                       ) : null}
@@ -515,7 +515,7 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
 
             {/* Draggable scrollbar (reduced width) + arrow-head buttons on the right */}
             <div
-              className="absolute bottom-8 md:bottom-4 lg:bottom-4 xl:bottom-4 2xl:bottom-4 left-0 right-0 z-20 flex justify-center pointer-events-none"
+              className="absolute bottom-10 md:bottom-4 lg:bottom-4 xl:bottom-4 2xl:bottom-4 left-0 right-0 z-20 flex justify-center pointer-events-none"
               aria-hidden="true"
             >
               <div className="relative w-[70%] md:w-[50%] max-w-[840px] pointer-events-none">
