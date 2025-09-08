@@ -1,9 +1,52 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import type { RetailerShowcaseBlock as RetailerShowcaseBlockType } from '@/payload-types'
 import { Carousel } from '@/components/ui/apple-cards-carousel'
 import { Media } from '@/components/Media'
+
+/* Hide native scrollbars to avoid double bars */
+const HIDE_NATIVE_SCROLLBAR_CSS = `
+.custom-scroll::-webkit-scrollbar { display:none; }
+.custom-scroll { -ms-overflow-style:none; scrollbar-width:none; }
+`
+
+/* Sync a custom scrollbar thumb (sets CSS vars on the wrapper of the scroller) */
+function useThumbOnWrapper(scrollerRef: React.RefObject<HTMLElement>) {
+  useEffect(() => {
+    const scroller = scrollerRef.current
+    const wrapper = scroller?.parentElement as HTMLElement | null
+    if (!scroller || !wrapper) return
+
+    const update = () => {
+      const { scrollTop, scrollHeight, clientHeight } = scroller
+      const canScroll = scrollHeight > clientHeight + 1
+      if (!canScroll) {
+        // keep a small stub so the bar is always visible
+        wrapper.style.setProperty('--thumb-h', '24px')
+        wrapper.style.setProperty('--thumb-t', '0px')
+        wrapper.style.setProperty('--thumb-show', '1')
+        return
+      }
+      const h = Math.max(24, (clientHeight * clientHeight) / scrollHeight)
+      const maxTop = clientHeight - h
+      const t = maxTop * (scrollTop / Math.max(1, scrollHeight - clientHeight))
+      wrapper.style.setProperty('--thumb-h', `${Math.round(h)}px`)
+      wrapper.style.setProperty('--thumb-t', `${Math.round(t)}px`)
+      wrapper.style.setProperty('--thumb-show', '1')
+    }
+
+    update()
+    scroller.addEventListener('scroll', update, { passive: true })
+    const ro = new ResizeObserver(update)
+    ro.observe(scroller)
+
+    return () => {
+      scroller.removeEventListener('scroll', update)
+      ro.disconnect()
+    }
+  }, [scrollerRef])
+}
 
 /**
  * Retailer Card – sized and styled to match the screenshot:
@@ -17,6 +60,10 @@ const RetailerCard: React.FC<{
   index: number
 }> = ({ retailer }) => {
   const { logo, coverImage, points, enableLink, link } = retailer
+
+  // custom scrollbar refs
+  const scrollRef = useRef<HTMLDivElement>(null)
+  useThumbOnWrapper(scrollRef as React.RefObject<HTMLElement>)
 
   const card = (
     <div
@@ -41,17 +88,36 @@ const RetailerCard: React.FC<{
 
       {/* Points: occupies remaining space; scrolls if too long */}
       <div className="flex-1 overflow-hidden px-6 pb-6">
-        <div className="h-full !overflow-y-scroll over pr-1 [scrollbar-gutter:stable] [scrollbar-width:thin]">
-          {points && points.length > 0 && (
-            <ul className="space-y-3">
-              {points.map((pointItem, index) => (
-                <li key={index} className="relative pl-6 text-[15px] leading-6 text-neutral-900">
-                  <div className="absolute left-0 top-2 h-2 w-2 rounded-full bg-sky-500"></div>
-                  {pointItem.point}
-                </li>
-              ))}
-            </ul>
-          )}
+        {/* wrapper must be relative so the overlay thumb can position; CSS vars are set here via hook */}
+        <div className="relative h-full">
+          {/* scroller (native scrollbar hidden) */}
+          <div
+            ref={scrollRef}
+            className="custom-scroll h-full overflow-y-auto pr-4 [scrollbar-gutter:stable]"
+          >
+            {points && points.length > 0 && (
+              <ul className="space-y-3">
+                {points.map((pointItem, index) => (
+                  <li key={index} className="relative pl-6 text-[15px] leading-6 text-neutral-900">
+                    <div className="absolute left-0 top-2 h-2 w-2 rounded-full bg-sky-500"></div>
+                    {pointItem.point}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* always-visible custom scrollbar overlay */}
+          <div className="pointer-events-none absolute right-1 top-2 bottom-2 w-[4px]">
+            <div className="absolute inset-0 rounded-full bg-neutral-200/70" />
+            <div
+              className="absolute right-0 w-full rounded-full bg-sky-500 opacity-[var(--thumb-show,1)] transition-opacity"
+              style={{
+                height: 'var(--thumb-h, 24px)',
+                transform: 'translateY(var(--thumb-t, 0px))',
+              }}
+            />
+          </div>
         </div>
       </div>
 
@@ -99,6 +165,9 @@ export const RetailerShowcaseBlock: React.FC<RetailerShowcaseBlockType> = ({
 
   return (
     <section className="relative overflow-hidden bg-neutral-950">
+      {/* inject CSS to hide native scrollbars (prevents double bars) */}
+      <style dangerouslySetInnerHTML={{ __html: HIDE_NATIVE_SCROLLBAR_CSS }} />
+
       {/* Background image */}
       {backgroundImage && (
         <div className="absolute inset-0">
