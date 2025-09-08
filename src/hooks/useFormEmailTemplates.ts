@@ -4,6 +4,7 @@ import {
   renderEmailContent,
   replaceTemplateVariables,
 } from '../utilities/footerEmailRenderer'
+import { parseRecipientList } from '../utilities/email'
 
 export const useFormEmailTemplates: CollectionAfterChangeHook = async ({ doc, req, operation }) => {
   if (operation !== 'create') return
@@ -96,29 +97,37 @@ export const useFormEmailTemplates: CollectionAfterChangeHook = async ({ doc, re
           emailSubject = replaceTemplateVariables(emailSubject, templateVariables)
           emailHtml = replaceTemplateVariables(emailHtml, templateVariables)
 
-          // Determine recipient
-          let recipient = emailConfig.emailTo
-          if (recipient === '{{email}}' && templateVariables.email) {
-            recipient = templateVariables.email
+          // Determine recipients
+          let toValue = emailConfig.emailTo
+          if (toValue === '{{email}}' && templateVariables.email) {
+            toValue = templateVariables.email
           }
 
-          if (!recipient) {
+          const toRecipients = parseRecipientList(toValue)
+          const ccRecipients = parseRecipientList(emailConfig.cc)
+          const bccRecipients = parseRecipientList(emailConfig.bcc)
+
+          if (toRecipients.length === 0) {
             console.warn('No recipient specified for email notification')
             return
           }
 
-          // Send email
-          await payload.sendEmail({
-            to: recipient,
-            cc: emailConfig.cc,
-            bcc: emailConfig.bcc,
-            replyTo: emailConfig.replyTo,
-            from: emailConfig.emailFrom,
-            subject: emailSubject,
-            html: emailHtml,
-          })
+          // Send email (send one per recipient for consistent provider handling)
+          await Promise.all(
+            toRecipients.map((to) =>
+              payload.sendEmail({
+                to,
+                cc: ccRecipients,
+                bcc: bccRecipients,
+                replyTo: emailConfig.replyTo,
+                from: emailConfig.emailFrom,
+                subject: emailSubject,
+                html: emailHtml,
+              }),
+            ),
+          )
 
-          console.log(`Email sent to ${recipient} for form submission ${doc.id}`)
+          console.log(`Email sent to ${toRecipients.join(', ')} for form submission ${doc.id}`)
         } catch (error) {
           console.error('Error sending email notification:', error)
         }

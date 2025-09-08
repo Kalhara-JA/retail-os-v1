@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import configPromise from '../../../../../src/payload.config'
-import { isValidEmail, sanitizeEmail } from '../../../../../src/utilities/email'
+import { isValidEmail, sanitizeEmail, parseRecipientList } from '../../../../../src/utilities/email'
 import {
   TemplateVariables,
   renderEmailContent,
@@ -83,11 +83,14 @@ export async function POST(request: NextRequest) {
         adminHtml = replaceTemplateVariables(adminHtml, templateVariables)
       }
 
-      await payload.sendEmail({
-        to: adminEmail,
-        subject: adminSubject,
-        html: adminHtml,
-      })
+      const adminRecipients = parseRecipientList(adminEmail)
+      for (const recipient of adminRecipients) {
+        await payload.sendEmail({
+          to: recipient,
+          subject: adminSubject,
+          html: adminHtml,
+        })
+      }
     }
 
     return NextResponse.json({ message: 'Successfully subscribed to newsletter' }, { status: 200 })

@@ -15,6 +15,14 @@ SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
 SMTP_SECURE=false
 ADMIN_EMAIL=admin@yourdomain.com
+### Multiple Admin Recipients
+
+You can provide multiple admin emails separated by commas or semicolons. These will be parsed and validated automatically in production deployments.
+
+```bash
+ADMIN_EMAIL="admin@yourdomain.com, alerts@yourdomain.com; owner@yourdomain.com"
+```
+
 ```
 
 ## Gmail Setup (Recommended for Development)
