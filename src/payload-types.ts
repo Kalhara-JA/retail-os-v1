@@ -1031,7 +1031,18 @@ export interface HorizontalScrollCardsBlock {
         }[]
       | null;
     description?: string | null;
-    image: number | Media;
+    /**
+     * Shown on screens md and up
+     */
+    desktopImage: number | Media;
+    /**
+     * Shown on small screens. Falls back to Desktop Image if empty.
+     */
+    mobileImage?: (number | null) | Media;
+    /**
+     * Deprecated: used only if Desktop/Mobile are not provided.
+     */
+    image?: (number | null) | Media;
     enableLink?: boolean | null;
     link?: {
       type?: ('reference' | 'custom') | null;
@@ -1967,6 +1978,8 @@ export interface HorizontalScrollCardsBlockSelect<T extends boolean = true> {
               id?: T;
             };
         description?: T;
+        desktopImage?: T;
+        mobileImage?: T;
         image?: T;
         enableLink?: T;
         link?:

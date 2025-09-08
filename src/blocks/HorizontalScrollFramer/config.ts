@@ -92,11 +92,35 @@ const cardFields: Field[] = [
     label: 'Card Description',
   },
   {
-    name: 'image',
+    name: 'desktopImage',
     type: 'upload',
     relationTo: 'media',
     required: true,
-    label: 'Card Image',
+    label: 'Desktop Image',
+    admin: {
+      description: 'Shown on screens md and up',
+    },
+  },
+  {
+    name: 'mobileImage',
+    type: 'upload',
+    relationTo: 'media',
+    required: false,
+    label: 'Mobile Image (optional)',
+    admin: {
+      description: 'Shown on small screens. Falls back to Desktop Image if empty.',
+    },
+  },
+  // Legacy single image (fallback). Kept for backward compatibility with existing content.
+  {
+    name: 'image',
+    type: 'upload',
+    relationTo: 'media',
+    required: false,
+    label: 'Legacy Image (fallback)',
+    admin: {
+      description: 'Deprecated: used only if Desktop/Mobile are not provided.',
+    },
   },
   {
     name: 'enableLink',

@@ -11,7 +11,11 @@ type CardData = {
   title: string
   titleLines?: { line?: string }[]
   description?: string
-  image: any
+  // New responsive images
+  desktopImage?: any
+  mobileImage?: any
+  // Legacy single image (fallback)
+  image?: any
   enableLink?: boolean
   link?: any
 }
@@ -470,8 +474,9 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                       data-img-container="true"
                       style={{ height: `${cardHeightPx}px` }}
                     >
+                      {/* Desktop / md+ image */}
                       <div
-                        className="w-full h-full"
+                        className="w-full h-full hidden md:block"
                         style={{
                           clipPath: 'inset(var(--img-clip-top, 50%) 0 0 0)',
                           WebkitClipPath: 'inset(var(--img-clip-top, 50%) 0 0 0)' as any,
@@ -480,7 +485,24 @@ export const HorizontalScrollCardsBlock: React.FC<HorizontalScrollCardsBlockProp
                         }}
                       >
                         <Media
-                          resource={card.image}
+                          resource={card.desktopImage || card.image || card.mobileImage}
+                          className="w-full h-full"
+                          imgClassName="w-full h-full object-cover object-bottom block"
+                        />
+                      </div>
+
+                      {/* Mobile image */}
+                      <div
+                        className={`w-full h-full block md:hidden`}
+                        style={{
+                          clipPath: 'inset(var(--img-clip-top, 50%) 0 0 0)',
+                          WebkitClipPath: 'inset(var(--img-clip-top, 50%) 0 0 0)' as any,
+                          transition: 'clip-path 300ms cubic-bezier(0.2, 0.6, 0.2, 1)',
+                          willChange: 'clip-path',
+                        }}
+                      >
+                        <Media
+                          resource={card.mobileImage || card.image || card.desktopImage}
                           className="w-full h-full"
                           imgClassName="w-full h-full object-cover object-bottom block"
                         />
