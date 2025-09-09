@@ -116,6 +116,21 @@ const mediaContentFields: Field[] = [
     label: 'Media (Image or Video)',
   },
   {
+    name: 'autoPlay',
+    type: 'checkbox',
+    label: 'Autoplay video',
+    defaultValue: true,
+    admin: {
+      description: 'When enabled, videos will start playing automatically (muted).',
+    },
+  },
+  {
+    name: 'controls',
+    type: 'checkbox',
+    label: 'Show video controls',
+    defaultValue: false,
+  },
+  {
     name: 'overlayText',
     type: 'text',
     label: 'Overlay Text (single, deprecated - use Overlay Lines)',

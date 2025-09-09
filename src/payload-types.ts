@@ -894,6 +894,11 @@ export interface TwoColumnRowBlock {
           };
           media?: {
             media: number | Media;
+            /**
+             * When enabled, videos will start playing automatically (muted).
+             */
+            autoPlay?: boolean | null;
+            controls?: boolean | null;
             overlayText?: string | null;
             /**
              * Add up to 4 lines of overlay text. If provided, these will be used instead of the single Overlay Text.
@@ -962,6 +967,11 @@ export interface TwoColumnRowBlock {
           };
           media?: {
             media: number | Media;
+            /**
+             * When enabled, videos will start playing automatically (muted).
+             */
+            autoPlay?: boolean | null;
+            controls?: boolean | null;
             overlayText?: string | null;
             /**
              * Add up to 4 lines of overlay text. If provided, these will be used instead of the single Overlay Text.
@@ -1888,6 +1898,8 @@ export interface TwoColumnRowBlockSelect<T extends boolean = true> {
                 | T
                 | {
                     media?: T;
+                    autoPlay?: T;
+                    controls?: T;
                     overlayText?: T;
                     overlayLines?:
                       | T
@@ -1933,6 +1945,8 @@ export interface TwoColumnRowBlockSelect<T extends boolean = true> {
                 | T
                 | {
                     media?: T;
+                    autoPlay?: T;
+                    controls?: T;
                     overlayText?: T;
                     overlayLines?:
                       | T

@@ -50,7 +50,16 @@ const TextColumn: React.FC<{ content: any }> = ({ content }) => {
 }
 
 const MediaColumn: React.FC<{ content: any }> = ({ content }) => {
-  const { media, overlayText, overlayLines, hideOverlayOnDesktop, enableLink, link } = content || {}
+  const {
+    media,
+    overlayText,
+    overlayLines,
+    hideOverlayOnDesktop,
+    enableLink,
+    link,
+    autoPlay,
+    controls,
+  } = content || {}
 
   return (
     <div className="relative h-full w-full">
@@ -58,10 +67,10 @@ const MediaColumn: React.FC<{ content: any }> = ({ content }) => {
         <div className="relative h-full w-full">
           <Media
             resource={media}
-            imgClassName="w-full h-full object-cover bg-white"
-            videoClassName="absolute inset-0 w-full bg-white h-full object-contain object-center bg-black"
-            fill
-            autoPlay={false}
+            imgClassName="w-full h-auto object-contain bg-white"
+            videoClassName="w-full h-auto object-contain bg-black"
+            autoPlay={Boolean(autoPlay)}
+            controls={Boolean(controls)}
           />
           {/* Overlay for better text readability */}
           <div className="absolute inset-0 bg-black/40 lg:hidden" />
@@ -104,7 +113,7 @@ const MobileMediaColumn: React.FC<{
   headline?: string
   isFirst?: boolean
 }> = ({ content, headline, isFirst = false }) => {
-  const { media, overlayText, overlayLines, enableLink, link } = content || {}
+  const { media, overlayText, overlayLines, enableLink, link, autoPlay, controls } = content || {}
   const isVideo = !!media?.mimeType?.startsWith?.('video/')
 
   return (
@@ -134,7 +143,8 @@ const MobileMediaColumn: React.FC<{
             imgClassName="w-full h-full object-cover"
             videoClassName="w-full h-full object-cover"
             fill
-            autoPlay={false}
+            autoPlay={Boolean(autoPlay)}
+            controls={Boolean(controls)}
           />
           {headline && (
             <div className="absolute bottom-4 left-0">
