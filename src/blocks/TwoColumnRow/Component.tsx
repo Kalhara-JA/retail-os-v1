@@ -64,11 +64,12 @@ const MediaColumn: React.FC<{ content: any }> = ({ content }) => {
   return (
     <div className="relative h-full w-full">
       {media && (
-        <div className="relative h-full w-full">
+        <div className="relative h-full w-full flex items-center bg-black">
           <Media
             resource={media}
-            imgClassName="w-full h-auto object-contain bg-white"
-            videoClassName="w-full h-auto object-contain bg-black"
+            imgClassName="w-full h-full object-cover bg-white object-center"
+            videoClassName="w-full bg-white h-full object-contain my-auto bg-black"
+            fill
             autoPlay={Boolean(autoPlay)}
             controls={Boolean(controls)}
           />
