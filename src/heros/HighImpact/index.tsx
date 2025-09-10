@@ -112,13 +112,15 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
                         if (l1 || l2) return `${l1}\n${l2}`.trim()
                         return splitPhraseIntoTwoLines(item.phrase || '')
                       })}
-                      duration={5000}
+                      duration={7000}
+                      pauseOnInteraction
+                      autoResumeMs={10000}
                       className="whitespace-pre-line font-['Roboto'] text-[28px] md:text-[28px] lg:text-[39px] xl:text-[45px] 2xl:text-[50px] leading-[34px] lg:leading-[60px] font-normal text-white capitalize"
                       motionProps={{
-                        initial: { opacity: 0, y: -20 },
+                        initial: { opacity: 0, y: -15 },
                         animate: { opacity: 1, y: 0 },
-                        exit: { opacity: 0, y: 20 },
-                        transition: { duration: 0.3, ease: 'easeOut' },
+                        exit: { opacity: 0, y: 15 },
+                        transition: { duration: 0.45, ease: 'easeOut' },
                       }}
                     />
                   ) : (
