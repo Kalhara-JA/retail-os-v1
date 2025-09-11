@@ -12,7 +12,7 @@ export const VideoMedia: React.FC<MediaProps> = (props) => {
     onClick,
     resource,
     videoClassName,
-    controls = true,
+    controls = false,
     autoPlay = true,
     muted = true,
     loop = true,
@@ -49,14 +49,28 @@ export const VideoMedia: React.FC<MediaProps> = (props) => {
 
     return (
       <video
-        autoPlay={autoPlay}
+        autoPlay={autoPlay && !controls}
         className={cn(videoClassName)}
         controls={controls}
         loop={loop}
         muted={muted}
         onClick={handleClick}
+        preload="auto"
         playsInline
+        // Ensures iOS treats video as inline, not full-screen only
+        // Some mobile browsers are sensitive to attribute presence order/flags
+        // so we redundantly include the string attribute as well via props
         ref={videoRef}
+        onLoadedData={() => {
+          if (autoPlay && !controls && videoRef.current) {
+            void videoRef.current.play().catch(() => {})
+          }
+        }}
+        onCanPlay={() => {
+          if (autoPlay && !controls && videoRef.current && videoRef.current.paused) {
+            void videoRef.current.play().catch(() => {})
+          }
+        }}
       >
         {url ? <source src={getMediaUrl(url, updatedAt)} type={mimeType || undefined} /> : null}
         {filename ? (
